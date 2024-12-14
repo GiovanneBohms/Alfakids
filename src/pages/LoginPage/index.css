@@ -1,0 +1,78 @@
+.loginPageBody{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.formSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.InputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 70%;
+}
+
+.inputField{
+    height: 0.8rem;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    padding: 15px;
+}
+
+.inputLabel{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+
+.loginFormSection{
+    border-radius: 20px;
+    width: 25%;
+    background-color: rgb(197, 197, 197);
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.bottomSideContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.buttonLogin{
+    background-color: aqua;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.forgotPasswordLink{
+    color: white;
+    font-size: 18px;
+}
+
+.registerLink{
+    color: white;
+    font-size: 20px;
+}
