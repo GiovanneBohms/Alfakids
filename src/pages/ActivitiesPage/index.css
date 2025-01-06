@@ -1,0 +1,37 @@
+.activitiesBody{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+}
+
+.dashBoardSection{
+    height: 100%;
+    width: 20%;
+}
+
+.classroomsSection{
+    width: 80%;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.activitiesSection{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 80%;
+    height: 100%;
+    gap: 40px;
+}
+
+.contentSection{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}

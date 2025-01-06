@@ -1,8 +1,10 @@
+import { DashBoard } from "../../components/DashBoard"
 
 export function ChatbotPage(){
     return(
         <div>
-            <h1>ChaBot</h1>
+            <DashBoard />
         </div>
     )
+    
 }

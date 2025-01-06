@@ -1,0 +1,13 @@
+.editActivityBody{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.questionsSection{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

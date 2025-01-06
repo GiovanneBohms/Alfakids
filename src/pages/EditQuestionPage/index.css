@@ -1,0 +1,117 @@
+.editQuestionPageBody{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.editQuestionPageSection{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.editQuestionPageForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+}
+
+.editQuestionPageStatementTextArea{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.editQuestionPageStatementTextArea textarea{
+    width: 100%;
+    height: 5rem;
+    border: none;
+    outline: none;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.discursiveInputContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.objectiveAnswer{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.rightAnswerContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rightAnswerContainer input{
+    width: 20rem;
+    border: none;
+    outline: none;
+    background-color: rgb(243, 243, 243);
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.answerContainer{
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.answerContainer input{
+    width: 20rem;
+    border: none;
+    outline: none;
+    background-color: rgb(243, 243, 243);
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.btnEditQuestionSection{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btnEditQuestionSection button{
+    width: 15%;
+    height: 3rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.confirmQuestionEditBtn{
+    background-color: rgb(15, 187, 15);
+}
+
+.cancelQuestionEditBtn{
+    background-color: red;
+}
