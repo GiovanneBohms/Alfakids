@@ -1,0 +1,86 @@
+import { useEffect, useState } from "react"
+import "./index.css"
+import { LoadingIcon } from "../LoadingIcon"
+import { getClassroomsByActivityId, getClassroomsByProfessorId, getClassroomsToDistribute } from "../../services/ClassroomService"
+import { distributeActivity } from "../../services/ActivityService"
+
+export function ModalDistributeActivity({ idActivity ,idProfessor, setIsModalOpen }){
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [classrooms, setClassrooms] = useState([])
+
+    const [selectedClassrooms, setSelectedClassrooms] = useState([])
+
+
+    function fetchClassrooms(){
+        getClassroomsToDistribute(idActivity, idProfessor).then((classrooms) => {
+            setClassrooms(classrooms)
+            setIsLoading(false)
+        }).catch((error) => {
+            console.log(error.message)
+        })
+    }
+
+    function verifyInputChange(e, classroom){
+        if(e.target.checked){
+            selectedClassrooms.push(classroom.id)
+            console.log(classroom.id)
+        } else{
+            const index = selectedClassrooms.indexOf(classroom.id)
+            selectedClassrooms.splice(index, index)
+            console.log("id removido: ", classroom.id)
+        }
+    }
+
+    function handleShareActivity(){
+        setIsLoading(true)
+        if(selectedClassrooms.length > 0){
+            for(let i = 0; i < selectedClassrooms.length; i++){
+                distributeActivity(selectedClassrooms[i], idActivity).then(()=>{
+                    if(i == (selectedClassrooms.length - 1)){
+                        setIsModalOpen(false)
+                    }
+                }).catch((error)=>{
+                    console.log(error.message)
+                })
+            }
+        } else{
+            setIsLoading(false)
+            alert("Classrooms not selected!")
+        }
+    }
+
+    useEffect(() => {
+        fetchClassrooms()
+    }, [])
+
+    return(
+        <div className="modalDistributeActivityBackground">
+            <div className="modalFormSection">
+                <h1>Compartilhar</h1>
+                {
+                    isLoading ?
+                        <LoadingIcon />
+                    :
+                        <form className="modalFormContainer">
+                            {
+                                classrooms.map((classroom, index) => (
+                                    <div key={index} className="classroomCheckbox">
+                                        <label class="container">{classroom.number}
+                                            <input type="checkbox" value={classroom.id} onChange={(e) => verifyInputChange(e, classroom)} />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                ))
+                            }
+                            
+                        </form>
+                }
+                <div className="createBtnSection">
+                    <button onClick={() => handleShareActivity()}>Share</button>
+                    <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+                </div>
+            </div>
+        </div>
+    )
+}

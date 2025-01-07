@@ -29,3 +29,15 @@ export async function allocateStudentInClassroom(id_classroom, id_student){
 
     console.log(response.data.allocation)
 }
+
+export async function getClassroomsByActivityId(idActivity){
+    const response = await api.get(`/classroom/findByActivityId/${idActivity}`)
+
+    return response.data.classrooms
+}
+
+export async function getClassroomsToDistribute(idActivity, idProfessor){
+    const response = await api.get(`/classroom/findClassroomsToDistribute/${idActivity}/${idProfessor}`)
+
+    return response.data.classrooms
+}

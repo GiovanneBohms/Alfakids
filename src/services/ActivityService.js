@@ -23,3 +23,9 @@ export async function initializeActivity(title, id_subject, id_professor){
 
     console.log(response.data.activity)
 }
+
+export async function distributeActivity(id_classroom, id_activity){
+    const response = await api.post("/activity/distribute", {id_classroom, id_activity})
+
+    console.log(response.data.distribution)
+}
