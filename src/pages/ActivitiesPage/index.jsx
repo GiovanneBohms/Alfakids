@@ -14,6 +14,7 @@ export function ActivitiesPage(){
     const [classrooms, setClassrooms] = useState([])
     const [selectedClassroom, setSelectedClassroom] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [isLoadingActivities, setIsLoadingActivities] = useState(false)
 
     //const authentication = useContext(AuthContext)
 
@@ -33,10 +34,12 @@ export function ActivitiesPage(){
         }
     }
 
-    const fetchActivities = async () => {
+    const fetchActivities = async (classroom) => {
         try{
-            getActivitiesByClassroomId(selectedClassroom.id).then((data) => {
+            setIsLoadingActivities(true)
+            getActivitiesByClassroomId(classroom.id).then((data) => {
                 setActivities(data)
+                setIsLoadingActivities(false)
             }).catch((error) => {
                 console.log(error.message)
             })
@@ -45,11 +48,6 @@ export function ActivitiesPage(){
             console.log(error)
         }
     }
-    
-
-    useEffect(() => {
-        fetchActivities()
-    }, [selectedClassroom])
 
     useEffect(() => {
         fetchClassrooms()
@@ -65,7 +63,7 @@ export function ActivitiesPage(){
                     <div className="contentSection">
                         <div className="classroomsSection">
                             {classrooms.map((classroom) => (
-                                <div key={classroom.id} onClick={() => setSelectedClassroom(classroom)}>
+                                <div key={classroom.id} onClick={() => fetchActivities(classroom)}>
                                     <ClassroomCard classroom={classroom} />
                                 </div>
                             ))}
@@ -73,16 +71,22 @@ export function ActivitiesPage(){
                         <div>
                             <h1>Atividades</h1>
                         </div>
-                        <section className="activitiesSection">
-                            {activities.map((activity) => (
-                                <div key={activity.id} onClick={() => navigate(`/selected-activity/${activity.id}`)}>
-                                    <ActivityCard activity={activity} />
+                        {
+                            isLoadingActivities ?
+                                <div className="loadingActivitiesContainer">
+                                    <LoadingIcon />
                                 </div>
-                            ))}
-                        </section>
+                            :
+                                <section className="activitiesSection">
+                                    {activities.map((activity) => (
+                                        <div key={activity.id} onClick={() => navigate(`/selected-activity/${activity.id}`)}>
+                                            <ActivityCard activity={activity} />
+                                        </div>
+                                    ))}
+                                </section>
+                        }
                     </div>
             }
-            
         </div>
     )
 }
