@@ -3,8 +3,9 @@ import { LoadingIcon } from "../../components/LoadingIcon";
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard";
 import { getActivitiesByProfessorId } from "../../services/ActivityService";
 import "./index.css"
-import { ActivityCard } from "../../components/ActivityCard";
+import "../../styles/TableStyles.css"
 import { useNavigate } from "react-router-dom";
+import { IoMdAdd } from "react-icons/io";
 
 export function ActivitiesManagement(){
     const [isLoading, setIsLoading] = useState(true)
@@ -38,18 +39,26 @@ export function ActivitiesManagement(){
                     <LoadingIcon />
                 :
                     <div className="activitiesManagementSection">
-                        <div>
-                            <h1>Gerenciamento de Atividades</h1>
+                        <div><h1>Atividades</h1></div>
+                        <div className="btnAddContainer">
+                            <button onClick={() => navigate("/activities/management/add")}><IoMdAdd /></button>
                         </div>
-                        <div className="activitiesGrid">
+                        <table className="containerTable">
+                            <tr className="headerRow">
+                                <th className="edgeLeft">Title</th>
+                                <th>Status</th>
+                                <th className="edgeRight">Subject</th>
+                            </tr>
                             {
-                                activities.map((activity) => (
-                                    <div key={activity.id} onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>
-                                        <ActivityCard activity={activity} />
-                                    </div>
+                                activities.map((activity, index) => (
+                                    <tr key={index} className="infoRow" onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>
+                                        <td>{activity.title}</td>
+                                        <td>{activity.status}</td>
+                                        <td>{activity.id_subject}</td>
+                                    </tr>
                                 ))
                             }
-                        </div>
+                        </table>
                     </div>
             }
         </div>

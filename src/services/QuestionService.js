@@ -22,3 +22,8 @@ export async function deleteQuestion(idQuestion){
     const response = await api.delete(`/question/delete/${idQuestion}`)
     console.log(response.data)
 }
+
+export async function createQuestion(question){
+    const response = await api.post("/question/register", question)
+    console.log(response.data.question)
+}

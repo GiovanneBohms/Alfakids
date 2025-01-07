@@ -14,11 +14,3 @@
     justify-content: flex-start;
     gap: 10px;
 }
-
-.activitiesGrid{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 80%;
-    height: 100%;
-    gap: 40px;
-}

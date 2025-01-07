@@ -8,6 +8,8 @@
 .questionsSection{
     width: 80%;
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
     flex-direction: column;
     gap: 10px;
 }

@@ -13,3 +13,42 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+.addQuestionForm{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.statementInputContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.typeInputContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.typeSelect{
+    transition: 0.1s;
+    width: 30%;
+    border: none;
+    outline: none;
+    height: 3rem;
+    background-color: rgb(236, 236, 236);
+    border-radius: 40px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.typeSelect:hover{
+    background-color: rgb(226, 226, 226);
+}

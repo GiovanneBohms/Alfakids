@@ -1,9 +1,12 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard"
 import "./index.css"
 import { useState } from "react"
+import { createQuestion } from "../../services/QuestionService"
 
 export function AddQuestionPage(){
+
+    const navigate = useNavigate()
     const { id_activity } = useParams()
     const [type, setType] = useState("discursive")
 
@@ -15,17 +18,40 @@ export function AddQuestionPage(){
     const [right_answer, setRight_answer] = useState(null)
     const [expected_answer, setExpected_answer] = useState(null)
 
+    function handleAddQuestion(){
+        if(type === "discursive"){
+            createQuestion({statement, type, id_activity, expected_answer}).then(() => {
+                navigate(`/activities/management/edit/${id_activity}`)
+            }).catch((error) => {
+                console.log(error.message)
+            })
+        } else{
+            createQuestion({statement, type, id_activity, answer1, answer2, answer3, answer4, right_answer}).then(() => {
+                navigate(`/activities/management/edit/${id_activity}`)
+            }).catch((error) => {
+                console.log(error.message)
+            })
+        }
+    }
+
     return (
         <div className="addQuestionBody">
             <ProfessorDashBoard />
             <div className="addQuestionSection">
+                <h1>Add Question</h1>
                 <div className="addQuestionForm">
-                    <label>Type:</label>
-                    <select onChange={(e) => setType(e.target.value)}>
-                        <option value="">Select a type</option>
-                        <option value="objective">Objective</option>
-                        <option value="discursive">Discursive</option>
-                    </select>
+                    <div className="typeInputContainer">
+                        <label>Type:</label>
+                        <select className="typeSelect" onChange={(e) => setType(e.target.value)}>
+                            <option value="discursive">Discursive</option>
+                            <option value="objective">Objective</option>
+                            
+                        </select>
+                    </div>
+                    <div className="discursiveInputContainer">
+                        <label>Statement:</label>
+                        <textarea onChange={(e) => setStatement(e.target.value)} type="text" />
+                    </div>
                     {
 
                         //-------------------DISCURSIVE-----------------------------------------
@@ -62,6 +88,10 @@ export function AddQuestionPage(){
                             </div>
                         </div>
                     }
+                    <div className="createBtnSection">
+                        <button onClick={() => handleAddQuestion()}>Add</button>
+                        <button onClick={() => navigate(`/activities/management/edit/${id_activity}`)}>Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>

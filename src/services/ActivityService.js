@@ -17,3 +17,9 @@ export async function getActivitiesByProfessorId(idProfessor){
 
     return response.data.activities
 }
+
+export async function initializeActivity(title, id_subject, id_professor){
+    const response = await api.post("/activity/initialize", {title, id_subject, id_professor})
+
+    console.log(response.data.activity)
+}

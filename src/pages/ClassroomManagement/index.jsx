@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard";
 import "./index.css"
+import "../../styles/TableStyles.css"
 import { getClassroomsByProfessorId } from "../../services/ClassroomService";
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -43,15 +44,15 @@ export function ClassroomManagement(){
                         <div className="btnAddContainer">
                             <button onClick={() => navigate("/classroom/management/add")}><IoMdAdd /></button>
                         </div>
-                        <table className="classroomTable">
+                        <table className="containerTable">
                             <tr className="headerRow">
                                 <th className="edgeLeft">Number</th>
                                 <th>Year</th>
                                 <th className="edgeRight">Status</th>
                             </tr>
                             {
-                                classrooms.map((classroom) => (
-                                    <tr className="infoRow" onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>
+                                classrooms.map((classroom, index) => (
+                                    <tr key={index} className="infoRow" onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>
                                         <td>{classroom.number}</td>
                                         <td>{classroom.year}</td>
                                         <td>{classroom.status}</td>

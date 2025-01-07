@@ -1,0 +1,38 @@
+.containerTable{
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.containerTable th{
+    padding: 0px 20px;
+    font-weight: 400;
+    width: 100%;
+}
+
+.edgeRight{
+    border-radius: 0 10px 0 0;
+}
+
+.edgeLeft{
+    border-radius: 10px 0 0 0;
+}
+
+.headerRow{
+    background-color: rgb(241, 241, 241);
+    color: rgba(0, 0, 0, 0.301);
+    height: 50px;
+}
+
+.infoRow{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    height: 100px;
+}
+
+.infoRow td{
+    padding: 0 20px;
+}
+
+.infoRow:hover{
+    background-color: rgb(225, 225, 225);
+}
