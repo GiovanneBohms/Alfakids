@@ -29,3 +29,9 @@ export async function distributeActivity(id_classroom, id_activity){
 
     console.log(response.data.distribution)
 }
+
+export async function deleteActivity(id_activity){
+    const response = await api.delete(`/activity/delete/${id_activity}`)
+
+    console.log(response.data)
+}

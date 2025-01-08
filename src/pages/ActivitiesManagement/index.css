@@ -14,3 +14,164 @@
     justify-content: flex-start;
     gap: 10px;
 }
+
+.btnAddActivityContainer{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnAddActivityContainer .addButton{
+    transition: 0.2s;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgb(3, 219, 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.btnAddActivityContainer .trashButton{
+    transition: 0.2s;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.btnAddActivityContainer .trashButtonDisabled{
+    transition: 0.2s;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+}
+
+.btnAddActivityContainer .shareButton{
+    transition: 0.2s;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgb(25, 255, 236);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.btnAddActivityContainer .shareButtonDisabled{
+    transition: 0.2s;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+}
+
+.btnAddActivityContainer .addButton:hover{
+    background-color: rgb(0, 208, 0);
+}
+
+.btnAddActivityContainer .trashButton:hover{
+    background-color: rgb(233, 0, 0);
+}
+
+.listItemsContainer{
+    background-color: red;
+}
+
+.containerSelectActivity {
+    display: block;
+    position: relative;
+    margin-right: 64.5%;
+    margin-bottom: 22px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .containerSelectActivity input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .containerSelectActivity .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #dadada;
+    border-radius: 40px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .containerSelectActivity:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .containerSelectActivity input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .containerSelectActivity .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .containerSelectActivity input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .sectionSelectActivity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+
+  .selectedActivitiesOptions{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }

@@ -27,7 +27,7 @@ export function ModalDistributeActivity({ idActivity ,idProfessor, setIsModalOpe
             console.log(classroom.id)
         } else{
             const index = selectedClassrooms.indexOf(classroom.id)
-            selectedClassrooms.splice(index, index)
+            selectedClassrooms.splice(index, 1)
             console.log("id removido: ", classroom.id)
         }
     }
@@ -66,9 +66,9 @@ export function ModalDistributeActivity({ idActivity ,idProfessor, setIsModalOpe
                             {
                                 classrooms.map((classroom, index) => (
                                     <div key={index} className="classroomCheckbox">
-                                        <label class="container">{classroom.number}
+                                        <label className="container">{classroom.number}
                                             <input type="checkbox" value={classroom.id} onChange={(e) => verifyInputChange(e, classroom)} />
-                                            <span class="checkmark"></span>
+                                            <span className="checkmark"></span>
                                         </label>
                                     </div>
                                 ))

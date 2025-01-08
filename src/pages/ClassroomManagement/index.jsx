@@ -6,13 +6,35 @@ import { getClassroomsByProfessorId } from "../../services/ClassroomService";
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { LoadingIcon } from "../../components/LoadingIcon";
+import { IoMdTrash } from "react-icons/io";
+import { FaCodeFork } from "react-icons/fa6";
+import { ModalRemoveActivity } from "../../components/ModalRemoveActivity";
 
 export function ClassroomManagement(){
 
     const [classrooms, setClassrooms] = useState([])
+    const [selectedClassrooms, setSelectedClassrooms] = useState([])
+    const [isModalRemoveOpen, setIsModalRemoveOpen] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
+    const [hasSelectedClassroom, setHasSelectedClassroom] = useState(false)
+
     const navigate = useNavigate()
+
+    function verifyInputChange(e, classroom){
+        if(e.target.checked){
+            selectedClassrooms.push(classroom.id)
+            console.log(classroom.id)
+            setHasSelectedClassroom(true)
+        } else{
+            const index = selectedClassrooms.indexOf(classroom.id)
+            selectedClassrooms.splice(index, 1)
+            console.log("id removido: ", classroom.id)
+            if(selectedClassrooms.length == 0){
+                setHasSelectedClassroom(false)
+            }
+        }
+    }
 
     const fetchClassrooms = async () => {
             try{
@@ -34,6 +56,12 @@ export function ClassroomManagement(){
 
     return(
         <div className="classroomManagementBody">
+            {
+                isModalRemoveOpen ?
+                    <ModalRemoveActivity numActivities={selectedClassrooms.length} handleRemoveActivities={() => null} activitiesToRemove={selectedClassrooms} setIsModalRemoveOpen={setIsModalRemoveOpen} />
+                :
+                    null
+            }
             <ProfessorDashBoard />
             {
                 isLoading ?
@@ -41,21 +69,34 @@ export function ClassroomManagement(){
                 :
                     <div className="classroomManagementSection">
                         <div><h1>Turmas</h1></div>
-                        <div className="btnAddContainer">
-                            <button onClick={() => navigate("/classroom/management/add")}><IoMdAdd /></button>
+                        <div className="btnAddClassroomContainer">
+                            <button className="addButton" onClick={() => navigate("/classroom/management/add")}><IoMdAdd /></button>
+                            {
+                                hasSelectedClassroom ?
+                                    <button className="trashButton" onClick={() => setIsModalRemoveOpen(true)}><IoMdTrash /></button>
+                                :
+                                    <button className="trashButtonDisabled"><IoMdTrash /></button>
+                            }
                         </div>
                         <table className="containerTable">
                             <tr className="headerRow">
                                 <th className="edgeLeft">Number</th>
                                 <th>Year</th>
-                                <th className="edgeRight">Status</th>
+                                <th>Status</th>
+                                <th className="edgeRight"></th>
                             </tr>
                             {
                                 classrooms.map((classroom, index) => (
-                                    <tr key={index} className="infoRow" onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>
-                                        <td>{classroom.number}</td>
-                                        <td>{classroom.year}</td>
-                                        <td>{classroom.status}</td>
+                                    <tr key={index} className="infoRow">
+                                        <td onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>{classroom.number}</td>
+                                        <td onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>{classroom.year}</td>
+                                        <td onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>{classroom.status}</td>
+                                        <div className="sectionSelectActivity">
+                                            <label className="containerSelectActivity">
+                                                <input type="checkbox" value={classroom.id} onChange={(e) => verifyInputChange(e, classroom)} />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
                                     </tr>
                                 ))
                             }

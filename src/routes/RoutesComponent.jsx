@@ -27,6 +27,7 @@ export function RoutesComponent(){
         <BrowserRouter>
             <Fragment>
                 <Routes>
+                    <Route path='/' element={<LoginPage />} />
                     <Route path='login' element={<LoginPage />} />
                     <Route path='chatbot' element={<PrivateRoute Component={ChatbotPage} />} />
                     <Route path='activities' element={<PrivateRoute Component={ActivitiesPage} />} />

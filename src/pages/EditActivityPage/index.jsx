@@ -56,9 +56,7 @@ export function EditActivityPage(){
         <div className="editActivityBody">
             {
                 isModalOpen ?
-                        <ModalDistributeActivity idActivity={id_activity
-                            
-                        } idProfessor={1} setIsModalOpen={setIsModalOpen} />
+                        <ModalDistributeActivity idActivity={id_activity} idProfessor={1} setIsModalOpen={setIsModalOpen} />
                     :
                         null
             }
@@ -69,9 +67,9 @@ export function EditActivityPage(){
                 :
                     <div className="questionsSection">
                         <h1>{activity.title}</h1>
-                        <div className="btnAddContainer">
-                            <button onClick={() => navigate(`/activities/management/edit/question/add/${activity.id}`)}><IoMdAdd /></button>
-                            <button onClick={() => setIsModalOpen(true)}><FaCodeFork /></button>
+                        <div className="btnQuestionOptionsContainer">
+                            <button className="addButton" onClick={() => navigate(`/activities/management/edit/question/add/${activity.id}`)}><IoMdAdd /></button>
+                            <button className="shareButton" onClick={() => setIsModalOpen(true)}><FaCodeFork /></button>
                         </div>
                         {questions.map((question, index) => (
                             <EditQuestionForm key={index} question={question} />
