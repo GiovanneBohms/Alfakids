@@ -1,0 +1,13 @@
+.studentCardContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 4rem;
+    padding: 5px 20px;
+}
+
+.studentCardContainer:hover{
+    background-color: rgb(236, 236, 236);
+}

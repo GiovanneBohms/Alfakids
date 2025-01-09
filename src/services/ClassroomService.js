@@ -41,3 +41,9 @@ export async function getClassroomsToDistribute(idActivity, idProfessor){
 
     return response.data.classrooms
 }
+
+export async function deleteClassroom(idClassroom){
+    const response = await api.delete(`/classroom/delete/${idClassroom}`)
+
+    console.log(response.data)
+}

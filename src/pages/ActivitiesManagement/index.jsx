@@ -9,7 +9,6 @@ import { IoMdAdd } from "react-icons/io";
 import { IoMdTrash } from "react-icons/io";
 import { ModalRemoveActivity } from "../../components/ModalRemoveActivity";
 import { FaCodeFork } from "react-icons/fa6";
-import { ModalDistributeActivity } from "../../components/ModalDistributeActivity";
 
 export function ActivitiesManagement(){
     const [isLoading, setIsLoading] = useState(true)

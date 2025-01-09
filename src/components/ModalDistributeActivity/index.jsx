@@ -73,7 +73,6 @@ export function ModalDistributeActivity({ idActivity ,idProfessor, setIsModalOpe
                                     </div>
                                 ))
                             }
-                            
                         </form>
                 }
                 <div className="createBtnSection">

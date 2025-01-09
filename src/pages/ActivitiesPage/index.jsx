@@ -12,7 +12,6 @@ import { getCurrentStudentId } from "../../services/StudentService"
 export function ActivitiesPage(){
     const [activities, setActivities] = useState([])
     const [classrooms, setClassrooms] = useState([])
-    const [selectedClassroom, setSelectedClassroom] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [isLoadingActivities, setIsLoadingActivities] = useState(false)
 

@@ -1,13 +1,13 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard";
 import "./index.css"
 import "../../styles/TableStyles.css"
-import { getClassroomsByProfessorId } from "../../services/ClassroomService";
+import { deleteClassroom, getClassroomsByProfessorId } from "../../services/ClassroomService";
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { LoadingIcon } from "../../components/LoadingIcon";
 import { IoMdTrash } from "react-icons/io";
-import { FaCodeFork } from "react-icons/fa6";
 import { ModalRemoveActivity } from "../../components/ModalRemoveActivity";
 
 export function ClassroomManagement(){
@@ -50,6 +50,18 @@ export function ClassroomManagement(){
             }
         }
 
+    function handleRemoveClassroom(){
+        for(let i = 0; i < selectedClassrooms.length; i++){
+            deleteClassroom(selectedClassrooms[i]).then(()=>{
+                if(i == (selectedClassrooms.length - 1)){
+                    location.reload()
+                }
+            }).catch((error)=>{
+                console.log(error.message)
+            })
+        }
+    }
+
     useEffect(() => {
         fetchClassrooms()
     }, [])
@@ -58,7 +70,7 @@ export function ClassroomManagement(){
         <div className="classroomManagementBody">
             {
                 isModalRemoveOpen ?
-                    <ModalRemoveActivity numActivities={selectedClassrooms.length} handleRemoveActivities={() => null} activitiesToRemove={selectedClassrooms} setIsModalRemoveOpen={setIsModalRemoveOpen} />
+                    <ModalRemoveActivity numActivities={selectedClassrooms.length} handleRemoveActivities={handleRemoveClassroom} activitiesToRemove={selectedClassrooms} setIsModalRemoveOpen={setIsModalRemoveOpen} />
                 :
                     null
             }

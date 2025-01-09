@@ -1,0 +1,15 @@
+.studentListContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    min-height: 5.5rem;
+    max-height: 19.7rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 5px;
+    padding: 0 5px;
+}

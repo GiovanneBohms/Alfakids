@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 import { allocateStudentInClassroom, getClassroomById } from "../../services/ClassroomService";
 import { getAllStudents, getStudentsByClassroomId } from "../../services/StudentService";
 import { LoadingIcon } from "../../components/LoadingIcon";
+import { ModalAddStudent } from "../../components/ModalAddStudent";
 
 export function EditClassroomPage(){
     const {id_classroom} = useParams()
 
     const [classroom, setClassroom] = useState()
-    const [filteredStudents, setFilteredStudents] = useState([])
+    const [studentsOutOfClassroom, setStudentsOutOfClassroom] = useState([])
     const [studentsInClassroom, setStudentsInClassroom] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isModalAddStudentOpen, setIsModalAddStudentOpen] = useState(false)
 
     function fetchClassroom(){
         try{
@@ -39,9 +41,9 @@ export function EditClassroomPage(){
                             }
                         })
 
-                        setFilteredStudents(filteredStudentsList)
+                        setStudentsOutOfClassroom(filteredStudentsList)
                     } else{
-                        setFilteredStudents(students)
+                        setStudentsOutOfClassroom(students)
                     }
                 }).catch((error) => {
                     console.log(error.message)
@@ -52,6 +54,17 @@ export function EditClassroomPage(){
         } catch(error){
             console.log(error.message)
         }
+    }
+
+    function handleAllocateStudent(student){
+        setIsLoading(true)
+        allocateStudentInClassroom(classroom.id, student.id).then(() => {
+            setStudentsInClassroom([...studentsInClassroom, student])
+            setStudentsOutOfClassroom(studentsOutOfClassroom.filter(studentInList => studentInList.id !== student.id))
+            setIsLoading(false)
+        }).catch((error) => {
+            console.log(error.message)
+        })
     }
 
     function fetchStudentsInClassroom(){
@@ -66,15 +79,6 @@ export function EditClassroomPage(){
         } catch(error){
             console.log(error.message)
         }
-    }
-
-    function handleAllocateStudent(student){
-        allocateStudentInClassroom(classroom.id, student.id).then(() => {
-            setStudentsInClassroom([...studentsInClassroom, student])
-            setFilteredStudents(filteredStudents.filter(studentInList => studentInList.id !== student.id))
-        }).catch((error) => {
-            console.log(error.message)
-        })
     }
 
     /*function handleDeleteAllocation(student){
@@ -95,6 +99,12 @@ export function EditClassroomPage(){
 
     return(
         <div className="editClassroomPageBody">
+            {
+                isModalAddStudentOpen ?
+                    <ModalAddStudent handleAllocateStudent={handleAllocateStudent} setIsModalAddStudentOpen={setIsModalAddStudentOpen} />
+                :
+                    null
+            }
             <ProfessorDashBoard />
             {
                 isLoading ?
@@ -111,60 +121,40 @@ export function EditClassroomPage(){
                                 <label>Year:</label>
                                 <input type="text" disabled value={classroom.year} />
                             </div>
-                            <div>
-                                <h1>Aluno da Turma:</h1>
+                            <div className="studentsInClassroomTable">
+                                <div className="studentTableTitleSection">
+                                    <div>
+                                        <h1>Aluno da Turma:</h1>
+                                    </div>
+                                    <div className="addStudentsButton">
+                                        <button onClick={() => setIsModalAddStudentOpen(true)}>Add students</button>
+                                    </div>
+                                </div>
+                                <table className="studentTable">
+                                    <tbody>
+                                        <tr className="studentHeaderRow">
+                                            <th className="studentEdgeLeft">Name</th>
+                                            <th>Email</th>
+                                            <th>Age</th>
+                                            <th>Gender</th>
+                                            <th>Autism Level</th>
+                                            <th className="studentEdgeRight">School Year</th>
+                                        </tr>
+                                        {
+                                            studentsInClassroom.map((student, index) => (
+                                                <tr key={index} className="studentInfoRow">
+                                                    <td>{student.name}</td>
+                                                    <td>{student.email}</td>
+                                                    <td>{student.age}</td>
+                                                    <td>{student.gender}</td>
+                                                    <td>{student.autism_level}</td>
+                                                    <td>{student.school_year}</td>
+                                                </tr>
+                                            ))
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
-                            <table className="studentTable">
-                                <tbody>
-                                    <tr className="studentHeaderRow">
-                                        <th className="studentEdgeLeft">Name</th>
-                                        <th>Email</th>
-                                        <th>Age</th>
-                                        <th>Gender</th>
-                                        <th>Autism Level</th>
-                                        <th className="studentEdgeRight">School Year</th>
-                                    </tr>
-                                    {
-                                        studentsInClassroom.map((student, index) => (
-                                            <tr key={index} className="studentInfoRow">
-                                                <td>{student.name}</td>
-                                                <td>{student.email}</td>
-                                                <td>{student.age}</td>
-                                                <td>{student.gender}</td>
-                                                <td>{student.autism_level}</td>
-                                                <td>{student.school_year}</td>
-                                            </tr>
-                                        ))
-                                    }
-                                </tbody>
-                            </table>
-                            <div>
-                                <h1>Alocar Aluno:</h1>
-                            </div>
-                            <table className="studentTable">
-                                <tbody>
-                                    <tr className="studentHeaderRow">
-                                        <th className="studentEdgeLeft">Name</th>
-                                        <th>Email</th>
-                                        <th>Age</th>
-                                        <th>Gender</th>
-                                        <th>Autism Level</th>
-                                        <th className="studentEdgeRight">School Year</th>
-                                    </tr>
-                                    {
-                                        filteredStudents.map((student, index) => (
-                                            <tr key={index} onClick={() => handleAllocateStudent(student)} className="studentInfoRow">
-                                                <td>{student.name}</td>
-                                                <td>{student.email}</td>
-                                                <td>{student.age}</td>
-                                                <td>{student.gender}</td>
-                                                <td>{student.autism_level}</td>
-                                                <td>{student.school_year}</td>
-                                            </tr>
-                                        ))
-                                    }
-                                </tbody>
-                            </table>
                         </div>
                     </section>
             }
