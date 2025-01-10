@@ -25,7 +25,10 @@ export function ActivitiesPage(){
                 setClassrooms(data)
                 setIsLoading(false)
             }).catch((error)=>{
-                console.log(error.message)
+                if(error.status == 404){
+                    setClassrooms(null)
+                    setIsLoading(false)
+                }
             })
         }
         catch(error){
@@ -40,7 +43,10 @@ export function ActivitiesPage(){
                 setActivities(data)
                 setIsLoadingActivities(false)
             }).catch((error) => {
-                console.log(error.message)
+                if(error.status == 404){
+                    setActivities(null)
+                    setIsLoadingActivities(false)
+                }
             })
         }
         catch(error){
@@ -61,11 +67,16 @@ export function ActivitiesPage(){
                 :
                     <div className="contentSection">
                         <div className="classroomsSection">
-                            {classrooms.map((classroom) => (
-                                <div key={classroom.id} onClick={() => fetchActivities(classroom)}>
-                                    <ClassroomCard classroom={classroom} />
-                                </div>
-                            ))}
+                            {
+                                classrooms !== null ?
+                                    classrooms.map((classroom) => (
+                                        <div key={classroom.id} onClick={() => fetchActivities(classroom)}>
+                                            <ClassroomCard classroom={classroom} />
+                                        </div>
+                                    ))
+                                :
+                                    <p className="notFoundMessage">Você não está em nenhuma turma...</p>
+                            }
                         </div>
                         <div>
                             <h1>Atividades</h1>
@@ -77,11 +88,17 @@ export function ActivitiesPage(){
                                 </div>
                             :
                                 <section className="activitiesSection">
-                                    {activities.map((activity) => (
-                                        <div key={activity.id} onClick={() => navigate(`/selected-activity/${activity.id}`)}>
-                                            <ActivityCard activity={activity} />
-                                        </div>
-                                    ))}
+                                    {
+                                        activities !== null ?
+                                            activities.map((activity) => (
+                                                <div key={activity.id} onClick={() => navigate(`/selected-activity/${activity.id}`)}>
+                                                    <ActivityCard activity={activity} />
+                                                </div>
+                                            ))
+                                        :
+                                            <p className="notFoundMessage">Essa turma não possui atividades...</p>
+                                    }
+                                    
                                 </section>
                         }
                     </div>

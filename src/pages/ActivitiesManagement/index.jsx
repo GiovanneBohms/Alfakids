@@ -7,7 +7,7 @@ import "../../styles/TableStyles.css"
 import { useNavigate } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 import { IoMdTrash } from "react-icons/io";
-import { ModalRemoveActivity } from "../../components/ModalRemoveActivity";
+import { ModalRemoveItems } from "../../components/ModalRemoveItems";
 import { FaCodeFork } from "react-icons/fa6";
 
 export function ActivitiesManagement(){
@@ -75,7 +75,7 @@ export function ActivitiesManagement(){
         <div className="activitiesManagementBody">
             {
                 isModalRemoveOpen ?
-                        <ModalRemoveActivity numActivities={selectedActivities.length} activitiesToRemove={selectedActivities} handleRemoveActivities={handleRemoveActivities} setIsModalRemoveOpen={setIsModalRemoveOpen} />
+                        <ModalRemoveItems elementsToRemove={selectedActivities} handleRemoveElements={handleRemoveActivities} setIsModalRemoveOpen={setIsModalRemoveOpen} />
                     :
                         null
             }
@@ -116,8 +116,8 @@ export function ActivitiesManagement(){
                                         <td onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>{activity.title}</td>
                                         <td onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>{activity.status}</td>
                                         <td onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>{activity.id_subject}</td>
-                                        <div className="sectionSelectActivity">
-                                            <label className="containerSelectActivity">
+                                        <div className="sectionSelect">
+                                            <label className="containerSelect">
                                                 <input type="checkbox" value={activity.id} onChange={(e) => verifyInputChange(e, activity)} />
                                                 <span className="checkmark"></span>
                                             </label>

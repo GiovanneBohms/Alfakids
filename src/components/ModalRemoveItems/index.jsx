@@ -1,12 +1,12 @@
 import "./index.css"
 
-export function ModalRemoveActivity({ numActivities, activitiesToRemove, handleRemoveActivities, setIsModalRemoveOpen }){
+export function ModalRemoveItems({ elementsToRemove, handleRemoveElements, setIsModalRemoveOpen }){
     return(
         <div className="modalRemoveActivityBackground">
             <div className="modalMainSection">
-                <h2>Deseja remover {numActivities} itens da lista de atividades?</h2>
+                <h2>Deseja remover {elementsToRemove.length} itens?</h2>
                 <div className="createBtnSection">
-                    <button className="removeBtn" onClick={() => handleRemoveActivities(activitiesToRemove)}>Remove</button>
+                    <button className="removeBtn" onClick={() => handleRemoveElements(elementsToRemove)}>Remove</button>
                     <button onClick={() => setIsModalRemoveOpen(false)}>Cancel</button>
                 </div>
             </div>

@@ -36,3 +36,65 @@
 .infoRow:hover{
     background-color: rgb(225, 225, 225);
 }
+
+.containerSelect {
+    display: block;
+    position: relative;
+    margin-right: 64.5%;
+    margin-bottom: 22px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .containerSelect input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .containerSelect .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #dadada;
+    border-radius: 40px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .containerSelect:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .containerSelect input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .containerSelect .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .containerSelect input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .sectionSelect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }

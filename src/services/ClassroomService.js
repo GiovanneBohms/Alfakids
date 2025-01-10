@@ -47,3 +47,9 @@ export async function deleteClassroom(idClassroom){
 
     console.log(response.data)
 }
+
+export async function deleteStudentFromClassroom(idClassroom, idStudent){
+    const response = await api.delete(`/classroom/deleteStudentFromClassroom/${idClassroom}/${idStudent}`)
+
+    console.log(response.data)
+}

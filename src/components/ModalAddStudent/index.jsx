@@ -51,7 +51,7 @@ export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStuden
                         :
                             null
                 }
-                <button onClick={() => setIsModalAddStudentOpen(false)}>Fechar</button>
+                <button className="cancelButton" onClick={() => setIsModalAddStudentOpen(false)}>Fechar</button>
             </div>
         </div>
     )

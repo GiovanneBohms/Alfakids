@@ -43,3 +43,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.notFoundMessage{
+    font-size: 15px;
+    color: rgb(177, 177, 177);
+    width: 20rem;
+}

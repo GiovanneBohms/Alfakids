@@ -8,7 +8,7 @@ import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { LoadingIcon } from "../../components/LoadingIcon";
 import { IoMdTrash } from "react-icons/io";
-import { ModalRemoveActivity } from "../../components/ModalRemoveActivity";
+import { ModalRemoveItems } from "../../components/ModalRemoveItems";
 
 export function ClassroomManagement(){
 
@@ -70,7 +70,7 @@ export function ClassroomManagement(){
         <div className="classroomManagementBody">
             {
                 isModalRemoveOpen ?
-                    <ModalRemoveActivity numActivities={selectedClassrooms.length} handleRemoveActivities={handleRemoveClassroom} activitiesToRemove={selectedClassrooms} setIsModalRemoveOpen={setIsModalRemoveOpen} />
+                    <ModalRemoveItems handleRemoveElements={handleRemoveClassroom} elementsToRemove={selectedClassrooms} setIsModalRemoveOpen={setIsModalRemoveOpen} />
                 :
                     null
             }
@@ -103,8 +103,8 @@ export function ClassroomManagement(){
                                         <td onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>{classroom.number}</td>
                                         <td onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>{classroom.year}</td>
                                         <td onClick={() => navigate(`/classroom/management/edit/${classroom.id}`)}>{classroom.status}</td>
-                                        <div className="sectionSelectActivity">
-                                            <label className="containerSelectActivity">
+                                        <div className="sectionSelect">
+                                            <label className="containerSelect">
                                                 <input type="checkbox" value={classroom.id} onChange={(e) => verifyInputChange(e, classroom)} />
                                                 <span className="checkmark"></span>
                                             </label>

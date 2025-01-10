@@ -1,11 +1,14 @@
 import { Navigate, useParams } from "react-router-dom";
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard";
 import "./index.css"
+import "../../styles/TableStyles.css"
 import { useEffect, useState } from "react";
-import { allocateStudentInClassroom, getClassroomById } from "../../services/ClassroomService";
+import { allocateStudentInClassroom, deleteStudentFromClassroom, getClassroomById } from "../../services/ClassroomService";
 import { getAllStudents, getStudentsByClassroomId } from "../../services/StudentService";
 import { LoadingIcon } from "../../components/LoadingIcon";
 import { ModalAddStudent } from "../../components/ModalAddStudent";
+import { IoMdTrash } from "react-icons/io";
+import { ModalRemoveItems } from "../../components/ModalRemoveItems";
 
 export function EditClassroomPage(){
     const {id_classroom} = useParams()
@@ -13,8 +16,11 @@ export function EditClassroomPage(){
     const [classroom, setClassroom] = useState()
     const [studentsOutOfClassroom, setStudentsOutOfClassroom] = useState([])
     const [studentsInClassroom, setStudentsInClassroom] = useState([])
+    const [selectedStudents, setSelectedStudents] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [hasSelectedStudents, setHasSelectedStudents] = useState(false)
     const [isModalAddStudentOpen, setIsModalAddStudentOpen] = useState(false)
+    const [isModalRemoveOpen, setIsModalRemoveOpen] = useState(false)
 
     function fetchClassroom(){
         try{
@@ -56,6 +62,21 @@ export function EditClassroomPage(){
         }
     }
 
+    function verifyInputChange(e, student){
+        if(e.target.checked){
+            selectedStudents.push(student.id)
+            console.log(student.id)
+            setHasSelectedStudents(true)
+        } else{
+            const index = selectedStudents.indexOf(student.id)
+            selectedStudents.splice(index, 1)
+            console.log("id removido: ", student.id)
+            if(selectedStudents.length == 0){
+                setHasSelectedStudents(false)
+            }
+        }
+    }
+
     function handleAllocateStudent(student){
         setIsLoading(true)
         allocateStudentInClassroom(classroom.id, student.id).then(() => {
@@ -65,6 +86,19 @@ export function EditClassroomPage(){
         }).catch((error) => {
             console.log(error.message)
         })
+    }
+
+    function handleRemoveStudentsFromClassroom(){
+        console.log(selectedStudents)
+        for(let i = 0; i < selectedStudents.length; i++){
+            deleteStudentFromClassroom(id_classroom, selectedStudents[i]).then(()=>{
+                if(i == (selectedStudents.length - 1)){
+                    location.reload()
+                }
+            }).catch((error)=>{
+                console.log(error.message)
+            })
+        }
     }
 
     function fetchStudentsInClassroom(){
@@ -100,6 +134,12 @@ export function EditClassroomPage(){
     return(
         <div className="editClassroomPageBody">
             {
+                isModalRemoveOpen ?
+                    <ModalRemoveItems elementsToRemove={selectedStudents} handleRemoveElements={handleRemoveStudentsFromClassroom} setIsModalRemoveOpen={setIsModalRemoveOpen} />
+                :
+                    null
+            }
+            {
                 isModalAddStudentOpen ?
                     <ModalAddStudent handleAllocateStudent={handleAllocateStudent} setIsModalAddStudentOpen={setIsModalAddStudentOpen} />
                 :
@@ -112,7 +152,7 @@ export function EditClassroomPage(){
                 :
                     <section className="editClassroomPageSection">
                         <div className="editClassroomForm">
-                            <h1 className="editClassroomTitle">Gerenciamento de Turma</h1>
+                            <p className="editClassroomTitle">Gerenciamento de Turma</p>
                             <div className="editClassroomInput">
                                 <label>Number:</label>
                                 <input type="text" disabled value={classroom.number} />
@@ -124,36 +164,67 @@ export function EditClassroomPage(){
                             <div className="studentsInClassroomTable">
                                 <div className="studentTableTitleSection">
                                     <div>
-                                        <h1>Aluno da Turma:</h1>
+                                        <p>Alunos da Turma:</p>
                                     </div>
-                                    <div className="addStudentsButton">
-                                        <button onClick={() => setIsModalAddStudentOpen(true)}>Add students</button>
+                                    <div className="studentsOptionsSection">
+                                        <button className="addButton" onClick={() => setIsModalAddStudentOpen(true)}>Add students</button>
+                                        {
+                                            hasSelectedStudents ?
+                                                <button className="trashButton" onClick={() => setIsModalRemoveOpen(true)}><IoMdTrash /></button>
+                                            :
+                                                <button className="trashButtonDisabled"><IoMdTrash /></button>
+                                        }
                                     </div>
                                 </div>
-                                <table className="studentTable">
+                                <table className="containerTable">
                                     <tbody>
-                                        <tr className="studentHeaderRow">
-                                            <th className="studentEdgeLeft">Name</th>
+                                        <tr className="headerRow">
+                                            <th className="edgeLeft">Name</th>
                                             <th>Email</th>
                                             <th>Age</th>
                                             <th>Gender</th>
                                             <th>Autism Level</th>
-                                            <th className="studentEdgeRight">School Year</th>
+                                            <th>School Year</th>
+                                            <th className="edgeRight"></th>
                                         </tr>
                                         {
                                             studentsInClassroom.map((student, index) => (
-                                                <tr key={index} className="studentInfoRow">
+                                                <tr key={index} className="infoRow">
                                                     <td>{student.name}</td>
                                                     <td>{student.email}</td>
                                                     <td>{student.age}</td>
                                                     <td>{student.gender}</td>
                                                     <td>{student.autism_level}</td>
                                                     <td>{student.school_year}</td>
+                                                    <div className="sectionSelect">
+                                                        <label className="containerSelect">
+                                                            <input type="checkbox" value={student.id} onChange={(e) => verifyInputChange(e, student)} />
+                                                            <span className="checkmark"></span>
+                                                        </label>
+                                                    </div>
                                                 </tr>
                                             ))
                                         }
                                     </tbody>
                                 </table>
+                            </div>
+                            <div className="dangerZone">
+                                <p id="titleDangerZone">Alterar Status da Turma</p>
+                                <div className="mainContentDangerZone">
+                                    <ul className="menuList">
+                                        <li>
+                                            <div className="menuItemContainer">
+                                                <div className="labelContainer">
+                                                    <strong>Alterar status da turma</strong>
+                                                    <p>Esta turma está com status {classroom.status} no momento.</p>
+                                                </div>
+                                                <div className="changeStatusButtonContainer">
+                                                    <button className="changeStatusButton">Alterar Status</button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </section>
