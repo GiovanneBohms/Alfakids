@@ -53,3 +53,15 @@ export async function deleteStudentFromClassroom(idClassroom, idStudent){
 
     console.log(response.data)
 }
+
+export async function fulfillClassroom(idClassroom){
+    const response = await api.put(`/classroom/fulfill/${idClassroom}`)
+
+    console.log(response.data.classroom)
+}
+
+export async function closeClassroom(idClassroom){
+    const response = await api.put(`/classroom/close/${idClassroom}`)
+
+    console.log(response.data.classroom)
+}

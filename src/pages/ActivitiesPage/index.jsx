@@ -69,11 +69,14 @@ export function ActivitiesPage(){
                         <div className="classroomsSection">
                             {
                                 classrooms !== null ?
-                                    classrooms.map((classroom) => (
-                                        <div key={classroom.id} onClick={() => fetchActivities(classroom)}>
-                                            <ClassroomCard classroom={classroom} />
-                                        </div>
-                                    ))
+                                    classrooms.length !== 0 ?
+                                        classrooms.map((classroom) => (
+                                            <div key={classroom.id} onClick={() => fetchActivities(classroom)}>
+                                                <ClassroomCard classroom={classroom} />
+                                            </div>
+                                        ))
+                                    :
+                                        <p className="notFoundMessage">Você não está em nenhuma turma...</p>
                                 :
                                     <p className="notFoundMessage">Você não está em nenhuma turma...</p>
                             }

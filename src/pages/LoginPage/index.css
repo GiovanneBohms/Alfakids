@@ -40,7 +40,6 @@
 .loginFormSection{
     border-radius: 20px;
     width: 25%;
-    background-color: rgb(197, 197, 197);
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -84,11 +83,15 @@
 }
 
 .forgotPasswordLink{
-    color: white;
+    color: rgb(192, 192, 192);
     font-size: 18px;
 }
 
 .registerLink{
-    color: white;
+    color: rgb(192, 192, 192);
     font-size: 20px;
+}
+
+.InputContainer input{
+    background-color: rgb(238, 238, 238);
 }

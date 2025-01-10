@@ -61,7 +61,7 @@ export function LoginPage(){
                         :
                             <button className="buttonLogin" onClick={() => HandleLogin(email, password)}>Entrar</button>
                     }
-                    <a href="#" className="registerLink">Cadastrar</a>
+                    <a href="/register" className="registerLink">Cadastrar</a>
                 </div>
             </section>
             <div>

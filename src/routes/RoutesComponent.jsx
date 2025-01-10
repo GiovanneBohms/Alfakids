@@ -14,6 +14,7 @@ import { AddQuestionPage } from '../pages/AddQuestionPage';
 import { AddActivityPage } from '../pages/AddActivityPage';
 import { useAuth } from '../hooks/useAuth';
 import { Fragment } from 'react';
+import { RegisterPage } from '../pages/RegisterPage';
 
 function PrivateRoute({ Component }){
     const { signed } = useAuth();
@@ -29,6 +30,7 @@ export function RoutesComponent(){
                 <Routes>
                     <Route path='/' element={<LoginPage />} />
                     <Route path='login' element={<LoginPage />} />
+                    <Route path='register' element={<RegisterPage />} />
                     <Route path='chatbot' element={<PrivateRoute Component={ChatbotPage} />} />
                     <Route path='activities' element={<PrivateRoute Component={ActivitiesPage} />} />
                     <Route path='selected-activity/:id_activity' element={<PrivateRoute Component={SelectedActivityPage} />} />

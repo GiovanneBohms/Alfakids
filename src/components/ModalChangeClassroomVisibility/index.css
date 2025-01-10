@@ -1,0 +1,23 @@
+.modalChangeVisibilityContainer{
+    background-color: rgb(235, 235, 235);
+    position: absolute;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modalChangeVisibilityContainer div{
+    width: 10rem;
+    height: 3rem;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.modalChangeVisibilityContainer div:hover{
+    background-color: rgb(187, 187, 187);
+}

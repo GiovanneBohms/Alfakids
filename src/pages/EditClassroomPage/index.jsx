@@ -9,18 +9,24 @@ import { LoadingIcon } from "../../components/LoadingIcon";
 import { ModalAddStudent } from "../../components/ModalAddStudent";
 import { IoMdTrash } from "react-icons/io";
 import { ModalRemoveItems } from "../../components/ModalRemoveItems";
+import { ModalChangeClassroomVisibility } from "../../components/ModalChangeClassroomVisibility";
 
 export function EditClassroomPage(){
     const {id_classroom} = useParams()
 
     const [classroom, setClassroom] = useState()
+
     const [studentsOutOfClassroom, setStudentsOutOfClassroom] = useState([])
     const [studentsInClassroom, setStudentsInClassroom] = useState([])
     const [selectedStudents, setSelectedStudents] = useState([])
+
     const [isLoading, setIsLoading] = useState(true)
+
     const [hasSelectedStudents, setHasSelectedStudents] = useState(false)
+
     const [isModalAddStudentOpen, setIsModalAddStudentOpen] = useState(false)
     const [isModalRemoveOpen, setIsModalRemoveOpen] = useState(false)
+    const [isModalChangeVisibilityOpen, setIsModalChangeVisibilityOpen] = useState(false)
 
     function fetchClassroom(){
         try{
@@ -167,7 +173,13 @@ export function EditClassroomPage(){
                                         <p>Alunos da Turma:</p>
                                     </div>
                                     <div className="studentsOptionsSection">
-                                        <button className="addButton" onClick={() => setIsModalAddStudentOpen(true)}>Add students</button>
+                                        {
+                                            classroom.status !== "INITIALIZED" ?
+                                                <button className="addButtonDisabled">Add students</button>
+                                            :
+                                                <button className="addButton" onClick={() => setIsModalAddStudentOpen(true)}>Add students</button>
+                                        }
+                                        
                                         {
                                             hasSelectedStudents ?
                                                 <button className="trashButton" onClick={() => setIsModalRemoveOpen(true)}><IoMdTrash /></button>
@@ -209,7 +221,7 @@ export function EditClassroomPage(){
                                 </table>
                             </div>
                             <div className="dangerZone">
-                                <p id="titleDangerZone">Alterar Status da Turma</p>
+                                <p id="titleDangerZone">Opções</p>
                                 <div className="mainContentDangerZone">
                                     <ul className="menuList">
                                         <li>
@@ -219,7 +231,15 @@ export function EditClassroomPage(){
                                                     <p>Esta turma está com status {classroom.status} no momento.</p>
                                                 </div>
                                                 <div className="changeStatusButtonContainer">
-                                                    <button className="changeStatusButton">Alterar Status</button>
+                                                    <button className="changeStatusButton" onClick={() => setIsModalChangeVisibilityOpen(!isModalChangeVisibilityOpen)}>Alterar Status</button>
+                                                    {
+                                                        isModalChangeVisibilityOpen ?
+                                                            <div className="modalChangeVisibilitySection">
+                                                                <ModalChangeClassroomVisibility classroom={classroom} />
+                                                            </div>
+                                                        :
+                                                            null
+                                                    }
                                                 </div>
                                             </div>
                                         </li>
