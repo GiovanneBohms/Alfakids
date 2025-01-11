@@ -4,22 +4,29 @@ import { useNavigate } from "react-router-dom"
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { useAuth } from "../../hooks/useAuth"
 
+
 export function LoginPage(){
 
-    const { login } = useAuth()
-    
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+    const { login_student } = useAuth()
+
     const [isLoading, setIsLoading] = useState(false)
 
     //const authentication = useContext(AuthContext);
 
     const navigate = useNavigate()
 
-    function HandleLogin(email, password){
+    function handleLogin(event){
+        event.preventDefault()
+
+        const loginForm = document.getElementById("loginForm")
+        const formData = new FormData(loginForm)
+
+        const email = formData.get("email")
+        const password = formData.get("password")
+
         try{
             setIsLoading(true)
-            login(email, password).then((token) => {
+            login_student(email, password).then((token) => {
                 if(token !== null){
                     navigate("/chatbot")
                     location.reload()
@@ -43,29 +50,29 @@ export function LoginPage(){
                 <h1 className="loginTitleTxt">Login</h1>
             </div>
             <section className="loginFormSection">
-                <form className="formSection">
+                <form id="loginForm" className="formSection" onSubmit={(event) => handleLogin(event)}>
                     <div className="InputContainer">
                         <label className="inputLabel">Email:</label>
-                        <input type="text" name="email" required className="inputField" onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="text" name="email" required className="inputField"/>
                     </div>
                     <div className="InputContainer">
                         <label className="inputLabel">Password:</label>
-                        <input type="password" name="password" required className="inputField" onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" name="password" required className="inputField"/>
+                    </div>
+                    <div className="bottomSideContainer">
+                        <a href="#" className="forgotPasswordLink">Esqueci a senha</a>
+                        {
+                            isLoading ?
+                                <button className="buttonLoginLoading"><LoadingIcon /></button>
+                            :
+                                <button className="buttonLogin" type="submit">Entrar</button>
+                        }
+                        <a href="/register" className="registerLink">Cadastrar</a>
                     </div>
                 </form>
-                <div className="bottomSideContainer">
-                    <a href="#" className="forgotPasswordLink">Esqueci a senha</a>
-                    {
-                        isLoading ?
-                            <button className="buttonLoginLoading"><LoadingIcon /></button>
-                        :
-                            <button className="buttonLogin" onClick={() => HandleLogin(email, password)}>Entrar</button>
-                    }
-                    <a href="/register" className="registerLink">Cadastrar</a>
-                </div>
             </section>
             <div>
-                <button onClick={() => navigate("/login/professor")}>Modo Professor</button>
+                <a className="professorModeLink" href="/login/professor">Modo Professor</a>
             </div>
         </div>
     )

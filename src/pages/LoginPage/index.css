@@ -30,6 +30,7 @@
     border: none;
     outline: none;
     padding: 15px;
+    background-color: rgb(238, 238, 238);
 }
 
 .inputLabel{
@@ -85,13 +86,17 @@
 .forgotPasswordLink{
     color: rgb(192, 192, 192);
     font-size: 18px;
+    text-decoration: none;
 }
 
 .registerLink{
     color: rgb(192, 192, 192);
-    font-size: 20px;
+    font-size: 18px;
+    text-decoration: none;
 }
 
-.InputContainer input{
-    background-color: rgb(238, 238, 238);
+.professorModeLink{
+    color: rgb(192, 192, 192);
+    font-size: 18px;
+    text-decoration: none;
 }

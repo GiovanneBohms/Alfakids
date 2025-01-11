@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../../hooks/useAuth"
 
 export function ProfessorDashBoard(){
     const navigate = useNavigate()
+
+    const { logout } = useAuth()
 
     return(
         <div className="dashBoardSection">
@@ -11,7 +14,7 @@ export function ProfessorDashBoard(){
                     <button className="navigationButton" onClick={() => navigate("/classroom/management")}>Classrooms</button>
                 </div>
                 <div className="navigationContainer">
-                    <button className="navigationButton">Sign out</button>
+                    <button className="navigationButton" onClick={() => logout()}>Sign out</button>
                 </div>
             </section>
         </div>

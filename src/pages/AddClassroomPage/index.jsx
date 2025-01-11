@@ -3,12 +3,13 @@ import { ProfessorDashBoard } from "../../components/ProfessorDashBoard"
 import { initializeClassroom } from "../../services/ClassroomService"
 import "./index.css"
 import { useNavigate } from "react-router-dom"
+import { getCurrentProfessorId } from "../../services/ProfessorService"
 
 export function AddClassroomPage(){
 
     const [number, setNumber] = useState()
     const [year, setYear] = useState()
-    const idProfessor = 1
+    const idProfessor = getCurrentProfessorId()
 
     const navigate = useNavigate()
 

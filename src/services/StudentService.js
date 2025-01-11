@@ -14,7 +14,7 @@ export async function getStudentsByClassroomId(idClassroom){
 }
 
 export function getCurrentStudentId(){
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("student_token")
 
     if(token){
         try{
@@ -33,4 +33,10 @@ export async function getStudentById(idStudent){
     const response = await api.get(`/student/findById/${idStudent}`)
 
     return response.data.student
+}
+
+export async function registerStudent(student){
+    const response = await api.post("/student/register", student)
+
+    console.log(response.data.student)
 }

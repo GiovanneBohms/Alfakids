@@ -5,6 +5,7 @@ import { ProfessorDashBoard } from '../../components/ProfessorDashBoard'
 import { findAllSubjects } from '../../services/SubjectService'
 import { LoadingIcon } from '../../components/LoadingIcon'
 import { initializeActivity } from '../../services/ActivityService'
+import { getCurrentProfessorId } from '../../services/ProfessorService'
 
 export function AddActivityPage(){
 
@@ -13,7 +14,7 @@ export function AddActivityPage(){
     const [subjects, setSubjects] = useState([])
     const [title, setTitle] = useState()
     const [idSubject, setIdSubject] = useState()
-    const [idProfessor, setIdProfessor] = useState(1)
+    const [idProfessor, setIdProfessor] = useState(getCurrentProfessorId())
     const [isLoading, setIsLoading] = useState(true)
 
     function fetchSubjects(){

@@ -9,6 +9,7 @@ import { IoMdAdd } from "react-icons/io";
 import { IoMdTrash } from "react-icons/io";
 import { ModalRemoveItems } from "../../components/ModalRemoveItems";
 import { FaCodeFork } from "react-icons/fa6";
+import { getCurrentProfessorId } from "../../services/ProfessorService";
 
 export function ActivitiesManagement(){
     const [isLoading, setIsLoading] = useState(true)
@@ -21,11 +22,13 @@ export function ActivitiesManagement(){
 
     function fetchActivities(){
         try{
-            getActivitiesByProfessorId(1).then((activities) => {
+            getActivitiesByProfessorId(getCurrentProfessorId()).then((activities) => {
                 setActivities(activities)
                 setIsLoading(false)
             }).catch((error) => {
-                console.log(error.message)
+                if(error.status == 404){
+                    setIsLoading(false)
+                }
             })
         } catch(error){
             console.log(error.message)

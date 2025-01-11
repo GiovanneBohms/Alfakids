@@ -17,11 +17,25 @@
     gap: 20px;
 }
 
+.professorLoginFormSection form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.professorLoginFormSection form a{
+    color: rgb(206, 206, 206);
+    text-decoration: none;
+}
+
 .professorLoginInputContainer{
     display: flex;
     flex-direction: column;
     gap: 7px;
-    width: 70%;
+    width: 100%;
 }
 
 .professorLoginInputField{
@@ -30,6 +44,7 @@
     border: none;
     outline: none;
     padding: 15px;
+    background-color: rgb(238, 238, 238);
 }
 
 .professorLoginInputLabel{
@@ -40,7 +55,6 @@
 .professorLoginFormSection{
     border-radius: 20px;
     width: 25%;
-    background-color: rgb(197, 197, 197);
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -50,7 +64,6 @@
 }
 
 .professorLoginBottomSideContainer{
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,8 +75,24 @@
     background-color: aqua;
     outline: none;
     border: none;
-    width: 40%;
+    width: 100%;
     height: 40px;
     border-radius: 20px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonProfessorLoginLoading{
+    background-color: rgb(0, 179, 179);
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

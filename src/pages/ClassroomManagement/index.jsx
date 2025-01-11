@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { LoadingIcon } from "../../components/LoadingIcon";
 import { IoMdTrash } from "react-icons/io";
 import { ModalRemoveItems } from "../../components/ModalRemoveItems";
+import { getCurrentProfessorId } from "../../services/ProfessorService";
 
 export function ClassroomManagement(){
 
@@ -38,11 +39,13 @@ export function ClassroomManagement(){
 
     const fetchClassrooms = async () => {
             try{
-                getClassroomsByProfessorId(1).then((data) => {
+                getClassroomsByProfessorId(getCurrentProfessorId()).then((data) => {
                     setClassrooms(data)
                     setIsLoading(false)
                 }).catch((error)=>{
-                    console.log(error.message)
+                    if(error.status == 404){
+                        setIsLoading(false)
+                    }
                 })
             }
             catch(error){

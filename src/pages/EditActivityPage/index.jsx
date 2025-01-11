@@ -9,6 +9,7 @@ import { getQuestionsByActivityId } from "../../services/QuestionService"
 import { IoMdAdd } from "react-icons/io";
 import { FaCodeFork } from "react-icons/fa6";
 import { ModalDistributeActivity } from "../../components/ModalDistributeActivity"
+import { getCurrentProfessorId } from "../../services/ProfessorService"
 
 export function EditActivityPage(){
     const { id_activity } = useParams()
@@ -56,7 +57,7 @@ export function EditActivityPage(){
         <div className="editActivityBody">
             {
                 isModalOpen ?
-                        <ModalDistributeActivity idActivity={id_activity} idProfessor={1} setIsModalOpen={setIsModalOpen} />
+                        <ModalDistributeActivity idActivity={id_activity} idProfessor={getCurrentProfessorId()} setIsModalOpen={setIsModalOpen} />
                     :
                         null
             }

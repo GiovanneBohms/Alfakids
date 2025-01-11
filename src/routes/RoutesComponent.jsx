@@ -15,11 +15,34 @@ import { AddActivityPage } from '../pages/AddActivityPage';
 import { useAuth } from '../hooks/useAuth';
 import { Fragment } from 'react';
 import { RegisterPage } from '../pages/RegisterPage';
+import { InitialLoadingIcon } from '../components/InitialLoadingIcon';
 
-function PrivateRoute({ Component }){
-    const { signed } = useAuth();
+function PrivateStudentRoute({ Component }){
+    const { student_signed, isLoading } = useAuth();
 
-    return signed > 0 ? <Component /> : <LoginPage />
+    return (
+        student_signed > 0 ? 
+            <Component /> 
+        :
+            isLoading ?
+                <InitialLoadingIcon />
+            :
+                <LoginPage />
+    )
+}
+
+function PrivateProfessorRoute({ Component }){
+    const { professor_signed, isLoading } = useAuth();
+
+    return (
+        professor_signed > 0 ? 
+            <Component />
+        :
+            isLoading ?
+                <InitialLoadingIcon />
+            :
+                <ProfessorLogin />
+    )
 }
 
 export function RoutesComponent(){
@@ -31,18 +54,18 @@ export function RoutesComponent(){
                     <Route path='/' element={<LoginPage />} />
                     <Route path='login' element={<LoginPage />} />
                     <Route path='register' element={<RegisterPage />} />
-                    <Route path='chatbot' element={<PrivateRoute Component={ChatbotPage} />} />
-                    <Route path='activities' element={<PrivateRoute Component={ActivitiesPage} />} />
-                    <Route path='selected-activity/:id_activity' element={<PrivateRoute Component={SelectedActivityPage} />} />
+                    <Route path='chatbot' element={<PrivateStudentRoute Component={ChatbotPage} />} />
+                    <Route path='activities' element={<PrivateStudentRoute Component={ActivitiesPage} />} />
+                    <Route path='selected-activity/:id_activity' element={<PrivateStudentRoute Component={SelectedActivityPage} />} />
                     <Route path='login/professor' element={<ProfessorLogin />} />
-                    <Route path='activities/management' element={<ActivitiesManagement />} />
-                    <Route path='activities/management/add' element={<AddActivityPage />} />
-                    <Route path='classroom/management' element={<ClassroomManagement />} />
-                    <Route path='classroom/management/add' element={<AddClassroomPage />} />
-                    <Route path='classroom/management/edit/:id_classroom' element={<EditClassroomPage />} />
-                    <Route path='activities/management/edit/:id_activity' element={<EditActivityPage />} />
-                    <Route path='activities/management/edit/question/edit/:id_question' element={<EditQuestionPage />} />
-                    <Route path='activities/management/edit/question/add/:id_activity' element={<AddQuestionPage />} />
+                    <Route path='activities/management' element={<PrivateProfessorRoute Component={ActivitiesManagement} />} />
+                    <Route path='activities/management/add' element={<PrivateProfessorRoute Component={AddActivityPage} />} />
+                    <Route path='classroom/management' element={<PrivateProfessorRoute Component={ClassroomManagement} />} />
+                    <Route path='classroom/management/add' element={<PrivateProfessorRoute Component={AddClassroomPage} />} />
+                    <Route path='classroom/management/edit/:id_classroom' element={<PrivateProfessorRoute Component={EditClassroomPage} />} />
+                    <Route path='activities/management/edit/:id_activity' element={<PrivateProfessorRoute Component={EditActivityPage} />} />
+                    <Route path='activities/management/edit/question/edit/:id_question' element={<PrivateProfessorRoute Component={EditQuestionPage} />} />
+                    <Route path='activities/management/edit/question/add/:id_activity' element={<PrivateProfessorRoute Component={AddQuestionPage} />} />
                 </Routes>
             </Fragment>
         </BrowserRouter>
