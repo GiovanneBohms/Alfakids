@@ -59,3 +59,14 @@
 .btnQuestionOptionsContainer .shareButton:hover{
     background-color: rgb(1, 212, 212);
 }
+
+.studentsAccomplishmentsSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    min-height: 19rem;
+    max-height: 25rem;
+    overflow-y: auto;
+}

@@ -3,7 +3,7 @@ import "./index.css"
 import { FaCheck } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 
-export function QuestionForm({question}){
+export function QuestionForm({questions}){
 
     const [answer, setAnswer] = useState("")
     const [questionAnswered, setQuestionAnswered] = useState(null)
@@ -14,64 +14,44 @@ export function QuestionForm({question}){
         textarea.value = ""
         setAnswer("")
     }
-    
-    function handleSendDiscursiveAnswer(){
 
-        if(answer === question.expected_answer){
-            setQuestionAnswered(true)
-        } else{
-            setQuestionAnswered(false)
-        }
-    }
-
-    function handleSendObjectiveAnswer(questionAnswer){
-        setAnswer(questionAnswer)
-
-        if(questionAnswer === question.right_answer){
-            setQuestionAnswered(true)
-        } else{
-            setQuestionAnswered(false)
-        }
+    function handleSubmit(event){
+        event.preventDefault()
     }
 
     return(
-        <div className="questionFormContainer">
-            <div className="statementContainer">
-                <p>{question.statement}</p>
-                {
-                    questionAnswered == null ?
-                        null
-                    :
-                        questionAnswered == true ?
-                            <p className="rightAnswerIcon"><FaCheck /></p>  
-                        :
-                            <p className="wrongAnswerIcon"><MdClose /></p>
-                }
-            </div>
+        <div className="questionFormBody">
             {
-                question.type === "discursive" ?
-                    <div className="discursiveAnswer">
-                        <div className="discursiveInputContainer">
-                            <textarea id="inputDiscursiveAnswer" onChange={(e) => setAnswer(e.target.value)} type="text" />
+                questions.map((question) => (
+                    <div className="questionFormContainer">
+                        <div className="statementContainer">
+                            <p>{question.statement}</p>
                         </div>
-                        <div className="discursiveButtonSection">
-                            <button onClick={() => handleSendDiscursiveAnswer()}>Enviar</button>
-                            <button onClick={() => clearDiscursiveAnswer()}>Limpar</button>
-                        </div>
+                        <form onSubmit={(event) => handleSubmit(event)}>
+                            {
+                                question.type === "discursive" ?
+                                    <div className="discursiveAnswer">
+                                        <div className="discursiveInputContainer">
+                                            <textarea id="inputDiscursiveAnswer" name="" onChange={(e) => setAnswer(e.target.value)} type="text" />
+                                        </div>
+                                    </div>
+                                :   
+                                    <div className="objectiveAnswer">
+                                        <div className="objectiveOptionsContainer">
+                                            <div className="buttonContainer">
+                                                <button onClick={() => handleSendObjectiveAnswer(question.answer1)}>{question.answer1}</button>
+                                                <button onClick={() => handleSendObjectiveAnswer(question.answer2)}>{question.answer2}</button>
+                                            </div>
+                                            <div className="buttonContainer">
+                                                <button onClick={() => handleSendObjectiveAnswer(question.answer3)}>{question.answer3}</button>
+                                                <button onClick={() => handleSendObjectiveAnswer(question.answer4)}>{question.answer4}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            }
+                        </form>
                     </div>
-                :   
-                    <div className="objectiveAnswer">
-                        <div className="objectiveOptionsContainer">
-                            <div className="buttonContainer">
-                                <button onClick={() => handleSendObjectiveAnswer(question.answer1)}>{question.answer1}</button>
-                                <button onClick={() => handleSendObjectiveAnswer(question.answer2)}>{question.answer2}</button>
-                            </div>
-                            <div className="buttonContainer">
-                                <button onClick={() => handleSendObjectiveAnswer(question.answer3)}>{question.answer3}</button>
-                                <button onClick={() => handleSendObjectiveAnswer(question.answer4)}>{question.answer4}</button>
-                            </div>
-                        </div>
-                    </div>
+                ))
             }
         </div>
     )

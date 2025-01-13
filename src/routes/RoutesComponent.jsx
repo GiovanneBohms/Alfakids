@@ -16,6 +16,7 @@ import { useAuth } from '../hooks/useAuth';
 import { Fragment } from 'react';
 import { RegisterPage } from '../pages/RegisterPage';
 import { InitialLoadingIcon } from '../components/InitialLoadingIcon';
+import { StudentAccomplishmentPage } from '../pages/StudentAccomplishmentPage';
 
 function PrivateStudentRoute({ Component }){
     const { student_signed, isLoading } = useAuth();
@@ -66,6 +67,7 @@ export function RoutesComponent(){
                     <Route path='activities/management/edit/:id_activity' element={<PrivateProfessorRoute Component={EditActivityPage} />} />
                     <Route path='activities/management/edit/question/edit/:id_question' element={<PrivateProfessorRoute Component={EditQuestionPage} />} />
                     <Route path='activities/management/edit/question/add/:id_activity' element={<PrivateProfessorRoute Component={AddQuestionPage} />} />
+                    <Route path='activities/management/edit/:id_activity/accomplishment/:id_student' element={<PrivateProfessorRoute Component={StudentAccomplishmentPage} />} />
                 </Routes>
             </Fragment>
         </BrowserRouter>

@@ -56,9 +56,7 @@ export function SelectedActivityPage(){
                 :
                     <div className="questionsSection">
                         <h1>{activity.title}</h1>
-                        {questions.map((question, index) => (
-                            <QuestionForm key={index} question={question} />
-                        ))}
+                        <QuestionForm questions={questions} />
                     </div>
             }
         </div>

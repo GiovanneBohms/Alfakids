@@ -1,37 +1,22 @@
-.questionFormBody{
-    width: 100%;
+.answerFormContainer{
+    width: 80%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
+    padding: 20px;
     align-items: center;
+    border-style: none;
+    border-top: 1px solid rgb(170, 0, 0);
 }
 
-.questionFormContainer{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.questionFormContainer form{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.statementContainer{
+.answerFormStatementContainer{
     width: 80%;
     display: flex;
     gap: 20px;
 }
 
-.discursiveAnswer{
+.answerFormDiscursiveAnswer{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -40,14 +25,15 @@
     gap: 10px;
 }
 
-.discursiveInputContainer{
+.answerFormDiscursiveAnswer .discursiveInputContainer{
     width: 80%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    gap: 10px;
 }
 
-.discursiveInputContainer textarea{
+.answerFormDiscursiveAnswer .discursiveInputContainer textarea{
     width: 100%;
     height: 10rem;
     border: none;
@@ -56,14 +42,14 @@
     padding: 20px;
 }
 
-.discursiveButtonSection{
+.answerFormDiscursiveAnswer .discursiveButtonSection{
     width:80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.discursiveButtonSection button{
+.answerFormDiscursiveAnswer .discursiveButtonSection button{
     transition: 0.2s;
     width: 20%;
     height: 3.5rem;
@@ -75,19 +61,19 @@
     cursor: pointer;
 }
 
-.discursiveButtonSection button:hover{
+.answerFormDiscursiveAnswer .discursiveButtonSection button:hover{
     transition: 0.2s;
     background-color: rgb(20, 229, 229);
 }
 
-.objectiveAnswer{
+.answerFormObjectiveAnswer{
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.objectiveOptionsContainer{
+.answerFormObjectiveAnswer .objectiveOptionsContainer{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -95,7 +81,7 @@
     align-items: center; 
 }
 
-.objectiveOptionsContainer .buttonContainer{
+.answerFormObjectiveAnswer .objectiveOptionsContainer .buttonContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,7 +89,7 @@
     gap: 30px;
 }
 
-.objectiveOptionsContainer .buttonContainer button{
+.answerFormObjectiveAnswer .objectiveOptionsContainer button{
     transition: 0.2s;
     width: 23.45rem;
     height: 3.5rem;
@@ -115,7 +101,7 @@
     background-color: aqua;
 }
 
-.objectiveOptionsContainer .buttonContainer button:hover{
+.answerFormObjectiveAnswer .objectiveOptionsContainer button:hover{
     transition: 0.2s;
     background-color: rgb(20, 229, 229);
 }
