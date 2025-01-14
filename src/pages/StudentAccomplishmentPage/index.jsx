@@ -84,7 +84,32 @@ export function StudentAccomplishmentPage(){
                     setIsLoading(false)
                 }
             }).catch((error) => {
-                console.log(error.message)
+                if(error.status == 404){
+                    const id_question = questions[i].id
+                    const statement = questions[i].statement
+                    const type = questions[i].type
+                    const student_answer = null
+
+                    if(type == "discursive"){
+                        const expected_answer = questions[i].expected_answer
+
+                        answers.push({id_question, statement, type, expected_answer, student_answer})
+                    } else{
+                        const answer1 = questions[i].answer1
+                        const answer2 = questions[i].answer2
+                        const answer3 = questions[i].answer3
+                        const answer4 = questions[i].answer4
+                        const right_answer = questions[i].right_answer
+
+                        answers.push({id_question, statement, type, answer1, answer2, answer3, answer4, right_answer, student_answer})
+                    }
+
+                    if(i == (questions.length - 1)){
+                        setIsLoading(false)
+                    }
+                } else{
+                    console.log(error.message)
+                }
             })
         }
     }
@@ -105,7 +130,6 @@ export function StudentAccomplishmentPage(){
                     <div className="questionsSection">
                         <h1>Envio de {student.name}</h1>
                         <h2>Atividade: {activity.title}</h2>
-                        <p>{answers[0].id_question}</p>
                         {answers.map((answer, index) => (
                             <AnswerForm key={index} answer={answer} />
                         ))}

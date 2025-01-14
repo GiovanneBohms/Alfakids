@@ -5,3 +5,9 @@ export async function getAnswerByQuestionAndStudentId(idQuestion, idStudent){
     
     return response.data.answer
 }
+
+export async function createAnswer(answer){
+    const response = await api.post("/answer/register", answer)
+    
+    console.log(response.data.answer)
+}

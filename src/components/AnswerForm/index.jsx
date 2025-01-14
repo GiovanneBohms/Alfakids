@@ -14,10 +14,19 @@ export function AnswerForm({ answer }){
                         <div className="discursiveInputContainer">
                             <textarea id="inputDiscursiveAnswer" value={answer.expected_answer} disabled type="text" />
                         </div>
-                        <div className="discursiveInputContainer">
-                            <label>Student Answer:</label>
-                            <textarea id="" value={answer.student_answer} disabled type="text"></textarea>
-                        </div>
+                        {
+                            answer.student_answer ?
+                                <div className="discursiveInputContainer">
+                                    <label>Student Answer:</label>
+                                    <textarea id="" value={answer.student_answer} disabled type="text"></textarea>
+                                </div>
+                            :
+                                <div className="discursiveInputContainer">
+                                    <label>Student Answer:</label>
+                                    <textarea id="" value="" disabled type="text"></textarea>
+                                </div>
+                        }
+                        
                     </div>
                 :   
 
@@ -34,6 +43,18 @@ export function AnswerForm({ answer }){
                                 <button>{answer.answer4}</button>
                             </div>
                         </div>
+                        {
+                            answer.student_answer ?
+                                <div className="objectiveAnswerContainer">
+                                    <label>Student Answer:</label>
+                                    <textarea id="" value={answer.student_answer} disabled type="text"></textarea>
+                                </div>
+                            :
+                                <div className="objectiveAnswerContainer">
+                                    <label>Student Answer:</label>
+                                    <textarea id="" value="" disabled type="text"></textarea>
+                                </div>
+                        }
                     </div>
             }
         </div>

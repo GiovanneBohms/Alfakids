@@ -7,7 +7,7 @@ export function ActivityCard({activity}){
                 <p>{activity.title}</p>
             </div>
             <div className="activityInfo">
-                <p>Status: {activity.status}</p>
+                <p>Subject: {activity.id_subject}</p>
                 <p>Professor: {activity.id_professor}</p>
             </div>
         </div>

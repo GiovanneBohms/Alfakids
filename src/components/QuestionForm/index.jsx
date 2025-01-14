@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react"
 import "./index.css"
-import { FaCheck } from "react-icons/fa";
-import { MdClose } from "react-icons/md";
+import { ObjectiveQuestion } from "../ObjectiveQuestion";
+import { DiscursiveQuestion } from "../DiscursiveQuestion";
+import { createAnswer } from "../../services/AnswerService";
+import { getCurrentStudentId } from "../../services/StudentService";
+import { accomplishActivity } from "../../services/AccomplishmentsService";
+import { useNavigate } from "react-router-dom";
+import { LoadingIcon } from "../LoadingIcon";
 
-export function QuestionForm({questions}){
+export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }){
+
+    const navigate = useNavigate()
 
     const [answer, setAnswer] = useState("")
     const [questionAnswered, setQuestionAnswered] = useState(null)
+
+    const [counterOfAnswersCreated, setCounterOfAnswersCreated] = useState(0)
+
+    const [accomplish, setAccomplish] = useState(false)
 
     function clearDiscursiveAnswer(){
         const textarea = document.getElementById("inputDiscursiveAnswer")
@@ -15,44 +26,55 @@ export function QuestionForm({questions}){
         setAnswer("")
     }
 
-    function handleSubmit(event){
-        event.preventDefault()
+    function handleSubmitAnswer(id_question, answer){
+        const id_student = getCurrentStudentId()
+        setIsLoading(true)
+        
+        createAnswer({id_activity, id_student, id_question, answer}).then(() => {
+            if(questions[questions.length-1].id == id_question){
+                handleAccomplishActivity()
+            }
+        }).catch((error) => {
+            console.log(error.message)
+        })
     }
+
+    function handleAccomplishActivity(){
+        const id_student = getCurrentStudentId()
+
+        accomplishActivity(id_activity, id_student).then(() => {
+            navigate("/activities")
+        }).catch((error) => {
+            console.log(error.message)
+            isLoading(false)
+        })
+    }
+
+    useEffect(() => {
+        setCounterOfAnswersCreated(0)
+    }, [])
 
     return(
         <div className="questionFormBody">
             {
-                questions.map((question) => (
-                    <div className="questionFormContainer">
-                        <div className="statementContainer">
-                            <p>{question.statement}</p>
-                        </div>
-                        <form onSubmit={(event) => handleSubmit(event)}>
+                isLoading ?
+                    <LoadingIcon />
+                :
+                    questions.map((question) => (
+                        <div className="questionFormContainer">
+                            <div className="statementContainer">
+                                <p>{question.statement}</p>
+                            </div>
                             {
                                 question.type === "discursive" ?
-                                    <div className="discursiveAnswer">
-                                        <div className="discursiveInputContainer">
-                                            <textarea id="inputDiscursiveAnswer" name="" onChange={(e) => setAnswer(e.target.value)} type="text" />
-                                        </div>
-                                    </div>
+                                    <DiscursiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
                                 :   
-                                    <div className="objectiveAnswer">
-                                        <div className="objectiveOptionsContainer">
-                                            <div className="buttonContainer">
-                                                <button onClick={() => handleSendObjectiveAnswer(question.answer1)}>{question.answer1}</button>
-                                                <button onClick={() => handleSendObjectiveAnswer(question.answer2)}>{question.answer2}</button>
-                                            </div>
-                                            <div className="buttonContainer">
-                                                <button onClick={() => handleSendObjectiveAnswer(question.answer3)}>{question.answer3}</button>
-                                                <button onClick={() => handleSendObjectiveAnswer(question.answer4)}>{question.answer4}</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ObjectiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
                             }
-                        </form>
-                    </div>
-                ))
+                        </div>
+                    ))
             }
+            <button onClick={() => setAccomplish(true)}>Enviar</button>
         </div>
     )
 }

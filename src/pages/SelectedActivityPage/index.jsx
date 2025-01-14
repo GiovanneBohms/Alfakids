@@ -56,7 +56,7 @@ export function SelectedActivityPage(){
                 :
                     <div className="questionsSection">
                         <h1>{activity.title}</h1>
-                        <QuestionForm questions={questions} />
+                        <QuestionForm isLoading={isLoading} setIsLoading={setIsLoading} questions={questions} id_activity={id_activity} />
                     </div>
             }
         </div>

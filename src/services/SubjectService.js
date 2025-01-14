@@ -5,3 +5,9 @@ export async function findAllSubjects(){
 
     return response.data.subjects
 }
+
+export async function getSubjectById(id_subject){
+    const response = await api.get(`/subject/findById/${id_subject}`)
+
+    return response.data.subject
+}
