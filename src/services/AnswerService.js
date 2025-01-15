@@ -6,8 +6,8 @@ export async function getAnswerByQuestionAndStudentId(idQuestion, idStudent){
     return response.data.answer
 }
 
-export async function createAnswer(answer){
-    const response = await api.post("/answer/register", answer)
+export async function createAnswer(answerObj){
+    const response = await api.post("/answer/register", answerObj)
     
     console.log(response.data.answer)
 }

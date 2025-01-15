@@ -4,10 +4,11 @@ import "./index.css"
 import { ActivityCard } from "../../components/ActivityCard"
 import { ClassroomCard } from "../../components/ClassroomCard"
 import { getClassroomsByStudentId } from "../../services/ClassroomService"
-import { getActivitiesByClassroomId } from "../../services/ActivityService"
+import { getAccomplishedActivities, getActivitiesByClassroomId, getUnaccomplishedActivities } from "../../services/ActivityService"
 import { useNavigate } from "react-router-dom"
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { getCurrentStudentId } from "../../services/StudentService"
+import { FaFolder } from "react-icons/fa"
 
 export function ActivitiesPage(){
     const [activities, setActivities] = useState([])
@@ -15,43 +16,44 @@ export function ActivitiesPage(){
     const [isLoading, setIsLoading] = useState(true)
     const [isLoadingActivities, setIsLoadingActivities] = useState(false)
 
-    //const authentication = useContext(AuthContext)
-
     const navigate = useNavigate()
 
     const fetchClassrooms = async () => {
-        try{
-            getClassroomsByStudentId(getCurrentStudentId()).then((data) => {
-                setClassrooms(data)
+        getClassroomsByStudentId(getCurrentStudentId()).then((data) => {
+            setClassrooms(data)
+            setIsLoading(false)
+        }).catch((error)=>{
+            if(error.status == 404){
+                setClassrooms(null)
                 setIsLoading(false)
-            }).catch((error)=>{
-                if(error.status == 404){
-                    setClassrooms(null)
-                    setIsLoading(false)
-                }
-            })
-        }
-        catch(error){
-            console.log(error)
-        }
+            }
+        })
     }
 
-    const fetchActivities = async (classroom) => {
-        try{
-            setIsLoadingActivities(true)
-            getActivitiesByClassroomId(classroom.id).then((data) => {
-                setActivities(data)
+    function fetchUnaccomplishedActivities(classroom){
+        setIsLoadingActivities(true)
+        getUnaccomplishedActivities(classroom.id, getCurrentStudentId()).then((data) => {
+            setActivities(data)
+            setIsLoadingActivities(false)
+        }).catch((error) => {
+            if(error.status == 404){
+                setActivities(null)
                 setIsLoadingActivities(false)
-            }).catch((error) => {
-                if(error.status == 404){
-                    setActivities(null)
-                    setIsLoadingActivities(false)
-                }
-            })
-        }
-        catch(error){
-            console.log(error)
-        }
+            }
+        })
+    }
+
+    function fetchAccomplishedActivities(){
+        setIsLoadingActivities(true)
+        getAccomplishedActivities(getCurrentStudentId()).then((data) => {
+            setActivities(data)
+            setIsLoadingActivities(false)
+        }).catch((error) => {
+            if(error.status == 404){
+                setActivities(null)
+                setIsLoadingActivities(false)
+            }
+        })
     }
 
     useEffect(() => {
@@ -71,7 +73,7 @@ export function ActivitiesPage(){
                                 classrooms !== null ?
                                     classrooms.length !== 0 ?
                                         classrooms.map((classroom) => (
-                                            <div key={classroom.id} onClick={() => fetchActivities(classroom)}>
+                                            <div key={classroom.id} onClick={() => fetchUnaccomplishedActivities(classroom)}>
                                                 <ClassroomCard classroom={classroom} />
                                             </div>
                                         ))
@@ -82,7 +84,7 @@ export function ActivitiesPage(){
                             }
                         </div>
                         <div>
-                            <h1>Atividades</h1>
+                            <h1 className="mainActivityTitle">Atividades</h1>
                         </div>
                         {
                             isLoadingActivities ?
@@ -99,11 +101,14 @@ export function ActivitiesPage(){
                                                 </div>
                                             ))
                                         :
-                                            <p className="notFoundMessage">Essa turma não possui atividades...</p>
+                                            <p className="notFoundMessage">Você não tem atividades pendentes nesta turma...</p>
                                     }
-                                    
                                 </section>
                         }
+                        <div className="repositoryCard" onClick={() => fetchAccomplishedActivities()}>
+                            <p><FaFolder /></p>
+                            <p>Repositório</p>
+                        </div>
                     </div>
             }
         </div>

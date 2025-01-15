@@ -60,21 +60,28 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
                 isLoading ?
                     <LoadingIcon />
                 :
-                    questions.map((question) => (
-                        <div className="questionFormContainer">
-                            <div className="statementContainer">
-                                <p>{question.statement}</p>
-                            </div>
-                            {
-                                question.type === "discursive" ?
-                                    <DiscursiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
-                                :   
-                                    <ObjectiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
-                            }
+                    <div className="questionFormContainer">
+                        {
+                            questions.map((question) => (
+                                <div className="questionInputContainer">
+                                    <div className="statementContainer">
+                                        <p>{question.statement}</p>
+                                    </div>
+                                    {
+                                        question.type === "discursive" ?
+                                            <DiscursiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
+                                        :   
+                                            <ObjectiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
+                                    }
+                                </div>
+                            ))
+                        }
+                        <div className="footerButtonsContainer">
+                            <button className="buttonCancel" onClick={() => navigate("/activities")}>Cancelar</button>
+                            <button className="buttonSend" onClick={() => setAccomplish(true)}>Enviar</button>
                         </div>
-                    ))
+                    </div>       
             }
-            <button onClick={() => setAccomplish(true)}>Enviar</button>
         </div>
     )
 }

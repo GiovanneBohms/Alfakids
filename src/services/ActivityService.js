@@ -6,6 +6,18 @@ export async function getActivitiesByClassroomId(idClassroom){
     return response.data.activities
 }
 
+export async function getUnaccomplishedActivities(idClassroom, idStudent){
+    const response = await api.get(`/activity/findAllUnaccomplished/${idClassroom}/${idStudent}`)
+
+    return response.data.activities
+}
+
+export async function getAccomplishedActivities(idStudent){
+    const response = await api.get(`/activity/findAllAccomplished/${idStudent}`)
+
+    return response.data.activities
+}
+
 export async function getActivityById(idActivity){
     const response = await api.get(`/activity/findById/${idActivity}`)
 
