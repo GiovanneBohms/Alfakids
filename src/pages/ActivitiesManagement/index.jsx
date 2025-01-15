@@ -108,9 +108,9 @@ export function ActivitiesManagement(){
                         </div>
                         <table className="containerTable">
                             <tr className="headerRow">
-                                <th className="edgeLeft">Title</th>
+                                <th className="edgeLeft">Título</th>
                                 <th>Status</th>
-                                <th>Subject</th>
+                                <th>Matéria</th>
                                 <th className="edgeRight"></th>
                             </tr>
                             {

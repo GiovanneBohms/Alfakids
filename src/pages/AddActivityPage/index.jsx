@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './index.css'
+import "../../styles/CreateButtonSectionStyles.css"
 import { useNavigate } from 'react-router-dom'
 import { ProfessorDashBoard } from '../../components/ProfessorDashBoard'
 import { findAllSubjects } from '../../services/SubjectService'
@@ -48,17 +49,17 @@ export function AddActivityPage(){
                 :
                     <section className="addActivitySection">
                         <div>
-                            <h1>Add Activity</h1>
+                            <h1>Adicionar Atividade</h1>
                         </div>
                         <div className="addActivityForm">
                             <div className="addActivityInput">
-                                <label>Title:</label>
+                                <label>Título:</label>
                                 <input onChange={(e) => setTitle(e.target.value)} type="text" />
                             </div>
                             <div className="addActivityInput">
-                                <label>Subject:</label>
+                                <label>Matéria:</label>
                                 <select onChange={(e) => setIdSubject(e.target.value)} className="addActivitySelect">
-                                    <option value="">Select a subject ...</option>
+                                    <option value="">Selecione uma matéria...</option>
                                     {
                                         subjects.map((subject, index) => (
                                             <option key={index} value={subject.id}>{subject.name}</option>
@@ -67,8 +68,8 @@ export function AddActivityPage(){
                                 </select>
                             </div>
                             <div className="createBtnSection">
-                                <button onClick={() => handleAddActivity()}>Add</button>
-                                <button onClick={() => navigate("/activities/management")}>Cancel</button>
+                                <button className="addCreationButton" onClick={() => handleAddActivity()}>Adicionar</button>
+                                <button className="cancelCreationButton" onClick={() => navigate("/activities/management")}>Cancelar</button>
                             </div>
                         </div>
                     </section>

@@ -79,7 +79,9 @@ export function EditActivityPage(){
             <ProfessorDashBoard />
             {
                 isLoading ?
-                    <LoadingIcon />
+                    <div className="loadingContainer">
+                        <LoadingIcon />
+                    </div>
                 :
                     <div className="questionsSection">
                         
@@ -88,15 +90,17 @@ export function EditActivityPage(){
                                     <div className="studentsAccomplishmentsSection">
                                         <table className="containerTable">
                                             <tr className="headerRow">
-                                                <th className="edgeLeft">Name</th>
+                                                <th className="edgeLeft">Nome</th>
                                                 <th>Email</th>
-                                                <th className="edgeRight">Autism Level</th>
+                                                <th>Ano Escolar</th>
+                                                <th className="edgeRight">Nível de Autismo</th>
                                             </tr>
                                             {
                                                 students.map((student, index) => (
                                                     <tr key={index} className="infoRow" onClick={() => navigate(`/activities/management/edit/${id_activity}/accomplishment/${student.id}`)}>
                                                         <td>{student.name}</td>
                                                         <td>{student.email}</td>
+                                                        <td>{student.school_year}</td>
                                                         <td>{student.autism_level}</td>
                                                     </tr>
                                                 ))

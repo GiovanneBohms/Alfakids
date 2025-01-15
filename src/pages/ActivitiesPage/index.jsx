@@ -83,7 +83,7 @@ export function ActivitiesPage(){
                                     <p className="notFoundMessage">Você não está em nenhuma turma...</p>
                             }
                         </div>
-                        <div>
+                        <div className="mainActivityTitleContainer">
                             <h1 className="mainActivityTitle">Atividades</h1>
                         </div>
                         {

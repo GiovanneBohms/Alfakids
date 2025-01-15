@@ -154,17 +154,19 @@ export function EditClassroomPage(){
             <ProfessorDashBoard />
             {
                 isLoading ?
-                    <LoadingIcon />
+                    <div className="loadingContainer">
+                        <LoadingIcon />
+                    </div>
                 :
                     <section className="editClassroomPageSection">
                         <div className="editClassroomForm">
                             <p className="editClassroomTitle">Gerenciamento de Turma</p>
                             <div className="editClassroomInput">
-                                <label>Number:</label>
+                                <label>Número:</label>
                                 <input type="text" disabled value={classroom.number} />
                             </div>
                             <div className="editClassroomInput">
-                                <label>Year:</label>
+                                <label>Ano:</label>
                                 <input type="text" disabled value={classroom.year} />
                             </div>
                             <div className="studentsInClassroomTable">
@@ -175,9 +177,9 @@ export function EditClassroomPage(){
                                     <div className="studentsOptionsSection">
                                         {
                                             classroom.status !== "INITIALIZED" ?
-                                                <button className="addButtonDisabled">Add students</button>
+                                                <button className="addButtonDisabled">Adicionar alunos</button>
                                             :
-                                                <button className="addButton" onClick={() => setIsModalAddStudentOpen(true)}>Add students</button>
+                                                <button className="addButton" onClick={() => setIsModalAddStudentOpen(true)}>Adicionar alunos</button>
                                         }
                                         
                                         {
@@ -191,12 +193,12 @@ export function EditClassroomPage(){
                                 <table className="containerTable">
                                     <tbody>
                                         <tr className="headerRow">
-                                            <th className="edgeLeft">Name</th>
+                                            <th className="edgeLeft">Nome</th>
                                             <th>Email</th>
-                                            <th>Age</th>
-                                            <th>Gender</th>
-                                            <th>Autism Level</th>
-                                            <th>School Year</th>
+                                            <th>Idade</th>
+                                            <th>Gênero</th>
+                                            <th>Nível de Autismo</th>
+                                            <th>Ano Escolar</th>
                                             <th className="edgeRight"></th>
                                         </tr>
                                         {

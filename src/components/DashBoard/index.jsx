@@ -1,7 +1,9 @@
 import { useAuth } from "../../hooks/useAuth"
-import "./index.css"
+import "../../styles/DashBoardStyles.css"
 import { useNavigate } from "react-router-dom"
 import { MdLogout } from "react-icons/md";
+import { LuNotebook } from "react-icons/lu";
+import { GoCopilot } from "react-icons/go";
 
 export function DashBoard(){
     const navigate = useNavigate()
@@ -12,11 +14,11 @@ export function DashBoard(){
         <div className="dashBoardSection">
             <section className="dashBoardContainer">
                 <div className="navigationContainer">
-                    <button className="navigationButton" onClick={() => navigate("/chatbot")}>Chatbot</button>
-                    <button className="navigationButton" onClick={() => navigate("/activities")}>Atividades</button>
+                    <button className="navigationButton" onClick={() => navigate("/chatbot")}><GoCopilot className="navigationIcon" /></button>
+                    <button className="navigationButton" onClick={() => navigate("/activities")}><LuNotebook className="navigationIcon" /></button>
                 </div>
                 <div className="navigationContainer">
-                    <button className="navigationButton" onClick={() => logout()}><MdLogout className="iconLogOut" /></button>
+                    <button className="navigationButton" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
                 </div>
             </section>
         </div>

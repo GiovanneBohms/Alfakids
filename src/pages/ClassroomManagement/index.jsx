@@ -95,8 +95,8 @@ export function ClassroomManagement(){
                         </div>
                         <table className="containerTable">
                             <tr className="headerRow">
-                                <th className="edgeLeft">Number</th>
-                                <th>Year</th>
+                                <th className="edgeLeft">Número</th>
+                                <th>Ano</th>
                                 <th>Status</th>
                                 <th className="edgeRight"></th>
                             </tr>

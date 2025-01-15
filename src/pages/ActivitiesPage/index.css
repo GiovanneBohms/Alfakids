@@ -1,18 +1,22 @@
 .activitiesBody{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 100%;
     align-items: center;
     height: 100vh;
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(238, 238, 238);
 }
 
-.dashBoardSection{
-    height: 100%;
-    width: 20%;
+.mainActivityTitleContainer{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mainActivityTitle{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .classroomsSection{
@@ -25,24 +29,23 @@
 
 .activitiesSection{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     width: 80%;
     height: 100%;
     gap: 40px;
 }
 
 .contentSection{
-    width: 80%;
+    width: 95%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     gap: 10px;
 }
 
 .loadingActivitiesContainer{
-    width: 100%;
+    width: 95%;
     height: 55%;
     display: flex;
     justify-content: center;
@@ -51,7 +54,7 @@
 
 .notFoundMessage{
     font-size: 15px;
-    color: rgb(177, 177, 177);
+    color: rgb(143, 143, 143);
     width: 25rem;
 }
 
@@ -62,7 +65,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.186);
     width: 10rem;
     border-radius: 15px;
@@ -77,5 +80,5 @@
 
 .repositoryCard:hover{
     transition: 0.2s;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(241, 241, 241);
 }

@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(255, 255, 255);
     width: 13.5rem;
     height: 15rem;
     border-radius: 40px;
@@ -26,5 +26,5 @@
 
 .activityCardContainer:hover{
     transition: 0.2s;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(241, 241, 241);
 }

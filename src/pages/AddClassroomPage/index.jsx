@@ -2,6 +2,7 @@ import { useState } from "react"
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard"
 import { initializeClassroom } from "../../services/ClassroomService"
 import "./index.css"
+import "../../styles/CreateButtonSectionStyles.css"
 import { useNavigate } from "react-router-dom"
 import { getCurrentProfessorId } from "../../services/ProfessorService"
 
@@ -31,20 +32,20 @@ export function AddClassroomPage(){
             <ProfessorDashBoard />
             <section className="addClassroomSection">
                 <div>
-                    <h1>Add Classroom</h1>
+                    <h1>Adicionar Turma</h1>
                 </div>
                 <div className="addClassroomForm">
                     <div className="addClassroomInput">
-                        <label>Number:</label>
+                        <label>Número:</label>
                         <input onChange={(e) => setNumber(e.target.value)} type="text" />
                     </div>
                     <div className="addClassroomInput">
-                        <label>Year:</label>
+                        <label>Ano:</label>
                         <input onChange={(e) => setYear(e.target.value)} type="text" />
                     </div>
                     <div className="createBtnSection">
-                        <button onClick={() => handleInitializeClassroom()}>Add</button>
-                        <button onClick={() => navigate("/classroom/management")}>Cancel</button>
+                        <button className="addCreationButton" onClick={() => handleInitializeClassroom()}>Adicionar</button>
+                        <button className="cancelCreationButton" onClick={() => navigate("/classroom/management")}>Cancelar</button>
                     </div>
                 </div>
             </section>

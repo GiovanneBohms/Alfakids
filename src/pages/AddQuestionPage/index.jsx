@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard"
 import "./index.css"
+import "../../styles/CreateButtonSectionStyles.css"
 import { useState } from "react"
 import { createQuestion } from "../../services/QuestionService"
 
@@ -41,15 +42,15 @@ export function AddQuestionPage(){
                 <h1>Add Question</h1>
                 <div className="addQuestionForm">
                     <div className="typeInputContainer">
-                        <label>Type:</label>
+                        <label>Tipo:</label>
                         <select className="typeSelect" onChange={(e) => setType(e.target.value)}>
-                            <option value="discursive">Discursive</option>
-                            <option value="objective">Objective</option>
+                            <option value="discursive">Discursíva</option>
+                            <option value="objective">Objetiva</option>
                             
                         </select>
                     </div>
                     <div className="discursiveInputContainer">
-                        <label>Statement:</label>
+                        <label>Enunciado:</label>
                         <textarea onChange={(e) => setStatement(e.target.value)} type="text" />
                     </div>
                     {
@@ -59,7 +60,7 @@ export function AddQuestionPage(){
                         type === "discursive" ?
                         <div className="discursiveAnswer">
                             <div className="discursiveInputContainer">
-                                <label>Expected Answer:</label>
+                                <label>Resposta Esperada:</label>
                                 <textarea onChange={(e) => setExpected_answer(e.target.value)} id="inputDiscursiveAnswer" type="text" />
                             </div>
                         </div>
@@ -89,8 +90,8 @@ export function AddQuestionPage(){
                         </div>
                     }
                     <div className="createBtnSection">
-                        <button onClick={() => handleAddQuestion()}>Add</button>
-                        <button onClick={() => navigate(`/activities/management/edit/${id_activity}`)}>Cancel</button>
+                        <button className="addCreationButton" onClick={() => handleAddQuestion()}>Adicionar</button>
+                        <button className="cancelCreationButton" onClick={() => navigate(`/activities/management/edit/${id_activity}`)}>Cancelar</button>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/useAuth"
+import "../../styles/DashBoardStyles.css"
+import { MdLogout } from "react-icons/md"
+import { SiGoogleclassroom } from "react-icons/si";
+import { LuNotebookPen } from "react-icons/lu";
 
 export function ProfessorDashBoard(){
     const navigate = useNavigate()
@@ -10,11 +14,11 @@ export function ProfessorDashBoard(){
         <div className="dashBoardSection">
             <section className="dashBoardContainer">
                 <div className="navigationContainer">
-                    <button className="navigationButton" onClick={() => navigate("/activities/management")}>Activities</button>
-                    <button className="navigationButton" onClick={() => navigate("/classroom/management")}>Classrooms</button>
+                    <button className="navigationButton" onClick={() => navigate("/activities/management")}><LuNotebookPen className="navigationIcon" /></button>
+                    <button className="navigationButton" onClick={() => navigate("/classroom/management")}><SiGoogleclassroom className="navigationIcon" /></button>
                 </div>
                 <div className="navigationContainer">
-                    <button className="navigationButton" onClick={() => logout()}>Sign out</button>
+                    <button className="navigationButton" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
                 </div>
             </section>
         </div>
