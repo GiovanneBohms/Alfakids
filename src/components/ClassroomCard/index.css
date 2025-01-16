@@ -14,6 +14,13 @@
 }
 
 .classroomCard:hover{
-    transition: 0.2s;
     background-color: rgb(241, 241, 241);
+}
+
+.active{
+    background-color: rgb(176, 255, 254);
+}
+
+.active:hover{
+    background-color: rgb(176, 255, 254);
 }

@@ -16,6 +16,9 @@ export function ActivitiesPage(){
     const [isLoading, setIsLoading] = useState(true)
     const [isLoadingActivities, setIsLoadingActivities] = useState(false)
 
+    var activeClassrooms = document.querySelectorAll(".classroomCard")
+    //var repositoryCard = document.getElementsByClassName(".repositoryCard")
+
     const navigate = useNavigate()
 
     const fetchClassrooms = async () => {
@@ -55,6 +58,17 @@ export function ActivitiesPage(){
             }
         })
     }
+
+    function selectClassroomMenu(){
+        activeClassrooms.forEach((item) => 
+            item.classList.remove("active")
+        )
+        this.classList.add("active")
+    }
+
+    activeClassrooms.forEach((item) => 
+        item.addEventListener('click', selectClassroomMenu)
+    )
 
     useEffect(() => {
         fetchClassrooms()
