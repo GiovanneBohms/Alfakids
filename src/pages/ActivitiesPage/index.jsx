@@ -13,11 +13,12 @@ import { FaFolder } from "react-icons/fa"
 export function ActivitiesPage(){
     const [activities, setActivities] = useState([])
     const [classrooms, setClassrooms] = useState([])
+    const [isRepository, setIsRepository] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [isLoadingActivities, setIsLoadingActivities] = useState(false)
 
     var activeClassrooms = document.querySelectorAll(".classroomCard")
-    //var repositoryCard = document.getElementsByClassName(".repositoryCard")
+    var repositoryCards = document.querySelectorAll(".repositoryCard")
 
     const navigate = useNavigate()
 
@@ -35,6 +36,7 @@ export function ActivitiesPage(){
 
     function fetchUnaccomplishedActivities(classroom){
         setIsLoadingActivities(true)
+        setIsRepository(false)
         getUnaccomplishedActivities(classroom.id, getCurrentStudentId()).then((data) => {
             setActivities(data)
             setIsLoadingActivities(false)
@@ -48,6 +50,7 @@ export function ActivitiesPage(){
 
     function fetchAccomplishedActivities(){
         setIsLoadingActivities(true)
+        setIsRepository(true)
         getAccomplishedActivities(getCurrentStudentId()).then((data) => {
             setActivities(data)
             setIsLoadingActivities(false)
@@ -63,10 +66,18 @@ export function ActivitiesPage(){
         activeClassrooms.forEach((item) => 
             item.classList.remove("active")
         )
+        repositoryCards.forEach((item) =>
+            item.classList.remove("active")
+        )
+        
         this.classList.add("active")
     }
 
     activeClassrooms.forEach((item) => 
+        item.addEventListener('click', selectClassroomMenu)
+    )
+
+    repositoryCards.forEach((item) =>
         item.addEventListener('click', selectClassroomMenu)
     )
 
@@ -109,11 +120,18 @@ export function ActivitiesPage(){
                                 <section className="activitiesSection">
                                     {
                                         activities !== null ?
-                                            activities.map((activity) => (
-                                                <div key={activity.id} onClick={() => navigate(`/selected-activity/${activity.id}`)}>
-                                                    <ActivityCard activity={activity} />
-                                                </div>
-                                            ))
+                                            !isRepository ?
+                                                activities.map((activity) => (
+                                                    <div key={activity.id} onClick={() => navigate(`/selected-activity/${activity.id}`)}>
+                                                        <ActivityCard isRepository={isRepository} activity={activity} />
+                                                    </div>
+                                                ))
+                                            :
+                                                activities.map((activity) => (
+                                                    <div key={activity.id}>
+                                                        <ActivityCard isRepository={isRepository} activity={activity} />
+                                                    </div>
+                                                ))
                                         :
                                             <p className="notFoundMessage">Você não tem atividades pendentes nesta turma...</p>
                                     }
