@@ -76,8 +76,8 @@ export function ModalDistributeActivity({ idActivity ,idProfessor, setIsModalOpe
                         </form>
                 }
                 <div className="createBtnSection">
-                    <button className="addCreationButton" onClick={() => handleShareActivity()}>Share</button>
-                    <button className="cancelCreationButton" onClick={() => setIsModalOpen(false)}>Cancel</button>
+                    <button className="shareCreationButton" onClick={() => handleShareActivity()}>Compartilhar</button>
+                    <button className="cancelCreationButton" onClick={() => setIsModalOpen(false)}>Cancelar</button>
                 </div>
             </div>
         </div>

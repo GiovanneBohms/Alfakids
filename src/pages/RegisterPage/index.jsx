@@ -44,31 +44,31 @@ export function RegisterPage(){
                 <h1>Cadastro</h1>
                 <form id="registerForm" onSubmit={(event) => handleFormSubmit(event)}>
                     <div className="formInput">
-                        <label htmlFor="">Name</label>
+                        <label htmlFor="">Nome:</label>
                         <input name="name" type="text" />
                     </div>
                     <div className="formInput">
-                        <label htmlFor="">Email</label>
+                        <label htmlFor="">Email:</label>
                         <input name="email" type="text" />
                     </div>
                     <div className="formInput">
-                        <label htmlFor="">Password</label>
+                        <label htmlFor="">Senha:</label>
                         <input name="password" type="text" />
                     </div>
                     <div className="formInput">
-                        <label htmlFor="">Gender</label>
+                        <label htmlFor="">Gênero:</label>
                         <input name="gender" type="text" />
                     </div>
                     <div className="formInput">
-                        <label htmlFor="">Age</label>
+                        <label htmlFor="">Idade:</label>
                         <input name="age" type="text" />
                     </div>
                     <div className="formInput">
-                        <label htmlFor="">Autism Level</label>
+                        <label htmlFor="">Nível de Autismo:</label>
                         <input name="autism_level" type="text" />
                     </div>
                     <div className="formInput">
-                        <label htmlFor="">School Year</label>
+                        <label htmlFor="">Ano Escolar:</label>
                         <input name="school_year" type="text" />
                     </div>
                     <div className="optionsSection">

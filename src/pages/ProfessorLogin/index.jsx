@@ -53,7 +53,7 @@ export function ProfessorLogin(){
                         <input type="text" name="email" className="professorLoginInputField"/>
                     </div>
                     <div className="professorLoginInputContainer">
-                        <label className="professorLoginInputLabel">Password:</label>
+                        <label className="professorLoginInputLabel">Senha:</label>
                         <input type="password" name="password" className="professorLoginInputField"/>
                     </div>
                     <div className="professorLoginBottomSideContainer">

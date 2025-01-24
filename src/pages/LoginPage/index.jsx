@@ -56,24 +56,26 @@ export function LoginPage(){
                         <input type="text" name="email" required className="inputField"/>
                     </div>
                     <div className="InputContainer">
-                        <label className="inputLabel">Password:</label>
+                        <label className="inputLabel">Senha:</label>
                         <input type="password" name="password" required className="inputField"/>
                     </div>
-                    <div className="bottomSideContainer">
+                    <div className="linkSection">
                         <a href="#" className="forgotPasswordLink">Esqueci a senha</a>
+                        <a href="/register" className="registerLink">Cadastrar</a>
+                    </div>
+                    <div className="bottomSideContainer">
                         {
                             isLoading ?
                                 <button className="buttonLoginLoading"><LoadingIcon /></button>
                             :
                                 <button className="buttonLogin" type="submit">Entrar</button>
                         }
-                        <a href="/register" className="registerLink">Cadastrar</a>
+                        <div>
+                            <a className="professorModeLink" href="/login/professor">Modo Professor</a>
+                        </div>
                     </div>
                 </form>
             </section>
-            <div>
-                <a className="professorModeLink" href="/login/professor">Modo Professor</a>
-            </div>
         </div>
     )
 }

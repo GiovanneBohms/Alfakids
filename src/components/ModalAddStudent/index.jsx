@@ -35,11 +35,11 @@ export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStuden
         <div className="modalAddStudentBackground">
             <div className="modalMainSection">
                 <div className="mainContentContainer">
-                    <p className="mainTitle">Add students to this classroom</p>
-                    <p className="mainTitle">Search by email</p>
+                    <p className="mainTitle">Adicione alunos à essa turma</p>
+                    <p className="mainTitle">Procure por email</p>
                     <div className="inputContainer">
                         <IoIosSearch className="searchIcon" />
-                        <input type="text" placeholder="Find students" onChange={(e) => setEmailToSearch(e.target.value)} />
+                        <input type="text" placeholder="Procurar alunos" onChange={(e) => setEmailToSearch(e.target.value)} />
                     </div>
                 </div>
                 {

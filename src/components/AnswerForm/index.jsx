@@ -17,12 +17,12 @@ export function AnswerForm({ answer }){
                         {
                             answer.student_answer ?
                                 <div className="discursiveInputContainer">
-                                    <label>Student Answer:</label>
+                                    <label>Resposta do Aluno:</label>
                                     <textarea id="" value={answer.student_answer} disabled type="text"></textarea>
                                 </div>
                             :
                                 <div className="discursiveInputContainer">
-                                    <label>Student Answer:</label>
+                                    <label>Resposta do Aluno:</label>
                                     <textarea id="" value="" disabled type="text"></textarea>
                                 </div>
                         }
@@ -46,12 +46,12 @@ export function AnswerForm({ answer }){
                         {
                             answer.student_answer ?
                                 <div className="objectiveAnswerContainer">
-                                    <label>Student Answer:</label>
+                                    <label>Resposta do Aluno:</label>
                                     <textarea id="" value={answer.student_answer} disabled type="text"></textarea>
                                 </div>
                             :
                                 <div className="objectiveAnswerContainer">
-                                    <label>Student Answer:</label>
+                                    <label>Resposta do Aluno:</label>
                                     <textarea id="" value="" disabled type="text"></textarea>
                                 </div>
                         }

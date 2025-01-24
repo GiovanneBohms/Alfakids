@@ -13,6 +13,7 @@ import { getCurrentProfessorId } from "../../services/ProfessorService";
 
 export function ActivitiesManagement(){
     const [isLoading, setIsLoading] = useState(true)
+    const [isLoadingSubject, setIsLoadingSubject] = useState(true)
     const [isModalRemoveOpen, setIsModalRemoveOpen] = useState(false)
     const [hasSelectedActivity, setHasSelectedActivity] = useState(false)
     const [activities, setActivities] = useState([])
@@ -95,13 +96,11 @@ export function ActivitiesManagement(){
                                 hasSelectedActivity ?
                                     <div className="selectedActivitiesOptions">
                                         <button className="trashButton" onClick={() => setIsModalRemoveOpen(true)}><IoMdTrash /></button>
-                                        <button className="shareButtonDisabled"><FaCodeFork /></button>
                                     </div>
                                     
                                 :
                                     <div className="selectedActivitiesOptions">
                                         <button className="trashButtonDisabled"><IoMdTrash /></button>
-                                        <button className="shareButtonDisabled"><FaCodeFork /></button>
                                     </div>
                             }
                             
@@ -118,7 +117,7 @@ export function ActivitiesManagement(){
                                     <tr key={index} className="infoRow">
                                         <td onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>{activity.title}</td>
                                         <td onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>{activity.status}</td>
-                                        <td onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>{activity.id_subject}</td>
+                                        <td onClick={() => navigate(`/activities/management/edit/${activity.id}`)}>{activity.subject_name}</td>
                                         <div className="sectionSelect">
                                             <label className="containerSelect">
                                                 <input type="checkbox" value={activity.id} onChange={(e) => verifyInputChange(e, activity)} />

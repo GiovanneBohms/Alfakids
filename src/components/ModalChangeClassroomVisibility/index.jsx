@@ -34,7 +34,7 @@ export function ModalChangeClassroomVisibility({ classroom }){
             {
                 classroom.status !== "FULFILLED" ?
                     <div onClick={() => changeToFulfilled()}>
-                        Change to FULFILLED
+                        Mudar para FULFILLED
                     </div>
                 :
                     null
@@ -42,7 +42,7 @@ export function ModalChangeClassroomVisibility({ classroom }){
             {
                 classroom.status !== "CLOSED" ?
                     <div onClick={() => changeToCanceled()}>
-                        Change to CLOSED
+                        Mudar para CLOSED
                     </div>
                 :
                     null
