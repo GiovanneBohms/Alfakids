@@ -17,6 +17,10 @@ export function ModalDistributeActivity({ idActivity ,idProfessor, setIsModalOpe
             setClassrooms(classrooms)
             setIsLoading(false)
         }).catch((error) => {
+            if(error.status == 404){
+                setClassrooms(null)
+                setIsLoading(false)
+            }
             console.log(error.message)
         })
     }
@@ -64,14 +68,17 @@ export function ModalDistributeActivity({ idActivity ,idProfessor, setIsModalOpe
                     :
                         <form className="modalFormContainer">
                             {
-                                classrooms.map((classroom, index) => (
-                                    <div key={index} className="classroomCheckbox">
-                                        <label className="container">{classroom.number}
-                                            <input type="checkbox" value={classroom.id} onChange={(e) => verifyInputChange(e, classroom)} />
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    </div>
-                                ))
+                                classrooms != null ?
+                                    classrooms.map((classroom, index) => (
+                                        <div key={index} className="classroomCheckbox">
+                                            <label className="container">{classroom.number}
+                                                <input type="checkbox" value={classroom.id} onChange={(e) => verifyInputChange(e, classroom)} />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    ))
+                                :
+                                    <p className="noClassroomsFound">Sem turmas registradas ...</p>
                             }
                         </form>
                 }
