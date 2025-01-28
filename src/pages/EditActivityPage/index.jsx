@@ -97,7 +97,7 @@ export function EditActivityPage(){
                                             </tr>
                                             {
                                                 students.map((student, index) => (
-                                                    <tr key={index} className="infoRow" onClick={() => navigate(`/activities/management/edit/${id_activity}/accomplishment/${student.id}`)}>
+                                                    <tr key={index} className="infoRow" onClick={() => navigate(`/accomplishment/${id_activity}/${student.id}`)}>
                                                         <td>{student.name}</td>
                                                         <td>{student.email}</td>
                                                         <td>{student.school_year}</td>

@@ -46,6 +46,20 @@ function PrivateProfessorRoute({ Component }){
     )
 }
 
+function PrivateRoute({ Component }){
+    const { student_signed, professor_signed, isLoading } = useAuth();
+
+    return (
+        professor_signed > 0 || student_signed > 0 ? 
+            <Component />
+        :
+            isLoading ?
+                <InitialLoadingIcon />
+            :
+                <LoginPage />
+    )
+}
+
 export function RoutesComponent(){
 
     return(
@@ -67,7 +81,7 @@ export function RoutesComponent(){
                     <Route path='activities/management/edit/:id_activity' element={<PrivateProfessorRoute Component={EditActivityPage} />} />
                     <Route path='activities/management/edit/question/edit/:id_question' element={<PrivateProfessorRoute Component={EditQuestionPage} />} />
                     <Route path='activities/management/edit/question/add/:id_activity' element={<PrivateProfessorRoute Component={AddQuestionPage} />} />
-                    <Route path='activities/management/edit/:id_activity/accomplishment/:id_student' element={<PrivateProfessorRoute Component={StudentAccomplishmentPage} />} />
+                    <Route path='accomplishment/:id_activity/:id_student' element={<PrivateRoute Component={StudentAccomplishmentPage} />} />
                 </Routes>
             </Fragment>
         </BrowserRouter>

@@ -5,9 +5,10 @@ import { getActivityById } from "../../services/ActivityService"
 import { getQuestionsByActivityId } from "../../services/QuestionService"
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard"
-import { getStudentById } from "../../services/StudentService"
+import { getCurrentStudentId, getStudentById } from "../../services/StudentService"
 import { getAnswerByQuestionAndStudentId } from "../../services/AnswerService"
 import { AnswerForm } from "../../components/AnswerForm"
+import { DashBoard } from "../../components/DashBoard"
 
 export function StudentAccomplishmentPage(){
     const { id_activity, id_student } = useParams()
@@ -122,7 +123,13 @@ export function StudentAccomplishmentPage(){
 
     return(
         <div className="selectedActivityPage">
-            <ProfessorDashBoard />
+            {
+                getCurrentStudentId() != null ?
+                    <DashBoard />
+                :
+                    <ProfessorDashBoard />
+            }
+            
             {
                 isLoading ?
                     <LoadingIcon />

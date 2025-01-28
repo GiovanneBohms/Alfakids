@@ -128,7 +128,7 @@ export function ActivitiesPage(){
                                                 ))
                                             :
                                                 activities.map((activity) => (
-                                                    <div key={activity.id}>
+                                                    <div key={activity.id} onClick={() => navigate(`/accomplishment/${activity.id}/${getCurrentStudentId()}`)}>
                                                         <ActivityCard isRepository={isRepository} activity={activity} />
                                                     </div>
                                                 ))
