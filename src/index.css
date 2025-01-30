@@ -4,6 +4,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-background: #eeeeee;
+  --color-primary: #007bff;
+  --color-secondary: #f9f9f9;
+  --color-text: #333;
+  --color-border: #ddd;
+  --shadow-light: 0 4px 6px #0000001a;
 }
 
 body{
