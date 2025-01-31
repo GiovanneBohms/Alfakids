@@ -30,12 +30,12 @@
     border: none;
     outline: none;
     padding: 15px;
-    background-color: rgb(238, 238, 238);
+    background-color: var(-color-border);
 }
 
 .inputLabel{
     font-size: 20px;
-    color: rgb(0, 0, 0);
+    color: #000000;
 }
 
 .loginFormSection{
@@ -71,7 +71,7 @@
 }
 
 .buttonLoginLoading{
-    background-color: rgb(0, 179, 179);
+    background-color: #00b3b3;
     outline: none;
     border: none;
     width: 100%;
@@ -84,19 +84,19 @@
 }
 
 .forgotPasswordLink{
-    color: rgb(192, 192, 192);
+    color: #c0c0c0;
     font-size: 18px;
     text-decoration: none;
 }
-
+ 
 .registerLink{
-    color: rgb(192, 192, 192);
+    color: #c0c0c0;
     font-size: 18px;
     text-decoration: none;
 }
-
+ 
 .professorModeLink{
-    color: rgb(192, 192, 192);
+    color: #c0c0c0;
     font-size: 18px;
     text-decoration: none;
 }
