@@ -74,7 +74,7 @@ export function RegisterPage(){
                     <div className="optionsSection">
                         <a href="/login">Voltar para Login</a>
                     </div>
-                    <div>
+                    <div className="registerButtonContainer">
                         {
                             isLoading ?
                                 <button className="buttonRegisterLoading"><LoadingIcon /></button>

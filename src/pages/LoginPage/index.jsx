@@ -10,6 +10,7 @@ export function LoginPage(){
     const { login_student } = useAuth()
 
     const [isLoading, setIsLoading] = useState(false)
+    const [isCredentialsIncorrect, setIsCredentialsIncorrect] = useState(false)
 
     //const authentication = useContext(AuthContext);
 
@@ -36,7 +37,10 @@ export function LoginPage(){
                 }
             }).catch((error) => {
                 setIsLoading(false)
-                console.log(error.message)
+
+                if(error.status == 401){
+                    setIsCredentialsIncorrect(true)
+                }
             })
         } catch(error){
             setIsLoading(false)
@@ -59,6 +63,14 @@ export function LoginPage(){
                         <label className="inputLabel">Senha:</label>
                         <input type="password" name="password" required className="inputField"/>
                     </div>
+                    {
+                        isCredentialsIncorrect ?
+                            <div className="incorrectCredentialsContainer">
+                                <p>Credenciais incorretas.</p>
+                            </div>
+                        :
+                            null
+                    }
                     <div className="linkSection">
                         <a href="#" className="forgotPasswordLink">Esqueci a senha</a>
                         <a href="/register" className="registerLink">Cadastrar</a>
@@ -70,7 +82,7 @@ export function LoginPage(){
                             :
                                 <button className="buttonLogin" type="submit">Entrar</button>
                         }
-                        <div>
+                        <div className="professorModeLinkContainer">
                             <a className="professorModeLink" href="/login/professor">Modo Professor</a>
                         </div>
                     </div>

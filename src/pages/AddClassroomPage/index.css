@@ -33,6 +33,7 @@
     border: none;
     outline: none;
     padding: 10px;
-    background-color: rgb(238, 238, 238);
+    background-color: var(--color-secondary);
+    box-shadow: var(--shadow-light);
     border-radius: 15px;
 }

@@ -30,7 +30,8 @@
     border: none;
     outline: none;
     padding: 15px;
-    background-color: rgb(238, 238, 238);
+    background-color: var(--color-secondary);
+    box-shadow: var(--shadow-light);
 }
 
 .inputLabel{
@@ -58,7 +59,8 @@
 }
 
 .buttonLogin{
-    background-color: aqua;
+    transition: 0.2s;
+    background-color: var(--color-primary);
     outline: none;
     border: none;
     width: 100%;
@@ -70,8 +72,12 @@
     align-items: center;
 }
 
+.buttonLogin:hover{
+    background-color: var(--color-primary-hover);
+}
+
 .buttonLoginLoading{
-    background-color: rgb(0, 179, 179);
+    background-color: var(--color-primary-hover);
     outline: none;
     border: none;
     width: 100%;
@@ -85,20 +91,29 @@
 
 .forgotPasswordLink{
     color: rgb(192, 192, 192);
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
 }
 
 .registerLink{
     color: rgb(192, 192, 192);
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
+}
+
+.professorModeLinkContainer{
+    width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .professorModeLink{
     color: rgb(192, 192, 192);
-    font-size: 18px;
+    font-size: 16px;
+    width: 15rem;
     text-decoration: none;
+    text-align: center;
 }
 
 .linkSection{
@@ -110,4 +125,13 @@
 
 .bottomSideContainer{
     width: 27%;
+}
+
+.incorrectCredentialsContainer{
+    width: 66%;
+}
+
+.incorrectCredentialsContainer p{
+    color: var(--color-error-text);
+    font-size: 14px;
 }

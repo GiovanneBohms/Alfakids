@@ -89,7 +89,7 @@ export function AddQuestionPage(){
                             </div>
                         </div>
                     }
-                    <div className="createBtnSection">
+                    <div className="createBtnSection createQuestion">
                         <button className="addCreationButton" onClick={() => handleAddQuestion()}>Adicionar</button>
                         <button className="cancelCreationButton" onClick={() => navigate(`/activities/management/edit/${id_activity}`)}>Cancelar</button>
                     </div>

@@ -124,24 +124,10 @@ export function EditQuestionPage(){
                                         </div>
                                     </div>
                             }
-                            {
-                                //----------DISCURSIVE--------------------
-
-                                question.type === "discursive" ?
-                                    <div className="btnEditQuestionSection">
-                                        <button onClick={() => navigate(`/activities/management/edit/${question.id_activity}`)} className="cancelQuestionEditBtn">Cancel</button>
-                                        <button onClick={() => handleDiscursiveEdit()} className="confirmQuestionEditBtn">Edit</button>
-                                    </div>
-                                    
-                                :
-
-                                //----------OBJECTIVE--------------------
-
-                                    <div className="btnEditQuestionSection">
-                                        <button onClick={() => navigate(`/activities/management/edit/${question.id_activity}`)} className="cancelQuestionEditBtn">Cancel</button>
-                                        <button onClick={() => handleObjectiveEdit()} className="confirmQuestionEditBtn">Edit</button>
-                                    </div>
-                            }
+                            <div className="btnEditQuestionSection">
+                                <button onClick={() => handleDiscursiveEdit()} className="confirmQuestionEditBtn">Edit</button>
+                                <button onClick={() => navigate(`/activities/management/edit/${question.id_activity}`)} className="cancelQuestionEditBtn">Cancel</button>
+                            </div>
                         </div>
                     </div>
             }

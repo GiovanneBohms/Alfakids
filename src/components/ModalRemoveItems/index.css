@@ -23,10 +23,10 @@
 }
 
 .createBtnSection .removeBtn{
-    background-color: red;
+    background-color: var(--cancel-button-color);
     color: white;
 }
 
 .createBtnSection .removeBtn:hover{
-    background-color: rgb(231, 0, 0);
+    background-color: var(--cancel-button-color-hover);
 }

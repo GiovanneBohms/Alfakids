@@ -18,9 +18,9 @@
 }
 
 .active{
-    background-color: rgb(176, 255, 254);
+    background-color: var(--color-primary);
 }
 
 .active:hover{
-    background-color: rgb(176, 255, 254);
+    background-color: var(--color-primary-hover);
 }

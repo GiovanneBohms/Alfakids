@@ -44,7 +44,8 @@
     border: none;
     outline: none;
     padding: 15px;
-    background-color: rgb(238, 238, 238);
+    background-color: var(--color-secondary);
+    box-shadow: var(--shadow-light);
 }
 
 .professorLoginInputLabel{
@@ -72,7 +73,8 @@
 }
 
 .buttonProfessorLogin{
-    background-color: aqua;
+    transition: 0.2s;
+    background-color: var(--color-primary);
     outline: none;
     border: none;
     width: 100%;
@@ -84,8 +86,12 @@
     align-items: center;
 }
 
+.buttonProfessorLogin:hover{
+    background-color: var(--color-primary-hover);
+}
+
 .buttonProfessorLoginLoading{
-    background-color: rgb(0, 179, 179);
+    background-color: var(--color-primary-hover);
     outline: none;
     border: none;
     width: 100%;
@@ -95,4 +101,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.incorrectProfessorCredentialsContainer{
+    width: 94%;
+}
+
+.incorrectProfessorCredentialsContainer p{
+    color: var(--color-error-text);
+    font-size: 14px;
 }

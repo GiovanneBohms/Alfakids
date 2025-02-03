@@ -23,12 +23,12 @@
 }
 
 .createBtnSection .removeBtn{
-    background-color: red;
+    background-color: var(--cancel-button-color);
     color: white;
 }
 
 .createBtnSection .removeBtn:hover{
-    background-color: rgb(231, 0, 0);
+    background-color: var(--cancel-button-color-hover);
 }
 
 .mainContentContainer{
@@ -63,7 +63,7 @@
 .cancelButton{
     transition: 0.2s;
     border: none;
-    background-color: red;
+    background-color: var(--cancel-button-color);
     color: white;
     width: 5rem;
     height: 2rem;
@@ -72,5 +72,5 @@
 }
 
 .cancelButton:hover{
-    background-color: rgb(212, 0, 0);
+    background-color: var(--cancel-button-color-hover);
 }

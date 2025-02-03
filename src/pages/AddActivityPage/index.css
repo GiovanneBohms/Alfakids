@@ -33,14 +33,16 @@
     border: none;
     outline: none;
     padding: 10px;
-    background-color: rgb(238, 238, 238);
+    background-color: var(--color-secondary);
+    box-shadow: var(--shadow-light);
     border-radius: 15px;
 }
 
 .addActivitySelect{
     border: none;
     outline: none;
-    background-color: rgb(241, 241, 241);
+    background-color: var(--color-secondary);
+    box-shadow: var(--shadow-light);
     height: 2.5rem;
     border-radius: 30px;
     padding: 10px;

@@ -203,7 +203,7 @@ export function EditClassroomPage(){
                                         </tr>
                                         {
                                             studentsInClassroom.map((student, index) => (
-                                                <tr key={index} className="infoRow">
+                                                <tr key={index} className="infoRow noClick">
                                                     <td>{student.name}</td>
                                                     <td>{student.email}</td>
                                                     <td>{student.age}</td>

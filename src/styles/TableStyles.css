@@ -18,7 +18,7 @@
 }
 
 .headerRow{
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(196, 196, 196);
     color: rgba(0, 0, 0, 0.301);
     height: 50px;
 }
@@ -27,6 +27,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     cursor: pointer;
     height: 100px;
+    transition: 0.2s;
 }
 
 .infoRow td{
@@ -34,7 +35,11 @@
 }
 
 .infoRow:hover{
-    background-color: rgb(225, 225, 225);
+    background-color: var(--color-primary);
+}
+
+.noClick:hover{
+    background-color: transparent;
 }
 
 .containerSelect {

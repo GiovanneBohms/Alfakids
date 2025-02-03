@@ -21,11 +21,11 @@
 }
 
 .btnDeleteQuestion{
-    background-color: red;
+    background-color: var(--cancel-button-color);
 }
 
 .btnDeleteQuestion:hover{
-    background-color: rgb(232, 0, 0);
+    background-color: var(--cancel-button-color-hover);
 }
 
 .btnEditQuestion{

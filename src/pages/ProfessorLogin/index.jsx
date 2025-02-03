@@ -7,6 +7,7 @@ import { useState } from "react"
 export function ProfessorLogin(){
 
     const [isLoading, setIsLoading] = useState(false)
+    const [isCredentialsIncorrect, setIsCredentialsIncorrect] = useState(false)
 
     const { login_professor } = useAuth()
 
@@ -33,7 +34,10 @@ export function ProfessorLogin(){
                 }
             }).catch((error) => {
                 setIsLoading(false)
-                console.log(error.message)
+
+                if(error.status == 401){
+                    setIsCredentialsIncorrect(true)
+                }
             })
         } catch(error){
             setIsLoading(false)
@@ -56,6 +60,14 @@ export function ProfessorLogin(){
                         <label className="professorLoginInputLabel">Senha:</label>
                         <input type="password" name="password" className="professorLoginInputField"/>
                     </div>
+                    {
+                        isCredentialsIncorrect ?
+                            <div className="incorrectProfessorCredentialsContainer">
+                                <p>Credenciais incorretas.</p>
+                            </div>
+                        :
+                            null
+                    }
                     <div className="professorLoginBottomSideContainer">
                         <div>
                             <a href="/login">Modo Aluno</a>

@@ -142,7 +142,7 @@
     border: none;
     padding: 10px;
     border-radius: 15px;
-    background-color: red;
+    background-color: var(--cancel-button-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,7 +157,7 @@
     border: none;
     padding: 10px;
     border-radius: 15px;
-    background-color: rgb(241, 241, 241);
+    background-color: var(--trash-button-disabled-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -166,7 +166,7 @@
 }
 
 .studentsOptionsSection .trashButton:hover{
-    background-color: rgb(233, 0, 0);
+    background-color: var(--cancel-button-color-hover);
 }
 
 .dangerZone{
@@ -218,7 +218,7 @@
 .changeStatusButton{
     transition: 0.2s;
     border: none;
-    background-color: red;
+    background-color: var(--cancel-button-color);
     color: white;
     border-radius: 10px;
     height: 3rem;
@@ -226,5 +226,5 @@
 }
 
 .changeStatusButton:hover{
-    background-color: rgb(219, 0, 0);
+    background-color: var(--cancel-button-color-hover);
 }
