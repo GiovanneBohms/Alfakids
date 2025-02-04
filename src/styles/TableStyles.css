@@ -14,11 +14,11 @@
 }
 
 .edgeLeft{
-    border-radius: 10px 0 0 0;
+  border-radius: 10px 0 0 0;
 }
 
 .headerRow{
-    background-color: rgb(196, 196, 196);
+    background-color: rgb(216, 216, 216);
     color: rgba(0, 0, 0, 0.301);
     height: 50px;
 }

@@ -46,10 +46,7 @@ export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStuden
                     isLoading ?
                         <LoadingIcon />
                     :
-                        emailToSearch ?
-                            <StudentListSection modalHandleAllocateStudent={modalHandleAllocateStudent} students={students} emailToSearch={emailToSearch} />
-                        :
-                            null
+                        emailToSearch && <StudentListSection modalHandleAllocateStudent={modalHandleAllocateStudent} students={students} emailToSearch={emailToSearch} />
                 }
                 <button className="cancelButton" onClick={() => setIsModalAddStudentOpen(false)}>Fechar</button>
             </div>

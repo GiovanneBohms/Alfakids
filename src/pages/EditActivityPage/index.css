@@ -47,17 +47,17 @@
     border: none;
     padding: 10px;
     border-radius: 15px;
-    background-color: rgb(0, 223, 223);
+    background-color: var(--color-primary);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    color: white;
+    color: var(--color-text);
     cursor: pointer;
 }
 
 .btnQuestionOptionsContainer .shareButton:hover{
-    background-color: rgb(1, 212, 212);
+    background-color: var(--color-primary-hover);
 }
 
 .studentsAccomplishmentsSection{

@@ -21,7 +21,7 @@ export function ActivitiesManagement(){
 
     const navigate = useNavigate()
 
-    function fetchActivities(){
+    const fetchActivities = () => {
         try{
             getActivitiesByProfessorId(getCurrentProfessorId()).then((activities) => {
                 setActivities(activities)

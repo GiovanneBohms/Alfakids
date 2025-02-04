@@ -16,7 +16,7 @@ import { getAllStudentsByActivityId } from "../../services/AccomplishmentsServic
 export function EditActivityPage(){
     const { id_activity } = useParams()
 
-    const [activity, setActivity] = useState(null)
+    //const [activity, setActivity] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [questions, setQuestions] = useState([])
     const [students, setStudents] = useState([])
@@ -24,20 +24,20 @@ export function EditActivityPage(){
     const [isModalOpen, setIsModalOpen] = useState(false)
     const navigate = useNavigate()
 
-    function fetchActivity(){
-        try{
-            getActivityById(id_activity).then((data_activity) => {
-                setActivity(data_activity)
-            }).catch((error)=>{
-                console.log(error.message)
-            })
-        }
-        catch(error){
-            console.log(error.message)
-        }
-    }
+    // const fetchActivity = () => {
+    //     try{
+    //         getActivityById(id_activity).then((data_activity) => {
+    //             setActivity(data_activity)
+    //         }).catch((error)=>{
+    //             console.log(error.message)
+    //         })
+    //     }
+    //     catch(error){
+    //         console.log(error.message)
+    //     }
+    // }
 
-    function fetchStudents(){
+    const fetchStudents = () => {
         try{
             getAllStudentsByActivityId(id_activity).then((students) => {
                 setStudents(students)
@@ -49,7 +49,7 @@ export function EditActivityPage(){
         }
     }
 
-    function fetchQuestions(){
+    const fetchQuestions = () => {
         try{
             getQuestionsByActivityId(id_activity).then((data) => {
                 setQuestions(data)
@@ -63,8 +63,8 @@ export function EditActivityPage(){
     }
 
     useEffect(() => {
+        setIsLoading(true)
         fetchStudents()
-        fetchActivity()
         fetchQuestions()
     }, [])
 
@@ -84,7 +84,7 @@ export function EditActivityPage(){
                     </div>
                 :
                     <div className="questionsSection">
-                        
+                        <h1>Envios</h1>
                             {
                                 students.length !== 0 ?
                                     <div className="studentsAccomplishmentsSection">
@@ -95,6 +95,7 @@ export function EditActivityPage(){
                                                 <th>Ano Escolar</th>
                                                 <th className="edgeRight">Nível de Autismo</th>
                                             </tr>
+                                            {console.log(students)}
                                             {
                                                 students.map((student, index) => (
                                                     <tr key={index} className="infoRow" onClick={() => navigate(`/accomplishment/${id_activity}/${student.id}`)}>
@@ -112,9 +113,9 @@ export function EditActivityPage(){
                             }
                             
                         
-                        <h1>{activity.title}</h1>
+                        <h1>Questões</h1>
                         <div className="btnQuestionOptionsContainer">
-                            <button className="addButton" onClick={() => navigate(`/activities/management/edit/question/add/${activity.id}`)}><IoMdAdd /></button>
+                            <button className="addButton" onClick={() => navigate(`/activities/management/edit/question/add/${id_activity}`)}><IoMdAdd /></button>
                             <button className="shareButton" onClick={() => setIsModalOpen(true)}><FaCodeFork /></button>
                         </div>
                         {questions.map((question, index) => (
