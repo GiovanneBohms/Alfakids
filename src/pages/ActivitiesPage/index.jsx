@@ -86,7 +86,7 @@ export function ActivitiesPage(){
     }, [])
 
     return (
-        <div className="activitiesBody">
+        <div className="studentPageBody">
             <DashBoard />
             {
                 isLoading ?

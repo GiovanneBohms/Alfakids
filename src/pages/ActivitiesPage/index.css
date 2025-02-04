@@ -1,13 +1,3 @@
-.activitiesBody{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-    height: 100vh;
-    background-color: rgb(238, 238, 238);
-}
-
 .mainActivityTitleContainer{
     width: 95%;
     display: flex;

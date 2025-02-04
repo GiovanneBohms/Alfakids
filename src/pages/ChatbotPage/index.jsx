@@ -43,7 +43,7 @@ export function ChatbotPage(){
     }
 
     return(
-        <div className="chatbotBody">
+        <div className="studentPageBody">
             <DashBoard />
 
             <div className="chatbotContainer">

@@ -17,6 +17,7 @@ import { Fragment } from 'react';
 import { RegisterPage } from '../pages/RegisterPage';
 import { InitialLoadingIcon } from '../components/InitialLoadingIcon';
 import { StudentAccomplishmentPage } from '../pages/StudentAccomplishmentPage';
+import { StudentConfigPage } from '../pages/StudentConfigPage';
 
 function PrivateStudentRoute({ Component }){
     const { student_signed, isLoading } = useAuth();
@@ -72,6 +73,7 @@ export function RoutesComponent(){
                     <Route path='chatbot' element={<PrivateStudentRoute Component={ChatbotPage} />} />
                     <Route path='activities' element={<PrivateStudentRoute Component={ActivitiesPage} />} />
                     <Route path='selected-activity/:id_activity' element={<PrivateStudentRoute Component={SelectedActivityPage} />} />
+                    <Route path='config' element={<PrivateStudentRoute Component={StudentConfigPage} />} />
                     <Route path='login/professor' element={<ProfessorLogin />} />
                     <Route path='activities/management' element={<PrivateProfessorRoute Component={ActivitiesManagement} />} />
                     <Route path='activities/management/add' element={<PrivateProfessorRoute Component={AddActivityPage} />} />

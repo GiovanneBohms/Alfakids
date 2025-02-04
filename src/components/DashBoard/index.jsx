@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { MdLogout } from "react-icons/md";
 import { LuNotebook } from "react-icons/lu";
 import { GoCopilot } from "react-icons/go";
+import { DiAptana } from "react-icons/di";
 
 export function DashBoard(){
     const navigate = useNavigate()
@@ -16,6 +17,7 @@ export function DashBoard(){
                 <div className="navigationContainer">
                     <button className="navigationButton" onClick={() => navigate("/chatbot")}><GoCopilot className="navigationIcon" /></button>
                     <button className="navigationButton" onClick={() => navigate("/activities")}><LuNotebook className="navigationIcon" /></button>
+                    <button className="navigationButton" onClick={() => navigate("/config")}><DiAptana className="navigationIcon" /></button>
                 </div>
                 <div className="navigationContainer">
                     <button className="navigationButton" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
