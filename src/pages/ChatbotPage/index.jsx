@@ -2,20 +2,35 @@ import { useState } from "react"
 import { DashBoard } from "../../components/DashBoard"
 import './index.css'
 import { IoMdSend } from "react-icons/io";
+import { sendMessage } from "../../services/ChatbotService";
+import { LoadingIcon } from "../../components/LoadingIcon"
 
 export function ChatbotPage(){
 
     const [messages, setMessages] = useState([]);
+    const [responses, setResponses] = useState([]);
     const [inputMessage, setInputMessage] = useState("");
+    const [isLoadingResponse, setIsLoadingResponse] = useState(false)
 
     const handleSendMessage = () => {
         if(inputMessage.trim() !== ""){
+            setIsLoadingResponse(true)
             const newMessage = {
                 text: inputMessage,
                 timestamp: new Date(),
             };
             setMessages([...messages, newMessage]);
             setInputMessage("");
+
+            sendMessage(inputMessage).then((response) => {
+                const newResponse = {
+                    text: response.text,
+                    timestamp: new Date(),
+                };
+
+                setResponses([...responses, newResponse])
+                setIsLoadingResponse(false)
+            })
         }
     };
     
@@ -39,14 +54,29 @@ export function ChatbotPage(){
                     <div className="chatOutput">
                         {messages.length > 0 ? (
                             messages.map((msg, index) => (
-                                <div key={index} className="messageBubble">
-                                    <p className="messageBubbleText">{msg.text}</p>
-                                    <span className="timestamp">{formatDate(msg.timestamp)}</span>
+                                <div key={index} className="interactionContainer">
+                                   <div className="messageBubble">
+                                        <p className="messageBubbleText">{msg.text}</p>
+                                        <span className="timestamp">{formatDate(msg.timestamp)}</span>
+                                    </div>
+                                    {
+                                        responses[index] !== undefined ?
+                                            <div className="responseBubble">
+                                                <p className="messageBubbleText">{responses[index].text}</p>
+                                                <span className="timestamp">{formatDate(responses[index].timestamp)}</span>
+                                            </div>
+                                        :
+                                            <div className="responseBubble">
+                                                <LoadingIcon />
+                                            </div>
+                                    }
                                 </div>
-                        ))
-                        ) : (
-                            <p className="placeholder"></p>
-                        )}
+                                
+                            ))
+                        ) 
+                        :
+                            null
+                        }
                     </div>
                     
                 </div>
@@ -61,10 +91,17 @@ export function ChatbotPage(){
                         cols={143}
                         rows={7}
                     />
-
-                    <button onClick={handleSendMessage} className="sendButton">
-                        <IoMdSend />
-                    </button>
+                    {
+                        !isLoadingResponse ?
+                            <button onClick={handleSendMessage} className="sendButton">
+                                <IoMdSend />
+                            </button>
+                        :
+                            <button className="sendButtonLoading">
+                                <LoadingIcon />
+                            </button>
+                    }
+                    
                 </div>      
             </div>
         </div>

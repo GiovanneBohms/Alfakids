@@ -13,7 +13,7 @@
   --color-border: #ddd;
   --color-error-text: #cc0000;
   --shadow-light: 0 4px 6px #0000001a;
-  --trash-button-disabled-color: #d9d9d9;
+  --button-disabled-color: #d9d9d9;
   --cancel-button-color: #ff6b6b;
   --cancel-button-color-hover: #ff4a4a;
 }
