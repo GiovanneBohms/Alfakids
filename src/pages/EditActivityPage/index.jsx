@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { act, useEffect, useState } from "react"
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard"
 import "./index.css"
 import "../../styles/TableStyles.css"
@@ -16,7 +16,7 @@ import { getAllStudentsByActivityId } from "../../services/AccomplishmentsServic
 export function EditActivityPage(){
     const { id_activity } = useParams()
 
-    //const [activity, setActivity] = useState(null)
+    const [activity, setActivity] = useState()
     const [isLoading, setIsLoading] = useState(true)
     const [questions, setQuestions] = useState([])
     const [students, setStudents] = useState([])
@@ -24,18 +24,18 @@ export function EditActivityPage(){
     const [isModalOpen, setIsModalOpen] = useState(false)
     const navigate = useNavigate()
 
-    // const fetchActivity = () => {
-    //     try{
-    //         getActivityById(id_activity).then((data_activity) => {
-    //             setActivity(data_activity)
-    //         }).catch((error)=>{
-    //             console.log(error.message)
-    //         })
-    //     }
-    //     catch(error){
-    //         console.log(error.message)
-    //     }
-    // }
+    const fetchActivity = () => {
+        try{
+            getActivityById(id_activity).then((data_activity) => {
+                setActivity(data_activity)
+            }).catch((error)=>{
+                console.log(error.message)
+            })
+        }
+        catch(error){
+            console.log(error.message)
+        }
+    }
 
     const fetchStudents = () => {
         try{
@@ -64,6 +64,7 @@ export function EditActivityPage(){
 
     useEffect(() => {
         setIsLoading(true)
+        fetchActivity()
         fetchStudents()
         fetchQuestions()
     }, [])
@@ -78,12 +79,13 @@ export function EditActivityPage(){
             }
             <ProfessorDashBoard />
             {
-                isLoading ?
+                isLoading && activity === undefined ?
                     <div className="loadingContainer">
                         <LoadingIcon />
                     </div>
                 :
                     <div className="questionsSection">
+                        <p>Atividade: {activity.title}</p>
                         <h1>Envios</h1>
                             {
                                 students.length !== 0 ?

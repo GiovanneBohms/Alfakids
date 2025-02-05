@@ -153,7 +153,7 @@ export function EditClassroomPage(){
             }
             <ProfessorDashBoard />
             {
-                isLoading ?
+                isLoading || classroom === undefined ?
                     <div className="loadingContainer">
                         <LoadingIcon />
                     </div>
