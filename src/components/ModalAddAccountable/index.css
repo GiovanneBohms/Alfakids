@@ -1,0 +1,78 @@
+.modalAddAccountableBackground{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.301);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalAddAccountableBackground .modalMainSection{
+    width: 30%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--color-background);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.186);
+}
+
+.modalAddAccountableBackground .mainContentContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalAddAccountableBackground .mainTitle{
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 2rem;
+}
+
+.modalAddAccountableBackground .formAccountable{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.modalAddAccountableBackground .formAccountable div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.modalAddAccountableBackground .formAccountable div input{
+    width: 20rem;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background-color: var(--color-secondary);
+    box-shadow: var(--shadow-light);
+}
+
+.modalAddAccountableBackground .formAccountable button{
+    border: none;
+    transition: 0.2s;
+    padding: 13px;
+    background-color: var(--color-green);
+    cursor: pointer;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+
+.modalAddAccountableBackground .formAccountable button:hover{
+    background-color: var(--color-green-hover);
+}

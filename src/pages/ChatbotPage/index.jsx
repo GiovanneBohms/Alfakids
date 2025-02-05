@@ -12,6 +12,9 @@ export function ChatbotPage(){
     const [inputMessage, setInputMessage] = useState("");
     const [isLoadingResponse, setIsLoadingResponse] = useState(false)
 
+    const synth = window.speechSynthesis;
+    let voices
+
     const handleSendMessage = () => {
         if(inputMessage.trim() !== ""){
             setIsLoadingResponse(true)
@@ -30,9 +33,35 @@ export function ChatbotPage(){
 
                 setResponses([...responses, newResponse])
                 setIsLoadingResponse(false)
+                speak(newResponse.text)
             })
         }
     };
+
+    //------------------Voice Speech Module-----------------------
+
+    function loadVoices() {
+        voices = synth.getVoices();
+    }
+
+    function speak(text){
+        synth.cancel();
+        voices = synth.getVoices();
+        const utterThis = new SpeechSynthesisUtterance(text);
+
+        //Indíces - 0 para o brasileiro masculino, 1 para brasileira feminina e 16 para outra brasileira feminina
+        utterThis.voice = voices[16]
+
+        synth.speak(utterThis);
+    }
+
+    if ("onvoiceschanged" in synth) {
+        synth.onvoiceschanged = loadVoices;
+    } else {
+        loadVoices();
+    }
+
+    //--------------------------------------------------------------
     
     //Date Format
     const formatDate = (timestamp) => {
@@ -85,6 +114,12 @@ export function ChatbotPage(){
                         placeholder="Digite sua mensagem aqui..."
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !e.shiftKey) {
+                                e.preventDefault(); // Evita a quebra de linha com apenas Enter
+                                handleSendMessage(); // Chama a função de submit
+                            }
+                        }}
                         name="chatInput" 
                         id="chatInputBox"
                         className="inputBox"
