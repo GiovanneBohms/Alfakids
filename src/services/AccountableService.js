@@ -6,3 +6,9 @@ export async function getAccountablesByStudentId(){
 
     return response.data.accountables
 }
+
+export async function createAccountable(accountable){
+    const response = await api.post("/accountable/register", accountable)
+
+    console.log(response.data.accountable)
+}
