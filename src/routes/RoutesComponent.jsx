@@ -18,6 +18,7 @@ import { RegisterPage } from '../pages/RegisterPage';
 import { InitialLoadingIcon } from '../components/InitialLoadingIcon';
 import { StudentAccomplishmentPage } from '../pages/StudentAccomplishmentPage';
 import { StudentConfigPage } from '../pages/StudentConfigPage';
+import ForgotPassword from '../pages/ForgotPassword';
 
 function PrivateStudentRoute({ Component }){
     const { student_signed, isLoading } = useAuth();
@@ -70,6 +71,7 @@ export function RoutesComponent(){
                     <Route path='/' element={<LoginPage />} />
                     <Route path='login' element={<LoginPage />} />
                     <Route path='register' element={<RegisterPage />} />
+                    <Route path='forgotPassword' element={<ForgotPassword />} />
                     <Route path='chatbot' element={<PrivateStudentRoute Component={ChatbotPage} />} />
                     <Route path='activities' element={<PrivateStudentRoute Component={ActivitiesPage} />} />
                     <Route path='selected-activity/:id_activity' element={<PrivateStudentRoute Component={SelectedActivityPage} />} />
