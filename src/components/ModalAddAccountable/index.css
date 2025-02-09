@@ -76,3 +76,22 @@
 .modalAddAccountableBackground .formAccountable button:hover{
     background-color: var(--color-green-hover);
 }
+
+.mainContentContainer .closeIcon{
+    display: flex;
+    justify-content: flex-end;
+    width: 30.5%;
+    margin-bottom: 25rem;
+    position: absolute;
+}
+
+.mainContentContainer .closeIcon .closeIconItem{
+    transition: 0.2s;
+    cursor: pointer;
+    color: var(--cancel-button-color);
+    font-size: 28px;
+}
+
+.mainContentContainer .closeIcon .closeIconItem:hover{
+    color: var(--cancel-button-color-hover);
+}

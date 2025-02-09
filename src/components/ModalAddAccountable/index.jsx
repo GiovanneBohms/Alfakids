@@ -4,6 +4,7 @@ import { createAccountable } from "../../services/AccountableService"
 import { useState } from "react"
 import { LoadingIcon } from "../LoadingIcon"
 import { getCurrentStudentId } from "../../services/StudentService"
+import { IoIosCloseCircle } from "react-icons/io";
 
 export function ModalAddAccountable({ setIsModalAddAccountableOpen }){
     const [isLoading, setIsLoading] = useState(false)
@@ -30,6 +31,9 @@ export function ModalAddAccountable({ setIsModalAddAccountableOpen }){
         <div className="modalAddAccountableBackground">
             <div className="modalMainSection">
                 <div className="mainContentContainer">
+                    <div className="closeIcon" onClick={() => setIsModalAddAccountableOpen(false)}>
+                        <IoIosCloseCircle className="closeIconItem" />
+                    </div>
                     <p className="mainTitle">Adicione um responsável</p>
                     <form className="formAccountable" id="formAccountable" onSubmit={(event) => handleCreateAccountable(event)}>
                         <div>

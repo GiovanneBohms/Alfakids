@@ -42,3 +42,11 @@ h1{
   align-items: center;
   height: 100vh;
 }
+
+.welcomeText{
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  margin-right: 3rem;
+  margin-top: 1.5rem;
+}

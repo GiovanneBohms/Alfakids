@@ -7,11 +7,12 @@ import { getClassroomsByStudentId } from "../../services/ClassroomService"
 import { getAccomplishedActivities, getActivitiesByClassroomId, getUnaccomplishedActivities } from "../../services/ActivityService"
 import { useNavigate } from "react-router-dom"
 import { LoadingIcon } from "../../components/LoadingIcon"
-import { getCurrentStudentId } from "../../services/StudentService"
+import { getCurrentStudentId, getStudentById } from "../../services/StudentService"
 import { FaFolder } from "react-icons/fa"
 
 export function ActivitiesPage(){
     const [activities, setActivities] = useState([])
+    const [student, setStudent] = useState()
     const [classrooms, setClassrooms] = useState([])
     const [isRepository, setIsRepository] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -22,16 +23,24 @@ export function ActivitiesPage(){
 
     const navigate = useNavigate()
 
-    const fetchClassrooms = async () => {
+    const fetchClassrooms = () => {
         getClassroomsByStudentId(getCurrentStudentId()).then((data) => {
             setClassrooms(data)
-            setIsLoading(false)
         }).catch((error)=>{
             if(error.status == 404){
                 setClassrooms(null)
                 setIsLoading(false)
             }
         })
+    }
+
+    const fetchStudent = () => {
+        getStudentById(getCurrentStudentId()).then((data) => {
+            setStudent(data)
+            setIsLoading(false)
+        }).catch((error) => {
+            console.log(error.message)
+        }) 
     }
 
     function fetchUnaccomplishedActivities(classroom){
@@ -83,16 +92,18 @@ export function ActivitiesPage(){
 
     useEffect(() => {
         fetchClassrooms()
+        fetchStudent()
     }, [])
 
     return (
         <div className="studentPageBody">
             <DashBoard />
             {
-                isLoading ?
+                isLoading || student == undefined || classrooms == [] ?
                     <LoadingIcon />
                 :
                     <div className="contentSection">
+                        <p className="welcomeText" onClick={() => navigate("/config")}>Bem vindo, {student.name}</p>
                         <div className="classroomsSection">
                             {
                                 classrooms !== null ?

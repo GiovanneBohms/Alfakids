@@ -85,8 +85,8 @@ export function EditActivityPage(){
                     </div>
                 :
                     <div className="questionsSection">
-                        <p>Atividade: {activity.title}</p>
-                        <h1>Envios</h1>
+                        <h1>Atividade: {activity.title}</h1>
+                        <h2>Envios</h2>
                             {
                                 students.length !== 0 ?
                                     <div className="studentsAccomplishmentsSection">
@@ -115,7 +115,7 @@ export function EditActivityPage(){
                             }
                             
                         
-                        <h1>Questões</h1>
+                        <h2>Questões</h2>
                         <div className="btnQuestionOptionsContainer">
                             <button className="addButton" onClick={() => navigate(`/activities/management/edit/question/add/${id_activity}`)}><IoMdAdd /></button>
                             <button className="shareButton" onClick={() => setIsModalOpen(true)}><FaCodeFork /></button>
