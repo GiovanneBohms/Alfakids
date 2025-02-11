@@ -72,7 +72,7 @@ export function LoginPage(){
                             null
                     }
                     <div className="linkSection">
-                        <a href="#" className="forgotPasswordLink">Esqueci a senha</a>
+                        <a href="/forgotPassword" className="forgotPasswordLink">Esqueci a senha</a>
                         <a href="/register" className="registerLink">Cadastrar</a>
                     </div>
                     <div className="bottomSideContainer">
