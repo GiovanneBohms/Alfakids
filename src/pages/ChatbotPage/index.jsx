@@ -27,7 +27,7 @@ export function ChatbotPage(){
 
             sendMessage(inputMessage).then((response) => {
                 const newResponse = {
-                    text: response.text,
+                    text: response,
                     timestamp: new Date(),
                 };
 
