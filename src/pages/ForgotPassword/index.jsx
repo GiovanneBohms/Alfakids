@@ -24,20 +24,30 @@ const ForgotPassword = () => {
     setIsLoading(true);
     setMessage('');
 
-    // Simulação de chamada à API para recuperação de senha
     try {
-      // Aqui você faria a requisição para o seu backend, por exemplo:
-      // await fetch('/api/forgot-password', { method: 'POST', body: JSON.stringify({ email }) });
+      // Realiza a requisição para o backend
+      const response = await fetch('http://localhost:5000/forgot-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }), // Passando o e-mail no corpo da requisição
+      });
 
-      // Simulando uma resposta positiva
-      setTimeout(() => {
-        setIsLoading(false);
+      const data = await response.json();
+
+      if (response.ok) {
+        // Caso o envio do e-mail seja bem-sucedido
         setMessage('Instruções para redefinir sua senha foram enviadas para o e-mail.');
-      }, 2000);
+      } else {
+        // Caso haja algum erro (e-mail não encontrado ou erro no backend)
+        setMessage(data.error || 'Ocorreu um erro. Tente novamente mais tarde.');
+      }
     } catch (error) {
       setIsLoading(false);
       setMessage('Ocorreu um erro. Tente novamente mais tarde.');
     }
+    setIsLoading(false);
   };
 
   return (
