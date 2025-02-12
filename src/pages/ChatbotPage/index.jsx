@@ -6,6 +6,7 @@ import { sendMessage } from "../../services/ChatbotService";
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { getCurrentStudentId, getStudentById } from "../../services/StudentService";
 import { useNavigate } from "react-router-dom";
+import { MessageBubble } from "../../components/MessageBubble";
 
 export function ChatbotPage(){
 
@@ -79,14 +80,6 @@ export function ChatbotPage(){
 
     //--------------------------------------------------------------
     
-    //Date Format
-    const formatDate = (timestamp) => {
-        const today = new Date();
-        const isToday = timestamp.toDateString() === today.toDateString();
-        const time = timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        return isToday ? `Hoje às ${time}` : timestamp.toLocaleString();
-    }
-
     useEffect(() => {
         fetchStudent()
     }, [])
@@ -102,23 +95,17 @@ export function ChatbotPage(){
                     <div className="chatbotContainer">
                         <div className="chatbotContentSection">
                             <p className="welcomeText" onClick={() => navigate("/config")}>Bem vindo, {student.name}</p>
-                            <div>
+                            {/* <div>
                                 <h1>Assistente Virtual</h1>
-                            </div>
+                            </div> */}
                             <div className="chatOutput">
                                 {messages.length > 0 ? (
                                     messages.map((msg, index) => (
                                         <div key={index} className="interactionContainer">
-                                        <div className="messageBubble">
-                                                <p className="messageBubbleText">{msg.text}</p>
-                                                <span className="timestamp">{formatDate(msg.timestamp)}</span>
-                                            </div>
+                                            <MessageBubble msg={msg} type="request" />
                                             {
                                                 responses[index] !== undefined ?
-                                                    <div className="responseBubble">
-                                                        <p className="messageBubbleText">{responses[index].text}</p>
-                                                        <span className="timestamp">{formatDate(responses[index].timestamp)}</span>
-                                                    </div>
+                                                    <MessageBubble msg={responses[index]} type="response" />
                                                 :
                                                     <div className="responseBubble">
                                                         <LoadingIcon />
