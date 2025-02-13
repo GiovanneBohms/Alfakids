@@ -1,0 +1,42 @@
+/* --------- Bubbles Messages ---------- */
+
+.messageBubbleContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.requestContainer{
+    align-items: flex-end;
+}
+
+.responseContainer{
+    align-items: flex-start;
+}
+
+.messageBubble {
+    color: var(--color-text);
+    max-width: 70%;
+    margin: 0;
+    padding: 0px 10px;
+    word-wrap: break-word; /* Forca a quebra de palavra longa */
+    word-break: break-word; /* Forca a quebra de palavra longa */
+    overflow-wrap: break-word; /* Forca a quebra de palavra longa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+}
+
+.request{
+    border-radius: 20px;
+    background: rgb(214, 212, 212);
+}
+
+.response{
+    max-width: 100%;
+    box-shadow: none;
+    /* background: rgb(214, 212, 212); */
+    
+}
+/* ----------------------------------- */
