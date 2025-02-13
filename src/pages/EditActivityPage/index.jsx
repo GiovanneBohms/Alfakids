@@ -79,7 +79,7 @@ export function EditActivityPage(){
             }
             <ProfessorDashBoard />
             {
-                isLoading && activity === undefined ?
+                isLoading || activity === undefined ?
                     <div className="loadingContainer">
                         <LoadingIcon />
                     </div>

@@ -20,7 +20,6 @@
 
 .optionsContainer ul{
     list-style: none;
-
 }
 
 .optionsContainer ul li{
@@ -29,6 +28,13 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.optionsContainer ul .accountableItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .option{
@@ -48,9 +54,10 @@
     border: none;
     padding: 10px;
     border-radius: 10px;
-    
     color: white;
     cursor: pointer;
+    height: 2.1rem;
+    width: 2.1rem;
 }
 
 .add{
@@ -67,4 +74,12 @@
 
 .edit:hover{
     background-color: var(--color-primary-hover);
+}
+
+.remove{
+    background-color: var(--cancel-button-color);
+}
+
+.remove:hover{
+    background-color: var(--cancel-button-color-hover);
 }

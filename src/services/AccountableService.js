@@ -12,3 +12,9 @@ export async function createAccountable(accountable){
 
     console.log(response.data.accountable)
 }
+
+export async function deleteAccountable(id_accountable){
+    const response = await api.delete(`/accountable/delete/${id_accountable}`)
+
+    console.log(response.data)
+}
