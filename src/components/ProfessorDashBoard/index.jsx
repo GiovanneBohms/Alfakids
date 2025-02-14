@@ -4,6 +4,7 @@ import "../../styles/DashBoardStyles.css"
 import { MdLogout } from "react-icons/md"
 import { SiGoogleclassroom } from "react-icons/si";
 import { LuNotebookPen } from "react-icons/lu";
+import { IoIosSearch } from "react-icons/io";
 
 export function ProfessorDashBoard(){
     const navigate = useNavigate()
@@ -16,6 +17,7 @@ export function ProfessorDashBoard(){
                 <div className="navigationContainer">
                     <button className="navigationButton" onClick={() => navigate("/activities/management")}><LuNotebookPen className="navigationIcon" /></button>
                     <button className="navigationButton" onClick={() => navigate("/classroom/management")}><SiGoogleclassroom className="navigationIcon" /></button>
+                    <button className="navigationButton" onClick={() => navigate("/search")}><IoIosSearch className="navigationIcon" /></button>
                 </div>
                 <div className="navigationContainer">
                     <button className="navigationButton" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>

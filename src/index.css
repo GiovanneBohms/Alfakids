@@ -50,3 +50,12 @@ h1{
   margin-right: 3rem;
   margin-top: 1.5rem;
 }
+
+.professorPageBody{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  height: 100vh;
+}

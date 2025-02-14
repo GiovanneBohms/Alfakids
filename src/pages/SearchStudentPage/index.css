@@ -1,0 +1,46 @@
+.searchContentSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+}
+
+.searchBarContainer{
+    width: 55%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.searchBar{
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+.searchIcon{
+    position: absolute;
+    margin-left: 13px;
+    margin-bottom: 5px;
+}
+
+.studentsListSection{
+    width: 60%;
+}
+
+.studentsList{
+    list-style: none;
+}
+
+.studentsList li{
+    padding: 30px;
+    cursor: pointer;
+}
+
+.studentsList li:hover{
+    background-color: var(--color-secondary);
+}
