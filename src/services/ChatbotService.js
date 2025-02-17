@@ -1,16 +1,32 @@
-import { getCurrentStudentId } from "./StudentService";
-import { api } from "../apiBaseURL";
-import { data } from "react-router-dom";
-
 const modelURL = "http://localhost:11434/api/generate"
 
-export async function sendMessage(message){
-    let data = {};
-    data.model = "AlfaCopilot"
-    data.prompt = message
-    data.stream = false
+export async function sendMessage(message, onUpdate) {
+    const data = {
+        model: "AlfaCopilot",
+        prompt: message,
+        stream: true
+    };
 
-    const response = await api.post(modelURL, data)
+    const response = await fetch(modelURL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
 
-    return response.data.response
+    if (!response.body) return;
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+
+        // Atualiza a UI em tempo real
+        onUpdate(JSON.parse(chunk));
+    }
 }
