@@ -40,3 +40,9 @@ export async function registerStudent(student){
 
     console.log(response.data.student)
 }
+
+export async function updateStudentPassword(email, password){
+    const response = await api.put(`/student/update/password/${email}`, {password})
+
+    return response.data.student
+}
