@@ -32,8 +32,9 @@ export function ChatbotPage(){
     }
 
     const handleSendMessage = () => {
-        if(inputMessage.trim() !== ""){
-            setIsLoadingResponse(true)
+        if (inputMessage.trim() !== "") {
+            setIsLoadingResponse(true);
+
             const newMessage = {
                 text: inputMessage,
                 timestamp: new Date(),
@@ -41,16 +42,25 @@ export function ChatbotPage(){
             setMessages([...messages, newMessage]);
             setInputMessage("");
 
-            sendMessage(inputMessage).then((response) => {
-                const newResponse = {
-                    text: response,
-                    timestamp: new Date(),
-                };
+            let responseText = ""; // Acumular a resposta aqui
 
-                setResponses([...responses, newResponse])
-                setIsLoadingResponse(false)
-                speak(newResponse.text)
-            })
+            sendMessage(inputMessage, (chunk) => {
+                responseText += chunk.response;
+
+                responses.push({timestamp: new Date()})
+                setResponses((prevResponses) => {
+                    const updatedResponses = [...prevResponses];
+                    console.log(updatedResponses.length)
+                    const index = updatedResponses.length - 1;
+
+                    updatedResponses[index] = {...updatedResponses[index], text: responseText};
+
+                    return updatedResponses;
+                });
+            }).then(() => {
+                setIsLoadingResponse(false);
+                speak(responseText);
+            });
         }
     };
 
@@ -67,7 +77,7 @@ export function ChatbotPage(){
 
         console.log(voices)
         //Indíces - 0 para o brasileiro masculino, 1 para brasileira feminina e 16 para outra brasileira feminina
-        utterThis.voice = voices[16]
+        utterThis.voice = voices[24]
 
         synth.speak(utterThis);
     }
