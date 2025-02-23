@@ -19,6 +19,8 @@ import { InitialLoadingIcon } from '../components/InitialLoadingIcon';
 import { StudentAccomplishmentPage } from '../pages/StudentAccomplishmentPage';
 import { StudentConfigPage } from '../pages/StudentConfigPage';
 import ForgotPassword from '../pages/ForgotPassword';
+import { SearchStudentPage } from '../pages/SearchStudentPage';
+import { RecoverPassword } from '../pages/RecoverPassword';
 
 function PrivateStudentRoute({ Component }){
     const { student_signed, isLoading } = useAuth();
@@ -72,6 +74,7 @@ export function RoutesComponent(){
                     <Route path='login' element={<LoginPage />} />
                     <Route path='register' element={<RegisterPage />} />
                     <Route path='forgotPassword' element={<ForgotPassword />} />
+                    <Route path='student/recover-password' element={<RecoverPassword />} />
                     <Route path='chatbot' element={<PrivateStudentRoute Component={ChatbotPage} />} />
                     <Route path='activities' element={<PrivateStudentRoute Component={ActivitiesPage} />} />
                     <Route path='selected-activity/:id_activity' element={<PrivateStudentRoute Component={SelectedActivityPage} />} />
@@ -86,6 +89,7 @@ export function RoutesComponent(){
                     <Route path='activities/management/edit/question/edit/:id_question' element={<PrivateProfessorRoute Component={EditQuestionPage} />} />
                     <Route path='activities/management/edit/question/add/:id_activity' element={<PrivateProfessorRoute Component={AddQuestionPage} />} />
                     <Route path='accomplishment/:id_activity/:id_student' element={<PrivateRoute Component={StudentAccomplishmentPage} />} />
+                    <Route path='search' element={<PrivateProfessorRoute Component={SearchStudentPage} />} />
                 </Routes>
             </Fragment>
         </BrowserRouter>
