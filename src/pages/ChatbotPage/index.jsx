@@ -32,44 +32,45 @@ export function ChatbotPage(){
     }
 
     const handleSendMessage = () => {
-        let context = ""
-
-        if(messages.length !== 0){
-            for (let i = 0; i < messages.length; i++) {
-                context += `Usuário: "${messages[i].text}"\n`
-                context += `Assistente: "${responses[i].text}"\n`
-                context += `Usuário: "${inputMessage}"\n`
-            }
-            console.log(context)
-        } else{
-            context = inputMessage
-        }
-
+        let context = []
         
-        if (context.trim() !== "") {
+        if (inputMessage.trim() !== "") {
             
             setIsLoadingResponse(true);
 
             const newMessage = {
-                text: inputMessage,
-                timestamp: new Date(),
+                content: inputMessage,
+                role: "user",
             };
+
+            if(messages.length !== 0){
+                for (let i = 0; i < messages.length; i++) {
+                    context.push(messages[i])
+                    context.push(responses[i])
+                    context.push(newMessage)
+                }
+                console.log(context)
+            } else{
+                context.push(newMessage)
+            }
+
             setMessages([...messages, newMessage]);
             setInputMessage("");
 
             let responseText = ""; // Acumular a resposta aqui
 
+            console.log("Context: ", context)
             sendMessage(context, (chunk) => {
                 
-                responseText += chunk.response;
+                responseText += chunk.message.content;
 
-                responses.push({timestamp: new Date()})
+                responses.push({})
                 setResponses((prevResponses) => {
                     const updatedResponses = [...prevResponses];
                     console.log(updatedResponses.length)
                     const index = updatedResponses.length - 1;
 
-                    updatedResponses[index] = {...updatedResponses[index], text: responseText};
+                    updatedResponses[index] = {...updatedResponses[index], content: responseText, role: "assistant"};
 
                     return updatedResponses;
                 });

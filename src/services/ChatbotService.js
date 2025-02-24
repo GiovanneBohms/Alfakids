@@ -1,12 +1,12 @@
-const modelURL = "http://localhost:11434/api/generate"
+const modelURL = "http://localhost:11434/api/chat"
 
-export async function sendMessage(message, onUpdate) {
+export async function sendMessage(context, onUpdate) {
+    console.log("Recebi: ", context)
     const data = {
         model: "AlfaCopilot",
-        prompt: message,
-        stream: true
+        messages: context
     };
-
+    
     const response = await fetch(modelURL, {
         method: "POST",
         headers: {
@@ -26,6 +26,7 @@ export async function sendMessage(message, onUpdate) {
 
         const chunk = decoder.decode(value, { stream: true });
 
+        console.log(chunk)
         // Atualiza a UI em tempo real
         onUpdate(JSON.parse(chunk));
     }
