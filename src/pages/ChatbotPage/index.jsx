@@ -32,7 +32,22 @@ export function ChatbotPage(){
     }
 
     const handleSendMessage = () => {
-        if (inputMessage.trim() !== "") {
+        let context = ""
+
+        if(messages.length !== 0){
+            for (let i = 0; i < messages.length; i++) {
+                context += `Usuário: "${messages[i].text}"\n`
+                context += `Assistente: "${responses[i].text}"\n`
+                context += `Usuário: "${inputMessage}"\n`
+            }
+            console.log(context)
+        } else{
+            context = inputMessage
+        }
+
+        
+        if (context.trim() !== "") {
+            
             setIsLoadingResponse(true);
 
             const newMessage = {
@@ -44,7 +59,8 @@ export function ChatbotPage(){
 
             let responseText = ""; // Acumular a resposta aqui
 
-            sendMessage(inputMessage, (chunk) => {
+            sendMessage(context, (chunk) => {
+                
                 responseText += chunk.response;
 
                 responses.push({timestamp: new Date()})
