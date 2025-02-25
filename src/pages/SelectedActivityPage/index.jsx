@@ -51,7 +51,7 @@ export function SelectedActivityPage(){
         <div className="selectedActivityPage">
             <DashBoard />
             {
-                isLoading ?
+                isLoading || activity == null ?
                     <LoadingIcon />
                 :
                     <div className="questionsSection">

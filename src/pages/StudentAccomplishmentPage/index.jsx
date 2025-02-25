@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import "./index.css"
 import { useEffect, useState } from "react"
 import { getActivityById } from "../../services/ActivityService"
@@ -60,6 +60,7 @@ export function StudentAccomplishmentPage(){
     }
 
     function fetchAnswers(questions){
+        console.log("Questions: ", questions)
         for(let i = 0; i < questions.length; i++){
             getAnswerByQuestionAndStudentId(questions[i].id, id_student).then((data) => {
                 const id_question = questions[i].id
@@ -82,6 +83,7 @@ export function StudentAccomplishmentPage(){
                 }
 
                 if(i == (questions.length - 1)){
+                    console.log("Entrei: ", answers)
                     setIsLoading(false)
                 }
             }).catch((error) => {
@@ -106,6 +108,7 @@ export function StudentAccomplishmentPage(){
                     }
 
                     if(i == (questions.length - 1)){
+                        console.log("Entrei: ", answers)
                         setIsLoading(false)
                     }
                 } else{
@@ -137,9 +140,12 @@ export function StudentAccomplishmentPage(){
                     <div className="questionsSection">
                         <h1>Envio de {student.name}</h1>
                         <h2>Atividade: {activity.title}</h2>
-                        {answers.map((answer, index) => (
-                            <AnswerForm key={index} answer={answer} />
-                        ))}
+                        {console.log(answers)}
+                        {
+                            answers.map((answer, index) => (
+                                <AnswerForm key={index} answer={answer} />
+                            ))
+                        }
                     </div>
             }
         </div>
