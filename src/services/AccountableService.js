@@ -1,8 +1,8 @@
 import { api } from "../apiBaseURL";
 import { getCurrentStudentId } from "./StudentService";
 
-export async function getAccountablesByStudentId(){
-    const response = await api.get(`/accountable/findByStudentId/${getCurrentStudentId()}`)
+export async function getAccountablesByStudentId(idStudent){
+    const response = await api.get(`/accountable/findByStudentId/${idStudent}`)
 
     return response.data.accountables
 }

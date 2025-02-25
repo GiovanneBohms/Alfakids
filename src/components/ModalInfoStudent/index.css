@@ -1,0 +1,57 @@
+.modalInfoStudentBg{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.436);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalInfoStudentContainer{
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    max-height: 50%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modalInfoStudentContainer p{
+    width: 100%;
+}
+
+.modalInfoStudentContainer ul{
+    width: 100%;
+}
+
+.modalInfoStudentContainer .closeIcon{
+    display: flex;
+    justify-content: flex-end;
+    width: 22.5%;
+    margin-top: -10px;
+    position: absolute;
+}
+
+.modalInfoStudentContainer .closeIcon .closeIconItem{
+    transition: 0.2s;
+    cursor: pointer;
+    color: var(--cancel-button-color);
+    font-size: 28px;
+}
+
+.modalInfoStudentContainer .closeIcon .closeIconItem:hover{
+    color: var(--cancel-button-color-hover);
+}
+
+.noAccountablesCase{
+    list-style: none;
+    color: rgb(164, 164, 164);
+}

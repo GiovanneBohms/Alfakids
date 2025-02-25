@@ -5,6 +5,7 @@ import "./index.css"
 import { MdDelete, MdEdit } from "react-icons/md"
 import { IoMdAdd } from "react-icons/io"
 import { ModalAddAccountable } from "../../components/ModalAddAccountable"
+import { getCurrentStudentId } from "../../services/StudentService"
 
 export function StudentConfigPage(){
 
@@ -14,7 +15,7 @@ export function StudentConfigPage(){
     const [isModalAddOpen, setIsModalAddOpen] = useState(false)
 
     const fetchAccountables = () => {
-        getAccountablesByStudentId().then((data) => {
+        getAccountablesByStudentId(getCurrentStudentId()).then((data) => {
             setAccountables(data)
             isLoading(false)
         }).catch((error) => {
