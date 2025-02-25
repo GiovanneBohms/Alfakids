@@ -26,6 +26,7 @@ export function ModalInfoStudent({student, accountables, setModalOpen}){
                                 <div>
                                     <p>Nome: {accountable.name}</p>
                                     <p>Email: {accountable.email}</p>
+                                    <p>Telefone: {accountable.telephone}</p>
                                 </div>
                             </li>
                         ))
