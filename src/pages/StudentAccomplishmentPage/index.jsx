@@ -9,6 +9,7 @@ import { getCurrentStudentId, getStudentById } from "../../services/StudentServi
 import { getAnswerByQuestionAndStudentId } from "../../services/AnswerService"
 import { AnswerForm } from "../../components/AnswerForm"
 import { DashBoard } from "../../components/DashBoard"
+import { sendMessage, sendUniqueMessage } from "../../services/ChatbotService"
 
 export function StudentAccomplishmentPage(){
     const { id_activity, id_student } = useParams()
@@ -16,7 +17,7 @@ export function StudentAccomplishmentPage(){
     const [activity, setActivity] = useState(null)
     const [student, setStudent] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    const [questions, setQuestions] = useState([])
+    const [isLoadingSugestion, setIsLoadingSugestion] = useState(false)
 
     const [answers, setAnswers] = useState([])
 
@@ -49,7 +50,6 @@ export function StudentAccomplishmentPage(){
     function fetchQuestions(){
         try{
             getQuestionsByActivityId(id_activity).then((data) => {
-                setQuestions(data)
                 fetchAnswers(data)
             }).catch((error) => {
                 console.log(error.message)
@@ -61,6 +61,7 @@ export function StudentAccomplishmentPage(){
 
     function fetchAnswers(questions){
         console.log("Questions: ", questions)
+        const sugestion = ""
         for(let i = 0; i < questions.length; i++){
             getAnswerByQuestionAndStudentId(questions[i].id, id_student).then((data) => {
                 const id_question = questions[i].id
@@ -71,7 +72,7 @@ export function StudentAccomplishmentPage(){
                 if(type == "discursive"){
                     const expected_answer = questions[i].expected_answer
 
-                    answers.push({id_question, statement, type, expected_answer, student_answer})
+                    answers.push({id_question, statement, type, expected_answer, student_answer, sugestion})
                 } else{
                     const answer1 = questions[i].answer1
                     const answer2 = questions[i].answer2
@@ -79,11 +80,10 @@ export function StudentAccomplishmentPage(){
                     const answer4 = questions[i].answer4
                     const right_answer = questions[i].right_answer
 
-                    answers.push({id_question, statement, type, answer1, answer2, answer3, answer4, right_answer, student_answer})
+                    answers.push({id_question, statement, type, answer1, answer2, answer3, answer4, right_answer, student_answer, sugestion})
                 }
 
                 if(i == (questions.length - 1)){
-                    console.log("Entrei: ", answers)
                     setIsLoading(false)
                 }
             }).catch((error) => {
@@ -96,7 +96,7 @@ export function StudentAccomplishmentPage(){
                     if(type == "discursive"){
                         const expected_answer = questions[i].expected_answer
 
-                        answers.push({id_question, statement, type, expected_answer, student_answer})
+                        answers.push({id_question, statement, type, expected_answer, student_answer, sugestion})
                     } else{
                         const answer1 = questions[i].answer1
                         const answer2 = questions[i].answer2
@@ -104,11 +104,10 @@ export function StudentAccomplishmentPage(){
                         const answer4 = questions[i].answer4
                         const right_answer = questions[i].right_answer
 
-                        answers.push({id_question, statement, type, answer1, answer2, answer3, answer4, right_answer, student_answer})
+                        answers.push({id_question, statement, type, answer1, answer2, answer3, answer4, right_answer, student_answer, sugestion})
                     }
 
                     if(i == (questions.length - 1)){
-                        console.log("Entrei: ", answers)
                         setIsLoading(false)
                     }
                 } else{
@@ -116,6 +115,27 @@ export function StudentAccomplishmentPage(){
                 }
             })
         }
+    }
+
+    function sugestCorrectAnswer(answer, index){
+        setIsLoadingSugestion(true)
+        let content = ""
+        if(answer.type === "discursive"){
+            content = `Faça a correção da seguinte pergunta: ${answer.statement}; O aluno respondeu o seguinte: ${answer.student_answer}; A resposta esperada pelo professor é a seguinte: ${answer.expected_answer}. Fale diretamente com o aluno ajudando-o a resolver essa questão.`;
+        } else{
+            content = `Faça a correção da seguinte pergunta: ${answer.statement}; O aluno respondeu o seguinte: ${answer.student_answer}; A resposta certa é a seguinte: ${answer.right_answer}. Fale diretamente com o aluno ajudando-o a resolver essa questão.`;
+        }
+        
+        let responseText = ""; // Acumular a resposta aqui
+        console.log("Context: ", content)
+        sendUniqueMessage(content, (chunk) => {
+                
+            responseText += chunk.response;
+
+            answers[index] = {...answers[index], sugestion: responseText}
+        }).then(() => {
+            setIsLoadingSugestion(false);
+        });
     }
 
     useEffect(() => {
@@ -143,7 +163,7 @@ export function StudentAccomplishmentPage(){
                         {console.log(answers)}
                         {
                             answers.map((answer, index) => (
-                                <AnswerForm key={index} answer={answer} />
+                                <AnswerForm key={index} answer={answer} index={index} generateSugestion={sugestCorrectAnswer}/>
                             ))
                         }
                     </div>

@@ -1,6 +1,6 @@
 import "./index.css"
 
-export function AnswerForm({ answer }){
+export function AnswerForm({ answer, generateSugestion, index }){
     return(
         <div className="answerFormContainer">
             <div className="answerFormStatementContainer">
@@ -26,7 +26,12 @@ export function AnswerForm({ answer }){
                                     <textarea id="" value="" disabled type="text"></textarea>
                                 </div>
                         }
-                        
+                        {
+                            answer.sugestion !== "" &&
+                                <div>
+                                    <p>{answer.sugestion}</p>
+                                </div>
+                        }
                     </div>
                 :   
 
@@ -55,8 +60,17 @@ export function AnswerForm({ answer }){
                                     <textarea id="" value="" disabled type="text"></textarea>
                                 </div>
                         }
+                        {
+                            answer.sugestion !== "" &&
+                                <div>
+                                    <p>{answer.sugestion}</p>
+                                </div>
+                        }
                     </div>
             }
+            <div>
+                <button onClick={() => generateSugestion(answer, index)}>Sugestao</button>
+            </div>
         </div>
     )
 }
