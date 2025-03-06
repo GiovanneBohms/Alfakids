@@ -17,7 +17,6 @@ export function StudentAccomplishmentPage(){
     const [activity, setActivity] = useState(null)
     const [student, setStudent] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    const [isLoadingSugestion, setIsLoadingSugestion] = useState(false)
 
     const [answers, setAnswers] = useState([])
 
@@ -49,18 +48,18 @@ export function StudentAccomplishmentPage(){
 
     function fetchQuestions(){
         try{
-            getQuestionsByActivityId(id_activity).then((data) => {
-                fetchAnswers(data)
-            }).catch((error) => {
-                console.log(error.message)
-            })
+            console.log("Fetch Questions")
+            if(answers.length == 0){
+                getQuestionsByActivityId(id_activity).then((data) => {
+                    fetchAnswers(data)
+                })
+            }
         } catch(error){
             console.log(error.message)
         }
     }
 
     function fetchAnswers(questions){
-        console.log("Questions: ", questions)
         const sugestion = ""
         for(let i = 0; i < questions.length; i++){
             getAnswerByQuestionAndStudentId(questions[i].id, id_student).then((data) => {
@@ -117,27 +116,6 @@ export function StudentAccomplishmentPage(){
         }
     }
 
-    function sugestCorrectAnswer(answer, index){
-        setIsLoadingSugestion(true)
-        let content = ""
-        if(answer.type === "discursive"){
-            content = `Faça a correção da seguinte pergunta: ${answer.statement}; O aluno respondeu o seguinte: ${answer.student_answer}; A resposta esperada pelo professor é a seguinte: ${answer.expected_answer}. Fale diretamente com o aluno ajudando-o a resolver essa questão.`;
-        } else{
-            content = `Faça a correção da seguinte pergunta: ${answer.statement}; O aluno respondeu o seguinte: ${answer.student_answer}; A resposta certa é a seguinte: ${answer.right_answer}. Fale diretamente com o aluno ajudando-o a resolver essa questão.`;
-        }
-        
-        let responseText = ""; // Acumular a resposta aqui
-        console.log("Context: ", content)
-        sendUniqueMessage(content, (chunk) => {
-                
-            responseText += chunk.response;
-
-            answers[index] = {...answers[index], sugestion: responseText}
-        }).then(() => {
-            setIsLoadingSugestion(false);
-        });
-    }
-
     useEffect(() => {
         fetchActivity()
         fetchStudent()
@@ -160,10 +138,9 @@ export function StudentAccomplishmentPage(){
                     <div className="questionsSection">
                         <h1>Envio de {student.name}</h1>
                         <h2>Atividade: {activity.title}</h2>
-                        {console.log(answers)}
                         {
                             answers.map((answer, index) => (
-                                <AnswerForm key={index} answer={answer} index={index} generateSugestion={sugestCorrectAnswer}/>
+                                <AnswerForm key={index} answer={answer} student_name={student.name} index={index}/>
                             ))
                         }
                     </div>

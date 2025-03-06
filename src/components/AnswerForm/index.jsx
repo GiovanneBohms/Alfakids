@@ -1,10 +1,40 @@
+import { useState } from "react"
+import { LoadingIcon } from "../LoadingIcon"
 import "./index.css"
+import { sendUniqueMessage } from "../../services/ChatbotService"
+import { MdOutlineTipsAndUpdates } from "react-icons/md";
 
-export function AnswerForm({ answer, generateSugestion, index }){
+export function AnswerForm({ answer, student_name, index }){
+    const [isLoadingSugestion, setIsLoadingSugestion] = useState(false)
+    const [sugestion, setSugestion] = useState("")
+
+    function sugestCorrectAnswer(){
+        setIsLoadingSugestion(true)
+
+        let content = ""
+
+        if(answer.type === "discursive"){
+            content = `Faça a correção da seguinte pergunta: ${answer.statement}; O aluno respondeu o seguinte: ${answer.student_answer}; A resposta esperada pelo professor é a seguinte: ${answer.expected_answer}. O nome do aluno é ${student_name}. Fale diretamente com o aluno ajudando-o a resolver essa questão.`;
+        } else{
+            content = `Faça a correção da seguinte pergunta: ${answer.statement}; O aluno respondeu o seguinte: ${answer.student_answer}; A resposta certa é a seguinte: ${answer.right_answer}. O nome do aluno é ${student_name}. Fale diretamente com o aluno ajudando-o a resolver essa questão.`;
+        }
+        
+        let responseText = "";
+
+        sendUniqueMessage(content, (chunk) => {
+            responseText += chunk.response;
+
+            setSugestion(responseText)
+
+        }).then(() => {
+            setIsLoadingSugestion(false);
+        });
+    }
+
     return(
         <div className="answerFormContainer">
             <div className="answerFormStatementContainer">
-                <p>{answer.statement}</p>
+                <p>{index+1} - {answer.statement}</p>
             </div>
             {
                 //-------------------DISCURSIVE----------------------------------------
@@ -26,12 +56,9 @@ export function AnswerForm({ answer, generateSugestion, index }){
                                     <textarea id="" value="" disabled type="text"></textarea>
                                 </div>
                         }
-                        {
-                            answer.sugestion !== "" &&
-                                <div>
-                                    <p>{answer.sugestion}</p>
-                                </div>
-                        }
+                        <div className="sugestionTextDiscursive">
+                            <p>{sugestion}</p>
+                        </div>
                     </div>
                 :   
 
@@ -60,16 +87,18 @@ export function AnswerForm({ answer, generateSugestion, index }){
                                     <textarea id="" value="" disabled type="text"></textarea>
                                 </div>
                         }
-                        {
-                            answer.sugestion !== "" &&
-                                <div>
-                                    <p>{answer.sugestion}</p>
-                                </div>
-                        }
+                        <div className="sugestionTextObjective">
+                            <p>{sugestion}</p>
+                        </div>
                     </div>
             }
-            <div>
-                <button onClick={() => generateSugestion(answer, index)}>Sugestao</button>
+            <div className="sugestionContainer">
+                {
+                    isLoadingSugestion ?
+                        <button className="sugestionBtnLoading">Carregando...</button>
+                    :
+                        <button className="sugestionBtn" onClick={() => sugestCorrectAnswer()}><MdOutlineTipsAndUpdates /></button>
+                }
             </div>
         </div>
     )

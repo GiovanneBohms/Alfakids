@@ -36,7 +36,8 @@ export async function sendMessage(context, onUpdate) {
 export async function sendUniqueMessage(context, onUpdate){
     const data = {
         model: "AlfaCopilot",
-        prompt: context
+        prompt: context,
+        stream: true
     };
     
     const response = await fetch(uniqueMessageURL, {

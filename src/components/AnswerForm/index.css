@@ -8,6 +8,7 @@
     align-items: center;
     border-style: none;
     border-top: 1px solid rgb(170, 0, 0);
+    text-align: justify;
 }
 
 .answerFormStatementContainer{
@@ -114,4 +115,56 @@
     outline: none;
     background-color: var(--color-secondary);
     padding: 20px;
+    resize: none;
+}
+
+.loadingSugestion{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sugestionContainer{
+    width: 85%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sugestionBtn{
+    transition: 0.2s;
+    display: block;
+    align-content: center;
+    color: rgb(163, 163, 0);
+    font-size: 25px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.sugestionBtn:hover{
+    color: var(--color-green-hover);
+}
+
+.sugestionBtnLoading{
+    transition: 0.5s;
+    display: block;
+    align-content: center;
+    color: var(--color-green-hover);
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.sugestionTextObjective{
+    width: 100%;
+    color: var(--color-tip);
+}
+
+.sugestionTextDiscursive{
+    width: 80%;
+    color: var(--color-tip);
 }
