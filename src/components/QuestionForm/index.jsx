@@ -7,6 +7,8 @@ import { getCurrentStudentId } from "../../services/StudentService";
 import { accomplishActivity } from "../../services/AccomplishmentsService";
 import { useNavigate } from "react-router-dom";
 import { LoadingIcon } from "../LoadingIcon";
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import "regenerator-runtime/runtime";
 
 export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }){
 
@@ -18,6 +20,20 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
     const [counterOfAnswersCreated, setCounterOfAnswersCreated] = useState(0)
 
     const [accomplish, setAccomplish] = useState(false)
+
+    function speechSendActivity(){
+        SpeechRecognition.stopListening()
+        setAccomplish(true)
+    }
+
+    const commands = [
+        {
+            command: "Enviar atividade",
+            callback: () => speechSendActivity(true)
+        }
+    ]
+
+    const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition({ commands })
 
     function clearDiscursiveAnswer(){
         const textarea = document.getElementById("inputDiscursiveAnswer")

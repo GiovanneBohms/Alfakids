@@ -60,3 +60,22 @@ h1{
   align-items: center;
   height: 100vh;
 }
+
+.listenBtn{
+  transition: 0.2s;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background-color: var(--color-primary);
+  padding: 10px;
+  border-radius: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text);
+}
+
+.listenBtn:hover{
+  background-color: var(--color-primary-hover);
+}
