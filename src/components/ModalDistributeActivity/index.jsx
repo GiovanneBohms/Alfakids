@@ -59,7 +59,7 @@ export function ModalDistributeActivity({ idActivity ,idProfessor, setIsModalOpe
     }, [])
 
     return(
-        <div className="modalDistributeActivityBackground">
+        <div className="modalBg">
             <div className="modalFormSection">
                 <h1>Compartilhar</h1>
                 {

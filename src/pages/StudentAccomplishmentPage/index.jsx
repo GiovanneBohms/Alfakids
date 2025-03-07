@@ -9,7 +9,10 @@ import { getCurrentStudentId, getStudentById } from "../../services/StudentServi
 import { getAnswerByQuestionAndStudentId } from "../../services/AnswerService"
 import { AnswerForm } from "../../components/AnswerForm"
 import { DashBoard } from "../../components/DashBoard"
-import { sendMessage, sendUniqueMessage } from "../../services/ChatbotService"
+import { getCurrentProfessorId, getProfessorById } from "../../services/ProfessorService"
+import { HiPencilAlt } from "react-icons/hi";
+import { sendUniqueMessage } from "../../services/ChatbotService"
+import { ModalGenerateClassPlan } from "../../components/ModalGenerateClassPlan"
 
 export function StudentAccomplishmentPage(){
     const { id_activity, id_student } = useParams()
@@ -17,6 +20,9 @@ export function StudentAccomplishmentPage(){
     const [activity, setActivity] = useState(null)
     const [student, setStudent] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [isLoadingClassPlan, setIsLoadingClassPlan] = useState(false)
+    const [classPlan, setClassPlan] = useState("")
+    const [isModalClassPlanOpen, setIsModalClassPlanOpen] = useState(false)
 
     const [answers, setAnswers] = useState([])
 
@@ -116,6 +122,41 @@ export function StudentAccomplishmentPage(){
         }
     }
 
+    function generateClassPlan(){
+        setIsLoadingClassPlan(true)
+
+        getProfessorById(getCurrentProfessorId()).then((professor) =>{
+            let context = `Analise a sequência de itens a seguir, a qual consistem em uma relação de questão, resposta correta ou esperada e, por último a resposta que o aluno deu. Quero que você, após analisar cada questão com sua respectiva resposta dada pelo aluno, gere um resumo das dificuldades que esse aluno teve e dê uma ideia de planejamento de aula para o professor desse aluno. O nome do professor é ${professor.name} Fale diretamente para o professor suas observações. A relação é a seguinte: \n`
+
+            answers.forEach((answer) => {
+                if(answer.type === "discursive"){
+                    context += `Questão: ${answer.statement}\n
+                                Resposta Esperada: ${answer.expected_answer}\n
+                                Resposta do Aluno: ${answer.student_answer}\n`
+                } else{
+                    context += `Questão: ${answer.statement}\n
+                    Resposta Certa: ${answer.right_answer}\n
+                    Resposta do Aluno: ${answer.student_answer}\n`
+                }
+            })
+
+            let responseText = "";
+            
+            sendUniqueMessage(context, (chunk) => {
+                responseText += chunk.response;
+
+                setClassPlan(responseText)
+
+            }).then(() => {
+                setIsLoadingSugestion(false);
+            });
+        }).catch((error) => {
+            console.log(error.message)
+        })
+
+        
+    }
+
     useEffect(() => {
         fetchActivity()
         fetchStudent()
@@ -124,6 +165,10 @@ export function StudentAccomplishmentPage(){
 
     return(
         <div className="selectedActivityPage">
+            {
+                isModalClassPlanOpen &&
+                    <ModalGenerateClassPlan classPlan={classPlan} isLoadingClassPlan={isLoadingClassPlan} generateClassPlan={generateClassPlan} />
+            }
             {
                 getCurrentStudentId() != null ?
                     <DashBoard />
@@ -144,6 +189,10 @@ export function StudentAccomplishmentPage(){
                             ))
                         }
                     </div>
+            }
+            {
+                getCurrentProfessorId() != null &&
+                    <button onClick={() => setIsModalClassPlanOpen(!isModalClassPlanOpen)} className="classPlanBtn"><HiPencilAlt  /></button>
             }
         </div>
     )

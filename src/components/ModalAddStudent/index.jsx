@@ -32,8 +32,8 @@ export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStuden
     /*---------------------------------Atribuir ao backend a filtragem (futuramente) ---------------------------------------*/
 
     return(
-        <div className="modalAddStudentBackground">
-            <div className="modalMainSection">
+        <div className="modalBg">
+            <div className="modalAddStudentMainSection">
                 <div className="mainContentContainer">
                     <p className="mainTitle">Adicione alunos à essa turma</p>
                     <p className="mainTitle">Procure por email</p>

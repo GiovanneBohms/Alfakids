@@ -28,9 +28,9 @@ export function ModalAddAccountable({ setIsModalAddAccountableOpen }){
     }
 
     return(
-        <div className="modalAddAccountableBackground">
-            <div className="modalMainSection">
-                <div className="mainContentContainer">
+        <div className="modalBg">
+            <div className="modalAccountableMainSection">
+                <div className="mainAccountableContentContainer">
                     <div className="closeIcon" onClick={() => setIsModalAddAccountableOpen(false)}>
                         <IoIosCloseCircle className="closeIconItem" />
                     </div>

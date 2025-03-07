@@ -1,4 +1,4 @@
-.modalAddStudentBackground{
+.modalBg{
     width: 100%;
     height: 100%;
     position: fixed;
@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.modalAddStudentBackground .modalMainSection{
+.modalBg .modalAddStudentMainSection{
     width: 30%;
     padding: 0 20px;
     padding-bottom: 10px;
@@ -20,6 +20,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.186);
+    gap: 20px;
 }
 
 .createBtnSection .removeBtn{

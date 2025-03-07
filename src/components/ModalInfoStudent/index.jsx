@@ -3,10 +3,10 @@ import "./index.css"
 
 export function ModalInfoStudent({student, accountables, setModalOpen}){
     return(
-        <div className="modalInfoStudentBg">
+        <div className="modalBg">
             <div className="modalInfoStudentContainer">
-                <div className="closeIcon" onClick={() => setModalOpen(false)}>
-                    <IoIosCloseCircle className="closeIconItem" />
+                <div className="closeIcon">
+                    <IoIosCloseCircle className="closeIconItem" onClick={() => setModalOpen(false)} />
                 </div>
                 <h1>Informações do Aluno</h1>
                 <p>Nome: {student.name}</p>
