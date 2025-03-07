@@ -67,12 +67,32 @@ export function AnswerForm({ answer, student_name, index }){
                     <div className="answerFormObjectiveAnswer">
                         <div className="objectiveOptionsContainer">
                             <div className="buttonContainer">
-                                <button>{answer.answer1}</button>
-                                <button>{answer.answer2}</button>
+                                {
+                                    answer.right_answer === answer.answer1 ?
+                                        <button className="rightAnswerBtn">{answer.answer1}</button>
+                                    :
+                                        <button>{answer.answer1}</button>
+                                }
+                                {
+                                    answer.right_answer === answer.answer2 ?
+                                        <button className="rightAnswerBtn">{answer.answer2}</button>
+                                    :
+                                        <button>{answer.answer2}</button>
+                                }
                             </div>
                             <div className="buttonContainer">
-                                <button>{answer.answer3}</button>
-                                <button>{answer.answer4}</button>
+                                {
+                                    answer.right_answer === answer.answer3 ?
+                                        <button className="rightAnswerBtn">{answer.answer3}</button>
+                                    :
+                                        <button>{answer.answer3}</button>
+                                }
+                                {
+                                    answer.right_answer === answer.answer4 ?
+                                        <button className="rightAnswerBtn">{answer.answer4}</button>
+                                    :
+                                        <button>{answer.answer4}</button>
+                                }
                             </div>
                         </div>
                         {

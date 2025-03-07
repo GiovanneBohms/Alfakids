@@ -46,3 +46,9 @@
     transition: 0.2s;
     background-color: rgb(20, 229, 229);
 }
+
+.micIconContainer{
+    width: 73%;
+    display: flex;
+    justify-content: flex-end;
+}

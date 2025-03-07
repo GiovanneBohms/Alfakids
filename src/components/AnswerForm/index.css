@@ -168,3 +168,7 @@
     width: 80%;
     color: var(--color-tip);
 }
+
+.answerFormObjectiveAnswer .objectiveOptionsContainer .buttonContainer .rightAnswerBtn{
+    background-color: var(--color-green);
+}

@@ -9,22 +9,53 @@ import { FaMicrophoneSlash } from "react-icons/fa6";
 export function DiscursiveQuestion({ accomplish, question, handleSubmitAnswer }){
 
     const [answer, setAnswer] = useState(null)
+    const [listeningQuestionId, setListeningQuestionId] = useState(null);
+    const [isListening, setIsListening] = useState(false)
     
     const commands = [
         {
             command: "Limpar",
-            callback: ({resetTranscript}) => resetTranscript()
+            callback: () => speechResetStringFromAnswer()
+        },
+        {
+            command: "Enviar atividade",
+            callback: () => removeSendCommandFromAnswer()
         }
     ]
 
     const {
         transcript,
         listening,
+        resetTranscript,
         browserSupportsSpeechRecognition
     } = useSpeechRecognition({commands: commands});
 
     if (!browserSupportsSpeechRecognition) {
-        return <span>Browser doesn't support speech recognition.</span>;
+        alert("Seu navegador não possui suporte para reconhecimento de voz.")
+    }
+
+    function removeSendCommandFromAnswer(){
+        const answerAux = answer.replace(/enviar atividade/i, "").trim();
+        setAnswer(answerAux)
+    }
+
+    function speechResetStringFromAnswer(){
+        resetTranscript()
+        // document.getElementById(`inputDiscursiveAnswer${listeningQuestionId}`).value = answer;
+    }
+
+    function startListening() {
+        console.log(question.id)
+        setListeningQuestionId(question.id);
+        setIsListening(true)
+        resetTranscript()
+        SpeechRecognition.startListening({ continuous: true });
+    }
+
+    function stopListening(){
+        setListeningQuestionId(null)
+        setIsListening(false)
+        SpeechRecognition.stopListening()
     }
 
     useEffect(() => {
@@ -34,27 +65,23 @@ export function DiscursiveQuestion({ accomplish, question, handleSubmitAnswer })
     }, [accomplish])
 
     useEffect(() => {
-        setAnswer(transcript)
-        console.log(transcript)
+        if (listeningQuestionId === question.id) {
+            setAnswer(transcript);
+            console.log("Transcript: ", transcript)
+        }
     }, [transcript])
 
     return(
         <div className="discursiveAnswer">
             <div className="discursiveInputContainer">
-                {
-                    transcript != "" ?
-                        <textarea id="inputDiscursiveAnswer" value={transcript} name="" type="text" />
-                    :
-                        <textarea id="inputDiscursiveAnswer" onChange={(e) => setAnswer(e.target.value)} name="" type="text" />
-                }
-                
+                <textarea id={`inputDiscursiveAnswer${question.id}`} onChange={(e) => setAnswer(e.target.value)} defaultValue={answer} name="" type="text" />
             </div>
-            <div>
+            <div className="micIconContainer">
                 {
-                    !listening ?
-                        <button className="listenBtn" onClick={() => SpeechRecognition.startListening({continuous: true})}><TiMicrophone /></button>
+                    !isListening ?
+                        <button className="listenBtn" onClick={() => startListening()}><TiMicrophone /></button>
                     :
-                        <button className="listenBtn" onClick={SpeechRecognition.stopListening}><FaMicrophoneSlash /></button>
+                        <button className="listenBtn" onClick={() => stopListening()}><FaMicrophoneSlash /></button>
                 }
             </div>
         </div>

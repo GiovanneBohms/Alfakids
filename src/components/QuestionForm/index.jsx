@@ -29,7 +29,7 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
     const commands = [
         {
             command: "Enviar atividade",
-            callback: () => speechSendActivity(true)
+            callback: () => speechSendActivity()
         }
     ]
 
