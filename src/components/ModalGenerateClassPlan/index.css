@@ -5,6 +5,7 @@
     width: 40%;
     right: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -30,7 +31,17 @@
     color: gray;
 }
 
-.classPlanContentSection .classPlanGenBtn{
+.responseClassPlan{
+    color: var(--color-text);
+    width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
+    text-align: justify;
+    padding: 20px 0;
+}
+
+.modalGenerateClassPlanBody .classPlanGenBtn{
+    color: white;
     transition: 0.2s;
     padding: 15px;
     display: flex;
@@ -44,15 +55,20 @@
     box-shadow: var(--shadow-light);
 }
 
-.classPlanContentSection .classPlanGenBtn:hover{
+.modalGenerateClassPlanBody .classPlanGenBtn:hover{
     background-color: var(--color-green-hover);
 }
 
-.responseClassPlan{
-    color: var(--color-text);
-    width: 50%;
-    max-height: 80%;
-    overflow-y: auto;
-    text-align: justify;
-    padding: 0px 20px;
+.modalGenerateClassPlanBody .classPlanGenBtnLoading{
+    color: white;
+    transition: 0.2s;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background-color: var(--color-green-hover);
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
 }

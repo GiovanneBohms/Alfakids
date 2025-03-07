@@ -148,7 +148,7 @@ export function StudentAccomplishmentPage(){
                 setClassPlan(responseText)
 
             }).then(() => {
-                setIsLoadingSugestion(false);
+                setIsLoadingClassPlan(false);
             });
         }).catch((error) => {
             console.log(error.message)
