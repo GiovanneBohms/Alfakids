@@ -1,0 +1,18 @@
+.policyContainer{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.policyTextContainer{
+    width: 80%;
+}
+
+.policyTextContainer p{
+    text-align: justify;
+}
+
+.policyTextContainer h1{
+    text-align: center;
+}

@@ -23,6 +23,7 @@ export function StudentAccomplishmentPage(){
     const [isLoadingClassPlan, setIsLoadingClassPlan] = useState(false)
     const [classPlan, setClassPlan] = useState("")
     const [isModalClassPlanOpen, setIsModalClassPlanOpen] = useState(false)
+    const [done, setDone] = useState(false)
 
     const [answers, setAnswers] = useState([])
 
@@ -54,7 +55,6 @@ export function StudentAccomplishmentPage(){
 
     function fetchQuestions(){
         try{
-            console.log("Fetch Questions")
             if(answers.length == 0){
                 getQuestionsByActivityId(id_activity).then((data) => {
                     fetchAnswers(data)
@@ -127,7 +127,7 @@ export function StudentAccomplishmentPage(){
 
         getProfessorById(getCurrentProfessorId()).then((professor) =>{
             let context = `Analise a sequência de itens a seguir, a qual consistem em uma relação de questão, resposta correta ou esperada e, por último a resposta que o aluno deu. Quero que você, após analisar cada questão com sua respectiva resposta dada pelo aluno, gere um resumo das dificuldades que esse aluno teve e dê uma ideia de planejamento de aula para o professor desse aluno. O nome do professor é ${professor.name} Fale diretamente para o professor suas observações. A relação é a seguinte: \n`
-
+            
             answers.forEach((answer) => {
                 if(answer.type === "discursive"){
                     context += `Questão: ${answer.statement}\n
@@ -144,9 +144,8 @@ export function StudentAccomplishmentPage(){
             
             sendUniqueMessage(context, (chunk) => {
                 responseText += chunk.response;
-
                 setClassPlan(responseText)
-
+                setDone(chunk.done)
             }).then(() => {
                 setIsLoadingClassPlan(false);
             });
@@ -167,7 +166,7 @@ export function StudentAccomplishmentPage(){
         <div className="selectedActivityPage">
             {
                 isModalClassPlanOpen &&
-                    <ModalGenerateClassPlan classPlan={classPlan} isLoadingClassPlan={isLoadingClassPlan} generateClassPlan={generateClassPlan} />
+                    <ModalGenerateClassPlan classPlan={classPlan} done={done} isLoadingClassPlan={isLoadingClassPlan} generateClassPlan={generateClassPlan} />
             }
             {
                 getCurrentStudentId() != null ?

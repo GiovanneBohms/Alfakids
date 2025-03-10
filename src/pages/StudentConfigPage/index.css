@@ -83,3 +83,11 @@
 .remove:hover{
     background-color: var(--cancel-button-color-hover);
 }
+
+.policyLink{
+    color: blue;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}

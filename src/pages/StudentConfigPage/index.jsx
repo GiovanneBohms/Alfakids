@@ -6,6 +6,8 @@ import { MdDelete, MdEdit } from "react-icons/md"
 import { IoMdAdd } from "react-icons/io"
 import { ModalAddAccountable } from "../../components/ModalAddAccountable"
 import { getCurrentStudentId } from "../../services/StudentService"
+import { MdOutlinePrivacyTip } from "react-icons/md";
+import { useNavigate } from "react-router-dom"
 
 export function StudentConfigPage(){
 
@@ -13,6 +15,8 @@ export function StudentConfigPage(){
     const [isLoading, setIsLoading] = useState(true)
 
     const [isModalAddOpen, setIsModalAddOpen] = useState(false)
+
+    const navigate = useNavigate()
 
     const fetchAccountables = () => {
         getAccountablesByStudentId(getCurrentStudentId()).then((data) => {
@@ -66,6 +70,9 @@ export function StudentConfigPage(){
                                     ))
                                 }
                             </ul>
+                        </li>
+                        <li>
+                            <a className="policyLink" onClick={() => navigate("/policy")}><MdOutlinePrivacyTip />Política de Privacidade</a>
                         </li>
                     </ul>
                 </div>
