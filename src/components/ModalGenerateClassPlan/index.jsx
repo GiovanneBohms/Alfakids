@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./index.css"
 import { RiAiGenerate2 } from "react-icons/ri";
-import { formatAIResponse } from "../../../utils/FormatAIResponse";
+import { formatAIResponse } from "../../utils/FormatAIResponse.jsx";
 
 export function ModalGenerateClassPlan({classPlan, done, isLoadingClassPlan, generateClassPlan}){
     // useEffect(() => {
@@ -50,9 +50,8 @@ export function ModalGenerateClassPlan({classPlan, done, isLoadingClassPlan, gen
                         </div>
                     :
                         <div id="classPlanDiv" className="responseClassPlan">
-                            {classPlan}
+                            {formatAIResponse(classPlan)}
                         </div>
-                        
                 }
                 {
                     !isLoadingClassPlan ?
@@ -60,7 +59,6 @@ export function ModalGenerateClassPlan({classPlan, done, isLoadingClassPlan, gen
                     :
                         <button className="classPlanGenBtnLoading">Gerando plano de aula...</button>
                 }
-                
             </div>
         </div>
     )

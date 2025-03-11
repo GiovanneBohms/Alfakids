@@ -25,7 +25,7 @@ export function MessageBubble({msg, type}){
         return(
             <div className="messageBubbleContainer responseContainer">
                 <div className="messageBubble response">
-                    <p className="messageBubbleText">{msg.content}</p>
+                    <p id="responseField" className="messageBubbleText">{msg.content}</p>
                     {/* <span className="timestamp">{formatDate(msg.timestamp)}</span> */}
                 </div>
             </div>

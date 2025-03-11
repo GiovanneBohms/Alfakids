@@ -7,6 +7,7 @@ import { LoadingIcon } from "../../components/LoadingIcon"
 import { getCurrentStudentId, getStudentById } from "../../services/StudentService";
 import { useNavigate } from "react-router-dom";
 import { MessageBubble } from "../../components/MessageBubble";
+import { formatAIResponse } from "../../utils/FormatAIResponse.jsx";
 
 export function ChatbotPage(){
 
@@ -16,6 +17,7 @@ export function ChatbotPage(){
     const [isLoadingResponse, setIsLoadingResponse] = useState(false)
     const [isLoding, setIsLoading] = useState(true)
     const [student, setStudent] = useState()
+    const [done, setDone] = useState(false)
 
     const navigate = useNavigate()
 
@@ -63,6 +65,7 @@ export function ChatbotPage(){
             sendMessage(context, (chunk) => {
                 
                 responseText += chunk.message.content;
+                setDone(chunk.done)
 
                 responses.push({})
                 setResponses((prevResponses) => {
@@ -111,6 +114,12 @@ export function ChatbotPage(){
         fetchStudent()
     }, [])
 
+    // useEffect(() => {
+    //     if(done){
+    //         formatAIResponse("responseField")
+    //     }
+    // }, [done])
+
     return(
         <div className="studentPageBody">
             <DashBoard />
@@ -132,7 +141,7 @@ export function ChatbotPage(){
                                             <MessageBubble msg={msg} type="request" />
                                             {
                                                 responses[index] !== undefined ?
-                                                    <MessageBubble msg={responses[index]} type="response" />
+                                                    <MessageBubble msg={{ content: formatAIResponse(responses[index].content), role: responses[index].role }} type="response" />
                                                 :
                                                     <div className="responseBubble">
                                                         <LoadingIcon />
