@@ -12,6 +12,11 @@
     cursor: pointer;
 }
 
+.activityCardContainer:hover{
+    background-color: var(--color-primary);
+    color: white;
+}
+
 .activityTitle p{
     font-weight: 500;
 }
@@ -22,11 +27,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.activityCardContainer:hover{
-    transition: 0.2s;
-    background-color: rgb(241, 241, 241);
 }
 
 .activityCardContainerRepository{

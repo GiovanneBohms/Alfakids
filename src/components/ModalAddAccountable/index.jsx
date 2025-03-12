@@ -1,4 +1,3 @@
-import { IoIosSearch } from "react-icons/io"
 import "./index.css"
 import { createAccountable } from "../../services/AccountableService"
 import { useState } from "react"
@@ -24,7 +23,7 @@ export function ModalAddAccountable({ setIsModalAddAccountableOpen }){
 
         createAccountable({name, email, telephone, id_student}).then(() => {
             location.reload()
-        }).catch((error) => alert(error.message))
+        }).catch((error) => console.log(error.message))
     }
 
     return(
@@ -36,24 +35,24 @@ export function ModalAddAccountable({ setIsModalAddAccountableOpen }){
                     </div>
                     <p className="mainTitle">Adicione um responsável</p>
                     <form className="formAccountable" id="formAccountable" onSubmit={(event) => handleCreateAccountable(event)}>
-                        <div>
+                        <div className="formAccountableInputs">
                             <label>Nome:</label>
                             <input type="text" name="name" />
                         </div>
-                        <div>
+                        <div className="formAccountableInputs">
                             <label>Email:</label>
                             <input type="email" name="email" />
                         </div>
-                        <div>
+                        <div className="formAccountableInputs">
                             <label>Telefone:</label>
                             <input type="tel" name="telephone" placeholder="xxxxx-xxxx"/>
                         </div>
-                        <div>
+                        <div className="formAccountableInputs">
                             {
                                 isLoading ?
-                                    <button className="addButton"><LoadingIcon /></button>
+                                    <button className="addAccountableButtonLoading"><LoadingIcon /></button>
                                 :
-                                    <button className="addButton" type="submit">Adicionar</button> 
+                                    <button className="addAccountableButton" type="submit">Adicionar</button> 
                             }
                             
                         </div>

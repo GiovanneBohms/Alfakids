@@ -13,6 +13,7 @@
     cursor: pointer;
     box-shadow: var(--shadow-light);
     z-index: 3;
+    color: white;
 }
 
 .classPlanBtn:hover{

@@ -1,7 +1,8 @@
 .dashBoardContainer{
     width: 5%;
+    min-width: 50px;
     height: 100%;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(165, 0, 194);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,6 +14,7 @@
 .dashBoardSection{
     height: 100%;
     width: 5%;
+    min-width: 50px;
     display: flex;
     justify-content: center;
 }
@@ -28,11 +30,13 @@
     outline: none;
     cursor: pointer;
     height: 5rem;
+    background-color: var(--color-primary);
+    color: white;
 }
 
 .navigationButton:hover{
     transition: 0.1s;
-    background-color: rgb(176, 255, 254);
+    background-color: var(--color-primary-hover);
 }
 
 .navigationIcon{

@@ -65,7 +65,7 @@ export function AnswerForm({ answer, student_name, index }){
                 //-------------------OBJECTIVE-----------------------------------------
 
                     <div className="answerFormObjectiveAnswer">
-                        <div className="objectiveOptionsContainer">
+                        <div className="objectiveAnswersContainer">
                             <div className="buttonContainer">
                                 {
                                     answer.right_answer === answer.answer1 ?
