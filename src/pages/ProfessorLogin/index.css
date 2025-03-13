@@ -84,10 +84,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--color-primary);
 }
 
 .buttonProfessorLogin:hover{
-    background-color: var(--color-primary-hover);
+    /* background-color: var(--color-primary-hover); */
+    background-color: var(--color-pink);
     color: white;
 }
 

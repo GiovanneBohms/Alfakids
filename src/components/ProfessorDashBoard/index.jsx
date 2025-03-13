@@ -20,7 +20,7 @@ export function ProfessorDashBoard(){
                     <button className="navigationButton" onClick={() => navigate("/search")}><IoIosSearch className="navigationIcon" /></button>
                 </div>
                 <div className="navigationContainer">
-                    <button className="navigationButton" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
+                    <button className="navigationButton pinkOption" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
                 </div>
             </section>
         </div>

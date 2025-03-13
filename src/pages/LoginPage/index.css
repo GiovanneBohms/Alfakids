@@ -79,10 +79,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--color-primary);
 }
 
 .buttonLogin:hover{
-    background-color: var(--color-primary-hover);
+    /* background-color: var(--color-primary-hover); */
+    background-color: var(--color-pink);
     color: white;
 }
 
