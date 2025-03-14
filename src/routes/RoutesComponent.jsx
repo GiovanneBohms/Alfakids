@@ -22,6 +22,7 @@ import ForgotPassword from '../pages/ForgotPassword';
 import { SearchStudentPage } from '../pages/SearchStudentPage';
 import { RecoverPassword } from '../pages/RecoverPassword';
 import { PolicyPage } from '../pages/PolicyPage';
+import { HomePage } from '../pages/HomePage';
 
 function PrivateStudentRoute({ Component }){
     const { student_signed, isLoading } = useAuth();
@@ -71,7 +72,7 @@ export function RoutesComponent(){
         <BrowserRouter>
             <Fragment>
                 <Routes>
-                    <Route path='/' element={<LoginPage />} />
+                    <Route path='/' element={<HomePage />} />
                     <Route path='login' element={<LoginPage />} />
                     <Route path='register' element={<RegisterPage />} />
                     <Route path='forgotPassword' element={<ForgotPassword />} />
