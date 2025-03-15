@@ -52,7 +52,7 @@ export function LoginPage(){
     return (
         <div className="loginPageBody">
             <div className="mainLogoImg">
-                <img src={logo} alt="logo" />
+                <a href="/"><img src={logo} alt="logo" /></a>
             </div>
             <section className="loginFormSection">
                 <div className="loginTitleDiv">

@@ -29,6 +29,7 @@
 
 .homeBody header nav img{
     width: 70px;
+    opacity: 0;
 }
 
 .homeBody header nav ul{
@@ -45,6 +46,7 @@
 
 .homeBody a{
     text-decoration: none;
+    cursor: pointer;
 }
 
 .titleDiv{
@@ -101,13 +103,15 @@
     width: 50%;
 }
 
-.aboutDiv{
+#aboutDiv{
     width: 100%;
     height: 100vh;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top: 3px dashed var(--color-primary);
+    box-shadow: 0px 0px 20px 0px black;
 }
 
 .mainDiv{
@@ -131,10 +135,18 @@
 .logosDiv .logosContainer{
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 180px;
     padding: 50px;
     /* border: 2px dashed var(--color-primary);
     border-radius: 15px; */
+}
+
+.logosDiv .logosContainer img:nth-of-type(1){
+    margin-left: -3.8rem;
+}
+
+.logosDiv .logosContainer img:nth-of-type(2){
+    margin-left: 3.8rem;
 }
 
 .logosDiv img{
@@ -153,4 +165,16 @@
     border: 2px dashed var(--color-primary);
     padding: 20px;
     border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.259);
+}
+
+.homeBody footer{
+    width: 100%;
+    background-color: rgb(45, 45, 45);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 }

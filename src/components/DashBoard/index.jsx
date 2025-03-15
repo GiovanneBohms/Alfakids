@@ -15,12 +15,12 @@ export function DashBoard(){
         <div className="dashBoardSection">
             <section className="dashBoardContainer">
                 <div className="navigationContainer">
-                    <button className="navigationButton" onClick={() => navigate("/chatbot")}><GoCopilot className="navigationIcon" /></button>
-                    <button className="navigationButton" onClick={() => navigate("/activities")}><LuNotebook className="navigationIcon" /></button>
-                    <button className="navigationButton" onClick={() => navigate("/config")}><DiAptana className="navigationIcon" /></button>
+                    <button title="Assistente Virtual" className="navigationButton" onClick={() => navigate("/chatbot")}><GoCopilot className="navigationIcon" /></button>
+                    <button title="Atividades" className="navigationButton" onClick={() => navigate("/activities")}><LuNotebook className="navigationIcon" /></button>
+                    <button title="Configurações" className="navigationButton" onClick={() => navigate("/config")}><DiAptana className="navigationIcon" /></button>
                 </div>
                 <div className="navigationContainer">
-                    <button className="navigationButton pinkOption" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
+                    <button title="Sair" className="navigationButton pinkOption" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
                 </div>
             </section>
         </div>

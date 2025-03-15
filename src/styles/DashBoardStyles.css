@@ -31,7 +31,8 @@
     outline: none;
     cursor: pointer;
     height: 5rem;
-    background-color: var(--color-primary);
+    /* background-color: var(--color-primary); */
+    background-color: transparent;
     color: white;
 }
 
