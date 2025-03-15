@@ -3,7 +3,7 @@ import "./index.css"
 import { useNavigate } from "react-router-dom"
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { useAuth } from "../../hooks/useAuth"
-import logo from "../../assets/minhaLogo.png"
+import logo from "../../assets/girassolLogo.png"
 
 
 export function LoginPage(){

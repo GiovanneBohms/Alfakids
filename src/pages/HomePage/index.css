@@ -105,6 +105,9 @@
     width: 100%;
     height: 100vh;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mainDiv{
@@ -114,4 +117,40 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+
+.logosDiv{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logosDiv .logosContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: 50px;
+    /* border: 2px dashed var(--color-primary);
+    border-radius: 15px; */
+}
+
+.logosDiv img{
+    width: 300px;
+}
+
+.aboutText{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutText p{
+    width: 80%;
+    border: 2px dashed var(--color-primary);
+    padding: 20px;
+    border-radius: 15px;
 }
