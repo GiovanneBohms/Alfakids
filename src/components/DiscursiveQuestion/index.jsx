@@ -8,7 +8,7 @@ import { FaMicrophoneSlash } from "react-icons/fa6";
 
 export function DiscursiveQuestion({ accomplish, question, handleSubmitAnswer }){
 
-    const [answer, setAnswer] = useState(null)
+    const [answer, setAnswer] = useState("")
     const [listeningQuestionId, setListeningQuestionId] = useState(null);
     const [isListening, setIsListening] = useState(false)
     

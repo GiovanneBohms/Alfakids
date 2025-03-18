@@ -3,7 +3,7 @@ import "./index.css"
 
 export function ObjectiveQuestion({ accomplish, question, handleSubmitAnswer }){
 
-    const [answer, setAnswer] = useState(null)
+    const [answer, setAnswer] = useState("")
 
     useEffect(() => {
         if(accomplish == true){

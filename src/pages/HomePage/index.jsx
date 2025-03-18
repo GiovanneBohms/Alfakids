@@ -1,6 +1,7 @@
 import "./index.css"
 import girassolLogo from "../../assets/girassolLogo.png"
 import unicariocaLogo from "../../assets/logo-unicarioca1.png"
+import cnpqLogo from "../../assets/cnpqLogo.png"
 import { useEffect, useState } from "react";
 
 export function HomePage(){
@@ -90,7 +91,7 @@ export function HomePage(){
                 <div className="logosDiv">
                     <div className="logosContainer">
                         <img src={unicariocaLogo} alt="unicariocaLogo" />
-                        <img src={unicariocaLogo} alt="unicariocaLogo" />
+                        <img src={cnpqLogo} alt="unicariocaLogo" />
                     </div>
                 </div>
                 <div className="aboutText">

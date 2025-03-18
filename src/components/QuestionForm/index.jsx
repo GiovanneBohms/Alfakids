@@ -66,22 +66,22 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
         })
     }
 
+    function handlePageChange()
+    {
+        if (document.hidden)
+        {
+            alert('Vocï¿½ mudou de aba. Questionï¿½rio encerrado.');
+            console.log("Enviou")
+            setAccomplish(true);
+        }
+    }
+
     useEffect(() => {
         setCounterOfAnswersCreated(0)
     }, [])
 
     useEffect(() =>
     {
-        function handlePageChange()
-        {
-            if (document.hidden)
-            {
-                alert('Você mudou de aba. Questionário encerrado.');
-
-                setAccomplish(true);
-            }
-        }
-
         document.addEventListener("visibilitychange", handlePageChange);
 
         return() =>

@@ -3,6 +3,7 @@ import { useAuth } from "../../hooks/useAuth"
 import "./index.css"
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { useState } from "react"
+import logo from "../../assets/girassolLogo.png"
 
 export function ProfessorLogin(){
 
@@ -47,6 +48,9 @@ export function ProfessorLogin(){
 
     return (
         <div className="professorLoginPageBody">
+            <div className="mainLogoImg">
+                <a href="/"><img src={logo} alt="logo" /></a>
+            </div>
             <section className="professorLoginFormSection">
                 <div className="professorLoginTitleDiv">
                     <h1 className="professorLoginTitleTxt">Modo Professor</h1>

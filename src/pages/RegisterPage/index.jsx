@@ -3,6 +3,7 @@ import "./index.css"
 import { registerStudent } from "../../services/StudentService"
 import { useState } from "react"
 import { LoadingIcon } from "../../components/LoadingIcon"
+import logo from "../../assets/girassolLogo.png"
 
 export function RegisterPage(){
 
@@ -40,6 +41,9 @@ export function RegisterPage(){
 
     return(
         <div className="registerPageBody">
+            <div className="mainLogoImg">
+                <a href="/"><img src={logo} alt="logo" /></a>
+            </div>
             <div className="registerFormContainer">
                 <form id="registerForm" onSubmit={(event) => handleFormSubmit(event)}>
                     <h1>Cadastro</h1>
