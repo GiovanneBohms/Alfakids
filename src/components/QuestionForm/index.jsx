@@ -70,6 +70,26 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
         setCounterOfAnswersCreated(0)
     }, [])
 
+    useEffect(() =>
+    {
+        function handlePageChange()
+        {
+            if (document.hidden)
+            {
+                alert('Você mudou de aba. Questionário encerrado.');
+
+                setAccomplish(true);
+            }
+        }
+
+        document.addEventListener("visibilitychange", handlePageChange);
+
+        return() =>
+        {
+            document.removeEventListener("visibilitychange", handlePageChange);
+        };
+    }, []);
+
     return(
         <div className="questionFormBody">
             {
