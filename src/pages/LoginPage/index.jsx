@@ -3,6 +3,7 @@ import "./index.css"
 import { useNavigate } from "react-router-dom"
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { useAuth } from "../../hooks/useAuth"
+import logo from "../../assets/girassolLogo.png"
 
 
 export function LoginPage(){
@@ -50,10 +51,13 @@ export function LoginPage(){
     
     return (
         <div className="loginPageBody">
-            <div className="loginTitleDiv">
-                <h1 className="loginTitleTxt">Login</h1>
+            <div className="mainLogoImg">
+                <a href="/"><img src={logo} alt="logo" /></a>
             </div>
             <section className="loginFormSection">
+                <div className="loginTitleDiv">
+                    <h1 className="loginTitleTxt">Login</h1>
+                </div>
                 <form id="loginForm" className="formSection" onSubmit={(event) => handleLogin(event)}>
                     <div className="InputContainer">
                         <label className="inputLabel">Email:</label>

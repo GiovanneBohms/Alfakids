@@ -9,12 +9,19 @@
 }
 
 .professorLoginFormSection{
-    width: 100%;
+    border-radius: 20px;
+    width: 25%;
+    min-height: 28.125rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 2px dashed white;
+    background-color: var(--color-primary);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.434);
 }
 
 .professorLoginFormSection form{
@@ -29,6 +36,10 @@
 .professorLoginFormSection form a{
     color: rgb(206, 206, 206);
     text-decoration: none;
+}
+
+.professorLoginTitleTxt{
+    color: white;
 }
 
 .professorLoginInputContainer{
@@ -50,18 +61,7 @@
 
 .professorLoginInputLabel{
     font-size: 20px;
-    color: rgb(0, 0, 0);
-}
-
-.professorLoginFormSection{
-    border-radius: 20px;
-    width: 25%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
+    color: white;
 }
 
 .professorLoginBottomSideContainer{
@@ -74,7 +74,7 @@
 
 .buttonProfessorLogin{
     transition: 0.2s;
-    background-color: var(--color-primary);
+    background-color: white;
     outline: none;
     border: none;
     width: 100%;
@@ -84,14 +84,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--color-primary);
 }
 
 .buttonProfessorLogin:hover{
-    background-color: var(--color-primary-hover);
+    /* background-color: var(--color-primary-hover); */
+    background-color: var(--color-pink);
+    color: white;
 }
 
 .buttonProfessorLoginLoading{
-    background-color: var(--color-primary-hover);
+    background-color: var(--button-disabled-color);
     outline: none;
     border: none;
     width: 100%;

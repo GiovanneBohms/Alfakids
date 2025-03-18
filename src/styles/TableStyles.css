@@ -18,8 +18,8 @@
 }
 
 .headerRow{
-    background-color: rgb(216, 216, 216);
-    color: rgba(0, 0, 0, 0.301);
+    background-color: var(--color-primary);
+    color: white;
     height: 50px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .infoRow:hover{
-    background-color: var(--color-primary);
+    background-color: rgb(229, 229, 229);
 }
 
 .noClick:hover{

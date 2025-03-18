@@ -47,10 +47,10 @@ export function ProfessorLogin(){
 
     return (
         <div className="professorLoginPageBody">
-            <div className="professorLoginTitleDiv">
-                <h1 className="professorLoginTitleTxt">Modo Professor</h1>
-            </div>
             <section className="professorLoginFormSection">
+                <div className="professorLoginTitleDiv">
+                    <h1 className="professorLoginTitleTxt">Modo Professor</h1>
+                </div>
                 <form id="professorLoginForm" onSubmit={(event) => handleProfessorLogin(event)}>
                     <div className="professorLoginInputContainer">
                         <label className="professorLoginInputLabel">Email:</label>

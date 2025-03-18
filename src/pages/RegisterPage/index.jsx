@@ -41,8 +41,8 @@ export function RegisterPage(){
     return(
         <div className="registerPageBody">
             <div className="registerFormContainer">
-                <h1>Cadastro</h1>
                 <form id="registerForm" onSubmit={(event) => handleFormSubmit(event)}>
+                    <h1>Cadastro</h1>
                     <div className="formInput">
                         <label htmlFor="">Nome:</label>
                         <input name="name" type="text" />

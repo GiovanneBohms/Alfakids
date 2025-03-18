@@ -131,9 +131,6 @@ export function ChatbotPage(){
                     <div className="chatbotContainer">
                         <div className="chatbotContentSection">
                             <p className="welcomeText" onClick={() => navigate("/config")}>Bem vindo, {student.name}</p>
-                            {/* <div>
-                                <h1>Assistente Virtual</h1>
-                            </div> */}
                             <div className="chatOutput">
                                 {messages.length > 0 ? (
                                     messages.map((msg, index) => (
