@@ -8,8 +8,8 @@
   -moz-osx-font-smoothing: grayscale;
 
   --color-background: #eeeeee;
-  --color-primary: rgb(165, 0, 194);
-  --color-primary-hover: rgb(140, 0, 164);
+  --color-primary: #a500c2;
+  --color-primary-hover: #8c00a4;
   --color-secondary: #f9f9f9;
   --color-text: #333;
   --color-border: #ddd;
