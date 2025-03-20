@@ -7,12 +7,9 @@ import { getCurrentStudentId } from "../../services/StudentService";
 import { accomplishActivity } from "../../services/AccomplishmentsService";
 import { useNavigate } from "react-router-dom";
 import { LoadingIcon } from "../LoadingIcon";
-<<<<<<< Updated upstream
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 import "regenerator-runtime/runtime";
-=======
 import { ModalWindow } from "../ModalWindow";
->>>>>>> Stashed changes
 
 export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }){
 
@@ -63,12 +60,13 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
 
     function handleAccomplishActivity(){
         const id_student = getCurrentStudentId()
-
+        setIsModalOpen(true)
+        
         accomplishActivity(id_activity, id_student).then(() => {
             navigate("/activities")
         }).catch((error) => {
             console.log(error.message)
-            isLoading(false)
+            setIsLoading(false)
         })
     }
 
@@ -99,8 +97,6 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
                     <LoadingIcon />
                 :
                     <div className="questionFormContainer">
-                        {isModalOpen && <ModalWindow setIsModalOpen={setIsModalOpen}/>}
-
                         {
                             questions.map((question) => (
                                 <div className="questionInputContainer">
