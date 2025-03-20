@@ -7,8 +7,12 @@ import { getCurrentStudentId } from "../../services/StudentService";
 import { accomplishActivity } from "../../services/AccomplishmentsService";
 import { useNavigate } from "react-router-dom";
 import { LoadingIcon } from "../LoadingIcon";
+<<<<<<< Updated upstream
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 import "regenerator-runtime/runtime";
+=======
+import { ModalWindow } from "../ModalWindow";
+>>>>>>> Stashed changes
 
 export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }){
 
@@ -20,6 +24,8 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
     const [counterOfAnswersCreated, setCounterOfAnswersCreated] = useState(0)
 
     const [accomplish, setAccomplish] = useState(false)
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     function speechSendActivity(){
         SpeechRecognition.stopListening()
@@ -70,8 +76,6 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
     {
         if (document.hidden)
         {
-            alert('Voc� mudou de aba. Question�rio encerrado.');
-            console.log("Enviou")
             setAccomplish(true);
         }
     }
@@ -85,9 +89,7 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
         document.addEventListener("visibilitychange", handlePageChange);
 
         return() =>
-        {
-            document.removeEventListener("visibilitychange", handlePageChange);
-        };
+        { document.removeEventListener("visibilitychange", handlePageChange); };
     }, []);
 
     return(
@@ -97,6 +99,8 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
                     <LoadingIcon />
                 :
                     <div className="questionFormContainer">
+                        {isModalOpen && <ModalWindow setIsModalOpen={setIsModalOpen}/>}
+
                         {
                             questions.map((question) => (
                                 <div className="questionInputContainer">
