@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { LoadingIcon } from "../LoadingIcon";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 import "regenerator-runtime/runtime";
+import { ModalAccomplishConfirm } from "../ModalAccomplishConfirm";
 
 export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }){
 
@@ -18,6 +19,7 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
     const [questionAnswered, setQuestionAnswered] = useState(null)
 
     const [counterOfAnswersCreated, setCounterOfAnswersCreated] = useState(0)
+    const [isModalAccomplishOpen, setIsModalAccomplishOpen] = useState(false)
 
     const [accomplish, setAccomplish] = useState(false)
 
@@ -62,7 +64,7 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
             navigate("/activities")
         }).catch((error) => {
             console.log(error.message)
-            isLoading(false)
+            setIsLoading(false)
         })
     }
 
@@ -70,8 +72,6 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
     {
         if (document.hidden)
         {
-            alert('Voc� mudou de aba. Question�rio encerrado.');
-            console.log("Enviou")
             setAccomplish(true);
         }
     }
@@ -93,31 +93,35 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
     return(
         <div className="questionFormBody">
             {
-                isLoading ?
-                    <LoadingIcon />
-                :
-                    <div className="questionFormContainer">
-                        {
-                            questions.map((question) => (
-                                <div className="questionInputContainer">
-                                    <div className="statementContainer">
-                                        <p>{question.statement}</p>
-                                    </div>
-                                    {
-                                        question.type === "discursive" ?
-                                            <DiscursiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
-                                        :   
-                                            <ObjectiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
-                                    }
-                                </div>
-                            ))
-                        }
-                        <div className="footerButtonsContainer">
-                            <button className="buttonCancel" onClick={() => navigate("/activities")}>Cancelar</button>
-                            <button className="buttonSend" onClick={() => setAccomplish(true)}>Enviar</button>
-                        </div>
-                    </div>       
+                isModalAccomplishOpen && <ModalAccomplishConfirm />
             }
+            <div className="questionFormContainer">
+                {
+                    questions.map((question) => (
+                        <div className="questionInputContainer">
+                            <div className="statementContainer">
+                                <p>{question.statement}</p>
+                            </div>
+                            {
+                                question.type === "discursive" ?
+                                    <DiscursiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
+                                :   
+                                    <ObjectiveQuestion accomplish={accomplish} question={question} handleSubmitAnswer={handleSubmitAnswer} />
+                            }
+                        </div>
+                    ))
+                }
+                <div className="footerButtonsContainer">
+                    <button className="buttonCancel" onClick={() => navigate("/activities")}>Cancelar</button>
+                    {
+                        isLoading ?
+                            <button className="buttonSend"><LoadingIcon /></button>
+                        :
+                            <button className="buttonSend" onClick={() => setAccomplish(true)}>Enviar</button>
+                    }
+                    
+                </div>
+            </div>
         </div>
     )
 }
