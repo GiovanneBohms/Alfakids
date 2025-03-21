@@ -1,11 +1,12 @@
 import "./index.css"
 import { DashBoard } from "../../components/DashBoard"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getActivityById } from "../../services/ActivityService"
 import { getQuestionsByActivityId } from "../../services/QuestionService"
 import { QuestionForm } from "../../components/QuestionForm"
 import { LoadingIcon } from "../../components/LoadingIcon"
+import { ModalAccomplishConfirm } from "../../components/ModalAccomplishConfirm"
 
 export function SelectedActivityPage(){
 
@@ -14,6 +15,9 @@ export function SelectedActivityPage(){
     const [activity, setActivity] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [questions, setQuestions] = useState([])
+    const [isModalAccomplishOpen, setIsModalAccomplishOpen] = useState(false)
+
+    const navigate = useNavigate()
 
     function fetchActivity(){
         try{
@@ -39,7 +43,15 @@ export function SelectedActivityPage(){
         } catch(error){
             console.log(error.message)
         }
-        
+    }
+
+    function confirmAccomplish(){
+        setIsLoading(false)
+        setIsModalAccomplishOpen(true)
+
+        setTimeout(() => {
+            navigate("/activities")
+        }, 2000)
     }
 
     useEffect(() => {
@@ -54,10 +66,15 @@ export function SelectedActivityPage(){
                 isLoading || activity == null ?
                     <LoadingIcon />
                 :
-                    <div className="questionsSection">
-                        <h1>{activity.title}</h1>
-                        <QuestionForm isLoading={isLoading} setIsLoading={setIsLoading} questions={questions} id_activity={id_activity} />
-                    </div>
+                    isModalAccomplishOpen ?
+                        <div className="modalAccomplishContainer">
+                            <ModalAccomplishConfirm />
+                        </div>
+                    :
+                        <div className="questionsSection">
+                            <h1>{activity.title}</h1>
+                            <QuestionForm isLoading={isLoading} setIsLoading={setIsLoading} questions={questions} id_activity={id_activity} confirmAccomplish={confirmAccomplish} />
+                        </div>
             }
         </div>
     )

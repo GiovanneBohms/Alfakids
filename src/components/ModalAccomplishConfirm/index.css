@@ -1,9 +1,12 @@
 #modal
 {
-    background:white;
+    background: white;
+    border: 5px dashed var(--color-green);
     border-radius:20px;
     width:450px; 
     height:200px;
+
+    animation: 0.5s showOut;
 }
 
 #modal::backdrop
@@ -27,5 +30,22 @@
     flex-direction:column; 
     height:100%; 
     justify-content:center; 
-    gap:1rem; 
+}
+
+.doneIcon{
+    color: var(--color-green);
+    font-size: 34px;
+}
+
+@keyframes showOut{
+    from{
+        width: 0px;
+        height: 0px;
+        color: rgba(0, 0, 0, 0);
+    }
+    to{
+        width:450px; 
+        height:200px;
+        color: rgba(0, 0, 0, 1);
+    }
 }

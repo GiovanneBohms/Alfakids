@@ -1,11 +1,15 @@
 import "./index.css"
+import { MdDone } from "react-icons/md";
 
 export function ModalAccomplishConfirm(){
     return(
-        <div id="modal">
-            <div class="centralizaObjeto">
-                <p>Questionário encerrado e enviado</p>
-            {/* <button type="button" id="buttonOk">OK</button> */}
+        <div className="modalBg">
+            <div id="modal">
+                <div className="centralizaObjeto">
+                    <MdDone className="doneIcon" />
+                    <p>Enviado</p>
+                {/* <button type="button" id="buttonOk">OK</button> */}
+                </div>
             </div>
         </div>
     )

@@ -11,7 +11,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import "regenerator-runtime/runtime";
 import { ModalAccomplishConfirm } from "../ModalAccomplishConfirm";
 
-export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }){
+export function QuestionForm({ questions, id_activity, isLoading, setIsLoading, confirmAccomplish }){
 
     const navigate = useNavigate()
 
@@ -61,7 +61,7 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
         const id_student = getCurrentStudentId()
 
         accomplishActivity(id_activity, id_student).then(() => {
-            navigate("/activities")
+            confirmAccomplish()
         }).catch((error) => {
             console.log(error.message)
             setIsLoading(false)
@@ -92,9 +92,6 @@ export function QuestionForm({ questions, id_activity, isLoading, setIsLoading }
 
     return(
         <div className="questionFormBody">
-            {
-                isModalAccomplishOpen && <ModalAccomplishConfirm />
-            }
             <div className="questionFormContainer">
                 {
                     questions.map((question) => (
