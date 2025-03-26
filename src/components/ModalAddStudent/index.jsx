@@ -17,12 +17,14 @@ export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStuden
     }
 
     function fetchStudents(){
+        setIsLoading(true)
         filterStudentsByEmail(emailToSearch).then((students) => {
             setStudents(students)
             setIsLoading(false)
         }).catch((error) => {
             if(error.status === 404){
                 setStudents([])
+                setIsLoading(false)
             }
             console.log(error.message)
         })
@@ -51,10 +53,7 @@ export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStuden
                     </div>
                 </div>
                 {
-                    isLoading ?
-                        <LoadingIcon />
-                    :
-                        emailToSearch && <StudentListSection modalHandleAllocateStudent={modalHandleAllocateStudent} students={students} />
+                    emailToSearch && <StudentListSection modalHandleAllocateStudent={modalHandleAllocateStudent} students={students} isLoading={isLoading} />
                 }
                 <button className="cancelButton" onClick={() => setIsModalAddStudentOpen(false)}>Fechar</button>
             </div>

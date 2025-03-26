@@ -5,7 +5,7 @@ import { getAllStudents } from "../../services/StudentService";
 import { LoadingIcon } from "../LoadingIcon";
 import { allocateStudentInClassroom } from "../../services/ClassroomService";
 
-export function StudentListSection({ modalHandleAllocateStudent, students }){
+export function StudentListSection({ modalHandleAllocateStudent, students, isLoading }){
 
     const [filteredStudents, setFilteredStudents] = useState([])
 
@@ -39,7 +39,10 @@ export function StudentListSection({ modalHandleAllocateStudent, students }){
                         <StudentCard modalHandleAllocateStudent={modalHandleAllocateStudent} student={student} />
                     ))
                 :
-                    <p className="noStudentsText">Nenhum aluno encontrado...</p>
+                    isLoading ?
+                        <LoadingIcon />
+                    :
+                        <p className="noStudentsText">Nenhum aluno encontrado...</p>
             }
         </div>
     )

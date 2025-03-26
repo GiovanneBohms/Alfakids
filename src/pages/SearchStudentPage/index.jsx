@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ProfessorDashBoard } from "../../components/ProfessorDashBoard"
-import { getAllStudents } from "../../services/StudentService";
+import { filterStudentsByEmail, getAllStudents } from "../../services/StudentService";
 import "./index.css"
 import { IoIosSearch } from "react-icons/io";
 import { LoadingIcon } from "../../components/LoadingIcon"
@@ -16,13 +16,20 @@ export function SearchStudentPage(){
     const [emailToSearch, setEmailToSearch] = useState()
     const [isModalStudent, setIsModalStudent] = useState(false)
     const [accountables, setAccountables] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     const navigate = useNavigate()
     
     function fetchStudents(){
-        getAllStudents().then((students) => {
+        setIsLoading(true)
+        filterStudentsByEmail(emailToSearch).then((students) => {
             setStudents(students)
+            setIsLoading(false)
         }).catch((error) => {
+            if(error.status){
+                setStudents([])
+                setIsLoading(false)
+            }
             console.log(error.message)
         })
     }
@@ -47,7 +54,7 @@ export function SearchStudentPage(){
 
     useEffect(() => {
         fetchStudents()
-    }, [])
+    }, [emailToSearch])
 
     return(
         <div className="professorPageBody">
@@ -66,10 +73,7 @@ export function SearchStudentPage(){
                 </div>
                 <div className="studentsListSection">
                     {
-                        students.length == 0 ?
-                            <LoadingIcon />
-                        :
-                            emailToSearch && <StudentListSection modalHandleAllocateStudent={handleStudentSelection} students={students} emailToSearch={emailToSearch} />
+                        emailToSearch && <StudentListSection modalHandleAllocateStudent={handleStudentSelection} students={students} isLoading={isLoading} />
                     }
                 </div>
             </div>
