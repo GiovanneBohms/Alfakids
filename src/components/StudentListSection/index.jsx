@@ -5,38 +5,41 @@ import { getAllStudents } from "../../services/StudentService";
 import { LoadingIcon } from "../LoadingIcon";
 import { allocateStudentInClassroom } from "../../services/ClassroomService";
 
-export function StudentListSection({ modalHandleAllocateStudent, students, emailToSearch }){
+export function StudentListSection({ modalHandleAllocateStudent, students }){
 
     const [filteredStudents, setFilteredStudents] = useState([])
 
     
 
-    function filterStudents(){
-        if(emailToSearch !== null){
-            let auxStudents = students.filter((student) => {
-                if(student.email.toLowerCase().includes(emailToSearch)){
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            });
-            setFilteredStudents(auxStudents);
-        } else{
-            setFilteredStudents([]);
-        }
-    }
+    // function filterStudents(){
+    //     if(emailToSearch !== null){
+    //         let auxStudents = students.filter((student) => {
+    //             if(student.email.toLowerCase().includes(emailToSearch)){
+    //                 return true;
+    //             }
+    //             else{
+    //                 return false;
+    //             }
+    //         });
+    //         setFilteredStudents(auxStudents);
+    //     } else{
+    //         setFilteredStudents([]);
+    //     }
+    // }
 
-    useEffect(() => {
-        filterStudents()
-    }, [emailToSearch])
+    // useEffect(() => {
+    //     filterStudents()
+    // }, [emailToSearch])
 
     return(
         <div className="studentListContainer">
             {
-                filteredStudents.map((student) => (
-                    <StudentCard modalHandleAllocateStudent={modalHandleAllocateStudent} student={student} />
-                ))
+                students.length !== 0 ?
+                    students.map((student) => (
+                        <StudentCard modalHandleAllocateStudent={modalHandleAllocateStudent} student={student} />
+                    ))
+                :
+                    <p className="noStudentsText">Nenhum aluno encontrado...</p>
             }
         </div>
     )

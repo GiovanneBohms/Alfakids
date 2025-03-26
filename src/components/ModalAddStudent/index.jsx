@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./index.css"
 import { IoIosSearch } from "react-icons/io";
 import { StudentListSection } from "../StudentListSection";
-import { getAllStudents } from "../../services/StudentService";
+import { filterStudentsByEmail, getAllStudents } from "../../services/StudentService";
 import { LoadingIcon } from "../LoadingIcon";
 
 export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStudent }){
@@ -17,17 +17,25 @@ export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStuden
     }
 
     function fetchStudents(){
-        getAllStudents().then((students) => {
+        filterStudentsByEmail(emailToSearch).then((students) => {
             setStudents(students)
             setIsLoading(false)
         }).catch((error) => {
+            if(error.status === 404){
+                setStudents([])
+            }
             console.log(error.message)
         })
     }
 
     useEffect(() => {
-        fetchStudents()
-    }, [])
+        if(emailToSearch !== null){
+            fetchStudents()
+        }
+        else{
+            setIsLoading(false)
+        }
+    }, [emailToSearch])
 
     /*---------------------------------Atribuir ao backend a filtragem (futuramente) ---------------------------------------*/
 
@@ -46,7 +54,7 @@ export function ModalAddStudent({ setIsModalAddStudentOpen, handleAllocateStuden
                     isLoading ?
                         <LoadingIcon />
                     :
-                        emailToSearch && <StudentListSection modalHandleAllocateStudent={modalHandleAllocateStudent} students={students} emailToSearch={emailToSearch} />
+                        emailToSearch && <StudentListSection modalHandleAllocateStudent={modalHandleAllocateStudent} students={students} />
                 }
                 <button className="cancelButton" onClick={() => setIsModalAddStudentOpen(false)}>Fechar</button>
             </div>

@@ -35,6 +35,12 @@ export async function getStudentById(idStudent){
     return response.data.student
 }
 
+export async function filterStudentsByEmail(email){
+    const response = await api.get(`/student/filterByEmail/${email}`)
+
+    return response.data.students
+}
+
 export async function registerStudent(student){
     const response = await api.post("/student/register", student)
 
