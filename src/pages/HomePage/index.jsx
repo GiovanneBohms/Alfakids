@@ -46,22 +46,29 @@ export function HomePage(){
                 document.getElementById(navItems[i].id).style.transition = "0.2s"
             }
 
+            document.getElementById("homeHeader").style.transition = "0.2s"
+            document.getElementById("homeHeader").style.backgroundImage = "linear-gradient(to left, var(--color-primary), var(--color-pink), white)"
             document.getElementById("imgLogoNav").style.transition = "0.2s"
             document.getElementById("imgLogoNav").style.opacity = "1"
             document.getElementById("imgLogoNav").style.cursor = "pointer"
         }
         else if((currentScroll < aboutDivOffSet - 40) && (currentScroll < videoDivOffSet - 40)){
             for(let i = 0; i < navItems.length; i++){
-                document.getElementById(navItems[i].id).style.color = "white"
+                document.getElementById(navItems[i].id).style.color = "black"
             }
+            document.getElementById("homeHeader").style.transition = "0.2s"
+
+            document.getElementById("homeHeader").style.backgroundImage = "none"
 
             document.getElementById("imgLogoNav").style.opacity = "0"
             document.getElementById("imgLogoNav").style.cursor = "default"
         }
         else if((currentScroll >= videoDivOffSet - 40)){
             for(let i = 0; i < navItems.length; i++){
-                document.getElementById(navItems[i].id).style.color = "white"
+                document.getElementById(navItems[i].id).style.color = "black"
             }
+            document.getElementById("homeHeader").style.transition = "0.2s"
+            document.getElementById("homeHeader").style.backgroundImage = "none"
 
             document.getElementById("imgLogoNav").style.transition = "0.2s"
             document.getElementById("imgLogoNav").style.opacity = "1"

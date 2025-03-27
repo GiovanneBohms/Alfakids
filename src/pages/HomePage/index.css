@@ -42,6 +42,7 @@
 
 .homeBody header nav ul li a{
     color: white;
+    font-size: 20px;
 }
 
 .homeBody a{
@@ -87,10 +88,11 @@
     box-shadow: var(--shadow-light);
     border: none;
     outline: none;
-    background-color: white;
+    background-color: #220F0B;
     border-radius: 15px;
-    color: var(--color-primary);
+    color: white;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .buttonLogInDiv button:hover{
@@ -109,7 +111,7 @@
 #aboutDiv{
     width: 100%;
     height: 100vh;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(15, 15, 15);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,13 +152,12 @@
 }
 
 .logosDiv .logosContainer div{
-    background-color: var(--color-pink);
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 350px;
     height: 350px;
-    border: 2px dashed white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.259);
 }
 
@@ -186,12 +187,14 @@
 
 .aboutText p{
     color: white;
-    background-color: var(--color-pink);
+    background-color: #42A6DE;
     width: 80%;
-    border: 2px dashed white;
     padding: 20px;
     border-radius: 15px;
+    font-size: 24px;
+    border: 2px dashed white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.259);
+    text-align: justify;
 }
 
 .homeBody footer{
