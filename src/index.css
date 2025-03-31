@@ -8,8 +8,8 @@
   -moz-osx-font-smoothing: grayscale;
 
   --color-background: #eeeeee;
-  --color-primary: #42a5deb7;
-  --color-primary-hover: #8c00a4;
+  --color-primary: #42a5de;
+  --color-primary-hover: #3a92c5;
   --color-secondary: #f9f9f9;
   --color-text: #333;
   --color-border: #ddd;
@@ -21,7 +21,7 @@
   --color-green: rgb(126, 205, 126);
   --color-green-hover: rgb(113, 181, 113);
   --color-tip: rgb(0, 191, 0);
-  --color-pink: #42a5de7e;
+  --color-pink: #42a5de;
 }
 
 body {

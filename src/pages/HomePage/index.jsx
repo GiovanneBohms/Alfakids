@@ -47,7 +47,7 @@ export function HomePage(){
             }
 
             document.getElementById("homeHeader").style.transition = "0.2s"
-            document.getElementById("homeHeader").style.backgroundImage = "linear-gradient(to left, var(--color-primary), var(--color-pink), white)"
+            // document.getElementById("homeHeader").style.backgroundImage = "linear-gradient(to left, var(--color-primary), var(--color-pink), white)"
             document.getElementById("imgLogoNav").style.transition = "0.2s"
             document.getElementById("imgLogoNav").style.opacity = "1"
             document.getElementById("imgLogoNav").style.cursor = "pointer"

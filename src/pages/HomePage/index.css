@@ -16,6 +16,7 @@
     align-items: center;
     height: 60px;
     padding: 10px 0px;
+    opacity: 1;
 }
 
 .homeBody header nav{
@@ -96,7 +97,7 @@
 }
 
 .buttonLogInDiv button:hover{
-    background-color: var(--color-pink);
+    background-color: var(--color-primary-hover);
     color: white;
 }
 
@@ -111,7 +112,8 @@
 #aboutDiv{
     width: 100%;
     height: 100vh;
-    background-color: rgb(15, 15, 15);
+    /* background-color: rgb(15, 15, 15); */
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
