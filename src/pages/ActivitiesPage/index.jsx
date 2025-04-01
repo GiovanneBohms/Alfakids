@@ -4,7 +4,7 @@ import "./index.css"
 import { ActivityCard } from "../../components/ActivityCard"
 import { ClassroomCard } from "../../components/ClassroomCard"
 import { getClassroomsByStudentId } from "../../services/ClassroomService"
-import { getAccomplishedActivities, getActivitiesByClassroomId, getUnaccomplishedActivities } from "../../services/ActivityService"
+import { getAccomplishedActivities, getUnaccomplishedActivities } from "../../services/ActivityService"
 import { useNavigate } from "react-router-dom"
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { getCurrentStudentId, getStudentById } from "../../services/StudentService"
@@ -122,32 +122,35 @@ export function ActivitiesPage(){
                         <div className="mainActivityTitleContainer">
                             <h1 className="mainActivityTitle">Atividades</h1>
                         </div>
-                        {
-                            isLoadingActivities ?
-                                <div className="loadingActivitiesContainer">
-                                    <LoadingIcon />
-                                </div>
-                            :
-                                <section className="activitiesSection">
-                                    {
-                                        activities !== null ?
-                                            !isRepository ?
-                                                activities.map((activity) => (
-                                                    <div key={activity.id} onClick={() => navigate(`/selected-activity/${activity.id}`)}>
-                                                        <ActivityCard isRepository={isRepository} activity={activity} />
-                                                    </div>
-                                                ))
+                        <div className="mainActivitySection">
+                            {
+                                isLoadingActivities ?
+                                    <div className="loadingActivitiesContainer">
+                                        <LoadingIcon />
+                                    </div>
+                                :
+                                    <section className="activitiesSection">
+                                        {
+                                            activities !== null ?
+                                                !isRepository ?
+                                                    activities.map((activity) => (
+                                                        <div key={activity.id} onClick={() => navigate(`/selected-activity/${activity.id}`)}>
+                                                            <ActivityCard isRepository={isRepository} activity={activity} />
+                                                        </div>
+                                                    ))
+                                                :
+                                                    activities.map((activity) => (
+                                                        <div key={activity.id} onClick={() => navigate(`/accomplishment/${activity.id}/${getCurrentStudentId()}`)}>
+                                                            <ActivityCard isRepository={isRepository} activity={activity} />
+                                                        </div>
+                                                    ))
                                             :
-                                                activities.map((activity) => (
-                                                    <div key={activity.id} onClick={() => navigate(`/accomplishment/${activity.id}/${getCurrentStudentId()}`)}>
-                                                        <ActivityCard isRepository={isRepository} activity={activity} />
-                                                    </div>
-                                                ))
-                                        :
-                                            <p className="notFoundMessage">Você não tem atividades pendentes nesta turma...</p>
-                                    }
-                                </section>
-                        }
+                                                <p className="notFoundMessage">Você não tem atividades pendentes nesta turma...</p>
+                                        }
+                                    </section>
+                            }
+                        </div>
+                       
                         <div className="repositoryCard" onClick={() => fetchAccomplishedActivities()}>
                             <p><FaFolder /></p>
                             <p>Repositório</p>

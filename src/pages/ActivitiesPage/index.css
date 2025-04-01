@@ -17,10 +17,16 @@
     gap: 20px;
 }
 
+.mainActivitySection{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+
 .activitiesSection{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(224.9px, 224.9px));
+    width: 100%;
     height: 100%;
     gap: 40px;
 }

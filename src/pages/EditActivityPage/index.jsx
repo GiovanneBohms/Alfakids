@@ -94,8 +94,8 @@ export function EditActivityPage(){
                                             <tr className="headerRow">
                                                 <th className="edgeLeft">Nome</th>
                                                 <th>Email</th>
-                                                <th>Ano Escolar</th>
-                                                <th className="edgeRight">Nível de Autismo</th>
+                                                <th className="edgeRight">Ano Escolar</th>
+                                                {/* <th>Nível de Autismo</th> */}
                                             </tr>
                                             {console.log(students)}
                                             {
@@ -104,7 +104,7 @@ export function EditActivityPage(){
                                                         <td>{student.name}</td>
                                                         <td>{student.email}</td>
                                                         <td>{student.school_year}</td>
-                                                        <td>{student.autism_level}</td>
+                                                        {/* <td>{student.autism_level}</td> */}
                                                     </tr>
                                                 ))
                                             }

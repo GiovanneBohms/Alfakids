@@ -12,7 +12,7 @@ export function ModalInfoStudent({student, accountables, setModalOpen}){
                 <p>Nome: {student.name}</p>
                 <p>Email: {student.email}</p>
                 <p>Idade: {student.age}</p>
-                <p>Nível de Autismo: {student.autism_level}</p>
+                {/* <p>Nível de Autismo: {student.autism_level}</p> */}
                 <h3>Responsáveis:</h3>
                 <ul>
                     {

@@ -3,7 +3,7 @@ import { useAuth } from "../../hooks/useAuth"
 import "./index.css"
 import { LoadingIcon } from "../../components/LoadingIcon"
 import { useState } from "react"
-import logo from "../../assets/girassolLogo.png"
+import logo from "../../assets/alfakidsLogoFinal.png"
 
 export function ProfessorLogin(){
 

@@ -3,7 +3,7 @@ import "./index.css"
 import { registerStudent } from "../../services/StudentService"
 import { useState } from "react"
 import { LoadingIcon } from "../../components/LoadingIcon"
-import logo from "../../assets/girassolLogo.png"
+import logo from "../../assets/alfakidsLogoFinal.png"
 
 export function RegisterPage(){
 
@@ -24,10 +24,10 @@ export function RegisterPage(){
         const password = formData.get("password")
         const gender = formData.get("gender")
         const age = formData.get("age")
-        const autism_level = formData.get("autism_level")
+        // const autism_level = formData.get("autism_level")
         const school_year = formData.get("school_year")
 
-        const new_student = {name, email, password, gender, age, autism_level, school_year}
+        const new_student = {name, email, password, gender, age, school_year}
 
         registerStudent(new_student).then(() => {
             navigate("/login")
@@ -67,10 +67,10 @@ export function RegisterPage(){
                         <label htmlFor="">Idade:</label>
                         <input name="age" type="text" />
                     </div>
-                    <div className="formInput">
+                    {/* <div className="formInput">
                         <label htmlFor="">Nível de Autismo:</label>
                         <input name="autism_level" type="text" />
-                    </div>
+                    </div> */}
                     <div className="formInput">
                         <label htmlFor="">Ano Escolar:</label>
                         <input name="school_year" type="text" />

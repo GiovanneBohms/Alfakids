@@ -115,10 +115,11 @@
     /* background-color: rgb(15, 15, 15); */
     background-color: rgb(255, 255, 255);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-top: 3px dashed var(--color-primary);
-    border-bottom: 3px dashed var(--color-primary);
+    border-top: 3px dashed #220F0B;
+    border-bottom: 3px dashed #220F0B;
     box-shadow: 0px 0px 20px 0px black;
 }
 
@@ -136,8 +137,7 @@
 }
 
 .logosDiv{
-    width: 50%;
-    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -147,33 +147,11 @@
 
 .logosDiv .logosContainer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 50px;
-    /* border: 2px dashed var(--color-primary);
-    border-radius: 15px; */
-}
-
-.logosDiv .logosContainer div{
-    background-color: white;
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 350px;
-    height: 350px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.259);
-}
-
-.logosDiv .logosContainer div:nth-of-type(1){
-    border-top-left-radius: 200px;
-    border-bottom-left-radius: 200px;
-    border-top-right-radius: 200px;
-}
-
-.logosDiv .logosContainer div:nth-of-type(2){
-    margin-left: 14.8rem;
-    border-bottom-left-radius: 200px;
-    border-top-right-radius: 200px;
-    border-bottom-right-radius: 200px;
+    gap: 15rem;
 }
 
 .logosDiv img{
@@ -181,33 +159,35 @@
 }
 
 .aboutText{
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .aboutText p{
-    color: white;
-    background-color: #42A6DE;
-    width: 80%;
+    color: rgb(0, 0, 0);
+    /* background-color: #42A6DE; */
+    max-width: 70%;
     padding: 20px;
     border-radius: 15px;
     font-size: 24px;
-    border: 2px dashed white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.259);
+    border: 4px dashed #220F0B;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.259); */
     text-align: justify;
 }
 
 .homeBody footer{
     width: 100%;
-    background-color: rgb(45, 45, 45);
+    background-color: #220F0B;
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 50px;
+    /* border-top: 2px dashed white; */
+    box-shadow: 0px 0px 20px 0px black;
 }
 
 #videoDiv{
@@ -216,6 +196,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.homeFooter p{
+    color: rgba(101, 101, 101, 0.79);
 }
 
 @keyframes awake {

@@ -1,5 +1,5 @@
 import "./index.css"
-import girassolLogo from "../../assets/girassolLogo.png"
+import girassolLogo from "../../assets/alfakidsLogoFinal.png"
 import unicariocaLogo from "../../assets/logo-unicarioca1.png"
 import cnpqLogo from "../../assets/cnpqLogo.png"
 import { useEffect, useState } from "react";
@@ -95,7 +95,7 @@ export function HomePage(){
                 <div id="homeContainer" className="homeContainer awakeClass initial">
                     <div className="titleDiv">
                         <img src={girassolLogo} alt="mainLogo" />
-                        <h1>AlfaKids</h1>
+                        <h1>Alfa</h1>
                         <p>Uma plataforma educacional que utiliza de IA para melhorar seu processo de aprendizagem.</p>
                     </div>
                 </div>
@@ -108,6 +108,9 @@ export function HomePage(){
             
             <div id="aboutDiv">
                 <div id="logosDiv" className="logosDiv awakeClass">
+                    <div id="aboutText" className="aboutText awakeClass">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi aperiam repellendus expedita ut! Debitis cum, tempora aliquam ab totam, iure labore accusamus temporibus tenetur praesentium dolor id culpa laudantium inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eum commodi consequuntur quasi reiciendis facilis aspernatur deserunt sint voluptatem nesciunt. Illo, tempore quis. Temporibus nulla inventore praesentium eveniet, autem exercitationem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed possimus ipsam voluptate repudiandae voluptatem? Porro ab consequuntur sunt repudiandae architecto dolor tenetur molestias doloribus rem minima? Molestias vel ipsam asperiores.</p>
+                    </div>
                     <div className="logosContainer">
                         <div className="logoImg">
                             <img src={unicariocaLogo} alt="unicariocaLogo" />  
@@ -117,15 +120,16 @@ export function HomePage(){
                         </div>
                     </div>
                 </div>
-                <div id="aboutText" className="aboutText awakeClass">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi aperiam repellendus expedita ut! Debitis cum, tempora aliquam ab totam, iure labore accusamus temporibus tenetur praesentium dolor id culpa laudantium inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eum commodi consequuntur quasi reiciendis facilis aspernatur deserunt sint voluptatem nesciunt. Illo, tempore quis. Temporibus nulla inventore praesentium eveniet, autem exercitationem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed possimus ipsam voluptate repudiandae voluptatem? Porro ab consequuntur sunt repudiandae architecto dolor tenetur molestias doloribus rem minima? Molestias vel ipsam asperiores.</p>
-                </div>
+                
             </div>
             <div id="videoDiv" className="awakeClass">
                 <div>
                     <iframe width="960" height="615" src="https://www.youtube.com/embed/4DI4uIEQ_4M?si=FnDGLyQ-QYDTL1-V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
+            <footer className="homeFooter">
+                <p>Direitos reservados para a unicarioca</p>
+            </footer>
         </div>
     )
 }

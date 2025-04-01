@@ -197,7 +197,7 @@ export function EditClassroomPage(){
                                             <th>Email</th>
                                             <th>Idade</th>
                                             <th>Gênero</th>
-                                            <th>Nível de Autismo</th>
+                                            {/* <th>Nível de Autismo</th> */}
                                             <th>Ano Escolar</th>
                                             <th className="edgeRight"></th>
                                         </tr>
@@ -208,7 +208,7 @@ export function EditClassroomPage(){
                                                     <td>{student.email}</td>
                                                     <td>{student.age}</td>
                                                     <td>{student.gender}</td>
-                                                    <td>{student.autism_level}</td>
+                                                    {/* <td>{student.autism_level}</td> */}
                                                     <td>{student.school_year}</td>
                                                     <div className="sectionSelect">
                                                         <label className="containerSelect">
