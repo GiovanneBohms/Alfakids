@@ -54,7 +54,7 @@ export function HomePage(){
         }
         else if((currentScroll < aboutDivOffSet - 40) && (currentScroll < videoDivOffSet - 40)){
             for(let i = 0; i < navItems.length; i++){
-                document.getElementById(navItems[i].id).style.color = "black"
+                document.getElementById(navItems[i].id).style.color = "white"
             }
             document.getElementById("homeHeader").style.transition = "0.2s"
 
@@ -65,7 +65,7 @@ export function HomePage(){
         }
         else if((currentScroll >= videoDivOffSet - 40)){
             for(let i = 0; i < navItems.length; i++){
-                document.getElementById(navItems[i].id).style.color = "black"
+                document.getElementById(navItems[i].id).style.color = "white"
             }
             document.getElementById("homeHeader").style.transition = "0.2s"
             document.getElementById("homeHeader").style.backgroundImage = "none"
@@ -109,7 +109,7 @@ export function HomePage(){
             <div id="aboutDiv">
                 <div id="logosDiv" className="logosDiv awakeClass">
                     <div id="aboutText" className="aboutText awakeClass">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi aperiam repellendus expedita ut! Debitis cum, tempora aliquam ab totam, iure labore accusamus temporibus tenetur praesentium dolor id culpa laudantium inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eum commodi consequuntur quasi reiciendis facilis aspernatur deserunt sint voluptatem nesciunt. Illo, tempore quis. Temporibus nulla inventore praesentium eveniet, autem exercitationem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed possimus ipsam voluptate repudiandae voluptatem? Porro ab consequuntur sunt repudiandae architecto dolor tenetur molestias doloribus rem minima? Molestias vel ipsam asperiores.</p>
+                        <p>O [nome-do-site] é uma plataforma que busca auxiliar no processo de educação por meio da utilização de IA nos diversos aspectos do âmbito acadêmico. A partir de uma ideia criada por [nome-da-autora] e desenvolvida pelo Laboratório de Tecnologia Aplicada da Unicarioca, surge esse projeto inovador. O [nome-do-site] possui um assistente virtual para o aluno e um sistema de atividades totalmente intuitivo. Além disso, é possível gerar correções e dicas para as respostas dos exercícios feitos pelo aluno. </p>
                     </div>
                     <div className="logosContainer">
                         <div className="logoImg">

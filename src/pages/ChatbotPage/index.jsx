@@ -8,6 +8,7 @@ import { getCurrentStudentId, getStudentById } from "../../services/StudentServi
 import { useNavigate } from "react-router-dom";
 import { MessageBubble } from "../../components/MessageBubble";
 import { formatAIResponse } from "../../utils/FormatAIResponse.jsx";
+import logo from "../../assets/alfakidsLogoFinal.png"
 
 export function ChatbotPage(){
 
@@ -149,7 +150,10 @@ export function ChatbotPage(){
                                     ))
                                 ) 
                                 :
-                                    null
+                                    <div className="noChatContainer">
+                                        {/* <img  src={logo} alt="logo" /> */}
+                                        <h1>Como posso te ajudar?</h1>
+                                    </div>
                                 }
                             </div>
                             

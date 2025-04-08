@@ -168,7 +168,7 @@
 .aboutText p{
     color: rgb(0, 0, 0);
     /* background-color: #42A6DE; */
-    max-width: 70%;
+    max-width: 50%;
     padding: 20px;
     border-radius: 15px;
     font-size: 24px;
@@ -201,6 +201,11 @@
 .homeFooter p{
     color: rgba(101, 101, 101, 0.79);
 }
+
+/* .carouselComponent{
+    background-color: red;
+    height: 100px;
+} */
 
 @keyframes awake {
     0%{
