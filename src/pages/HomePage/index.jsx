@@ -3,6 +3,8 @@ import girassolLogo from "../../assets/alfakidsLogoFinal.png"
 import unicariocaLogo from "../../assets/logo-unicarioca1.png"
 import cnpqLogo from "../../assets/cnpqLogo.png"
 import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 export function HomePage(){
 
@@ -109,7 +111,23 @@ export function HomePage(){
             <div id="aboutDiv">
                 <div id="logosDiv" className="logosDiv awakeClass">
                     <div id="aboutText" className="aboutText awakeClass">
-                        <p>O [nome-do-site] é uma plataforma que busca auxiliar no processo de educação por meio da utilização de IA nos diversos aspectos do âmbito acadêmico. A partir de uma ideia criada por [nome-da-autora] e desenvolvida pelo Laboratório de Tecnologia Aplicada da Unicarioca, surge esse projeto inovador. O [nome-do-site] possui um assistente virtual para o aluno e um sistema de atividades totalmente intuitivo. Além disso, é possível gerar correções e dicas para as respostas dos exercícios feitos pelo aluno. </p>
+                        <Swiper
+                            spaceBetween={100}
+                            slidesPerView={1}
+                            pagination={{clickable: true}}
+                            className="slider"
+                            modules={[Autoplay]}
+                            loop={true}
+                            autoplay={{delay:5000, pauseOnMouseEnter:true}}
+                        >
+                            <SwiperSlide className="sliderItem">
+                                <p>O [nome-do-site] é uma plataforma que busca auxiliar no processo de educação por meio da utilização de IA nos diversos aspectos do âmbito acadêmico. A partir de uma ideia criada por [nome-da-autora] e desenvolvida pelo Laboratório de Tecnologia Aplicada da Unicarioca, surge esse projeto inovador. O [nome-do-site] possui um assistente virtual para o aluno e um sistema de atividades totalmente intuitivo. Além disso, é possível gerar correções e dicas para as respostas dos exercícios feitos pelo aluno. </p>
+                            </SwiperSlide>
+                            <SwiperSlide className="sliderItem">
+                                <p>O plataforma que busca auxiliar no processo de educação por meio da utilização de IA nos diversos aspectos do âmbito acadêmico. A partir de uma ideia criada por [nome-da-autora] e desenvolvida pelo Laboratório de Tecnologia Aplicada da Unicarioca, surge esse projeto inovador. O [nome-do-site] possui um assistente virtual para o aluno e um sistema de atividades totalmente intuitivo. Além disso, é possível gerar correções e dicas para as respostas dos exercícios feitos pelo aluno. </p>
+                            </SwiperSlide>
+                        </Swiper>
+                        
                     </div>
                     <div className="logosContainer">
                         <div className="logoImg">
