@@ -1,6 +1,10 @@
 import "./index.css"
 import girassolLogo from "../../assets/alfakidsLogoFinal.png"
 import unicariocaLogo from "../../assets/logo-unicarioca1.png"
+import correcaogerada from "../../assets/correcaogerada.png"
+import correcao from "../../assets/correcao.png"
+import planodeaula from "../../assets/planodeaula.png"
+import planogerado from "../../assets/planogerado.png"
 import cnpqLogo from "../../assets/cnpqLogo.png"
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -120,23 +124,57 @@ export function HomePage(){
                             loop={true}
                             autoplay={{delay:5000, pauseOnMouseEnter:true}}
                         >
+                            {/* <SwiperSlide className="sliderItem">
+                                <div>
+                                    <img src={girassolLogo} alt="" />
+                                    <p>O [nome-do-site] é uma plataforma que busca auxiliar no processo de educação por meio da utilização de IA nos diversos aspectos do âmbito acadêmico. A partir de uma ideia criada por [nome-da-autora] e desenvolvida pelo Laboratório de Tecnologia Aplicada da Unicarioca, surge esse projeto inovador.</p>
+                                </div>
+                            </SwiperSlide> */}
                             <SwiperSlide className="sliderItem">
-                                <p>O [nome-do-site] é uma plataforma que busca auxiliar no processo de educação por meio da utilização de IA nos diversos aspectos do âmbito acadêmico. A partir de uma ideia criada por [nome-da-autora] e desenvolvida pelo Laboratório de Tecnologia Aplicada da Unicarioca, surge esse projeto inovador. O [nome-do-site] possui um assistente virtual para o aluno e um sistema de atividades totalmente intuitivo. Além disso, é possível gerar correções e dicas para as respostas dos exercícios feitos pelo aluno. </p>
+                                <div className="sliderItemContentContainer">
+                                    <div className="sliderImgContainer">
+                                        <img src={correcao} alt="" />
+                                        <img src={correcaogerada} alt="" />
+                                    </div>
+                                    <div className="sliderTextContainer">
+                                        <p>A plataforma conta com um modelo de inteligência articial que atua em diversas funções, sendo uma delas, a de assistente virtual. Outra funcionalidade </p>
+                                    </div>
+                                </div>
                             </SwiperSlide>
+                            {/* <SwiperSlide className="sliderItem">
+                                <div>
+                                    <img src={correcaogerada} alt="" />
+                                    <p>A plataforma conta com um modelo de inteligência articial que atua em diversas funções, sendo uma delas, a de assistente virtual. Outra funcionalidade </p>
+                                </div>
+                            </SwiperSlide> */}
                             <SwiperSlide className="sliderItem">
-                                <p>O plataforma que busca auxiliar no processo de educação por meio da utilização de IA nos diversos aspectos do âmbito acadêmico. A partir de uma ideia criada por [nome-da-autora] e desenvolvida pelo Laboratório de Tecnologia Aplicada da Unicarioca, surge esse projeto inovador. O [nome-do-site] possui um assistente virtual para o aluno e um sistema de atividades totalmente intuitivo. Além disso, é possível gerar correções e dicas para as respostas dos exercícios feitos pelo aluno. </p>
+                                <div className="sliderItemContentContainer">
+                                    <div className="sliderImgContainer">
+                                        <img src={planodeaula} alt="" />
+                                        <img src={planogerado} alt="" />
+                                    </div>
+                                    <div className="sliderTextContainer">
+                                        <p>A plataforma conta com um modelo de inteligência articial que atua em diversas funções, sendo uma delas, a de assistente virtual. Outra funcionalidade </p>
+                                    </div>
+                                </div>
                             </SwiperSlide>
+                            {/* <SwiperSlide className="sliderItem">
+                                <div>
+                                    <img src={planogerado} alt="" />
+                                    <p>A plataforma conta com um modelo de inteligência articial que atua em diversas funções, sendo uma delas, a de assistente virtual. Outra funcionalidade </p>
+                                </div>
+                            </SwiperSlide> */}
                         </Swiper>
                         
                     </div>
-                    <div className="logosContainer">
+                    {/* <div className="logosContainer">
                         <div className="logoImg">
                             <img src={unicariocaLogo} alt="unicariocaLogo" />  
                         </div>
                         <div className="logoImg">
                             <img src={cnpqLogo} alt="unicariocaLogo" />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 
             </div>
