@@ -39,7 +39,7 @@ export function AddQuestionPage(){
         <div className="addQuestionBody">
             <ProfessorDashBoard />
             <div className="addQuestionSection">
-                <h1>Add Question</h1>
+                <h1>Adicionar Questão</h1>
                 <div className="addQuestionForm">
                     <div className="typeInputContainer">
                         <label>Tipo:</label>
@@ -71,20 +71,20 @@ export function AddQuestionPage(){
                         <div className="objectiveAnswer">
                             <div className="objectiveOptionsContainer">
                                 <div className="answerContainer">
-                                    <label>Answer 1</label>
+                                    <label>Resposta 1</label>
                                     <input onChange={(e) => setAnswer1(e.target.value)} />
-                                    <label>Answer 2</label>
+                                    <label>Resposta 2</label>
                                     <input onChange={(e) => setAnswer2(e.target.value)} />
                                 </div>
                                 <div className="answerContainer">
-                                    <label>Answer 3</label>
+                                    <label>Resposta 3</label>
                                     <input onChange={(e) => setAnswer3(e.target.value)} />
-                                    <label>Answer 4</label>
+                                    <label>Resposta 4</label>
                                     <input onChange={(e) => setAnswer4(e.target.value)} />
                                 </div>
                             </div>
                             <div className="rightAnswerContainer">
-                                <label>Right Answer</label>
+                                <label>Resposta Correta</label>
                                 <input onChange={(e) => setRight_answer(e.target.value)} />
                             </div>
                         </div>
