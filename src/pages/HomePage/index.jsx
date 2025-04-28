@@ -2,6 +2,8 @@ import "./index.css"
 import girassolLogo from "../../assets/alfakidsLogoFinal.png"
 import correcaogerada from "../../assets/correcaogerada.png"
 import correcao from "../../assets/correcao.png"
+import joice from "../../assets/joice.png"
+import felipe from "../../assets/felipe.jpg"
 import assistente from "../../assets/assistente.png"
 import assistenteVazio from "../../assets/assistenteVazio.png"
 import planodeaula from "../../assets/planodeaula.png"
@@ -173,7 +175,7 @@ export function HomePage(){
                     <SwiperSlide className="sliderItem">
                         <div className="sliderItemContentContainer">
                             <div className="creditImg">
-                                <img src={girassolLogo} alt="" />
+                                <img src={felipe} alt="" />
                             </div>
                             <div className="sliderTextContainer">
                                 <p>Felipe Martins de Medeiros: <br/> Desenvolvedor</p>
@@ -193,7 +195,7 @@ export function HomePage(){
                     <SwiperSlide className="sliderItem">
                         <div className="sliderItemContentContainer">
                             <div className="creditImg">
-                                <img src={girassolLogo} alt="" />
+                                <img src={joice} alt="" />
                             </div>
                             <div className="sliderTextContainer">
                                 <p>Joice Pereira Conceição Costa: <br/> Idealizadora do projeto</p>
