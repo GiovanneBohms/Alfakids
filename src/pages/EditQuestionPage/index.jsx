@@ -82,11 +82,11 @@ export function EditQuestionPage(){
                 :
                     <div className="editQuestionPageSection">
                         <div>
-                            <h1>Edit Question</h1>
+                            <h1>Editar Questão</h1>
                         </div>
                         <div className="editQuestionPageForm">
                             <div className="editQuestionPageStatementTextArea">
-                                <label>Statement:</label>
+                                <label>Enunciado:</label>
                                 <textarea onChange={(e) => setStatement(e.target.value)} defaultValue={question.statement}></textarea>
                             </div>
                             {
@@ -95,7 +95,7 @@ export function EditQuestionPage(){
                                 question.type === "discursive" ?
                                     <div className="discursiveAnswer">
                                         <div className="discursiveInputContainer">
-                                            <label>Expected Answer:</label>
+                                            <label>Resposta Esperada:</label>
                                             <textarea onChange={(e) => setExpected_answer(e.target.value)} id="inputDiscursiveAnswer" defaultValue={question.expected_answer} type="text" />
                                         </div>
                                     </div>
@@ -106,27 +106,27 @@ export function EditQuestionPage(){
                                     <div className="objectiveAnswer">
                                         <div className="objectiveOptionsContainer">
                                             <div className="answerContainer">
-                                                <label>Answer 1</label>
+                                                <label>Resposta 1</label>
                                                 <input onChange={(e) => setAnswer1(e.target.value)} defaultValue={question.answer1} />
-                                                <label>Answer 2</label>
+                                                <label>Resposta 2</label>
                                                 <input onChange={(e) => setAnswer2(e.target.value)} defaultValue={question.answer2} />
                                             </div>
                                             <div className="answerContainer">
-                                                <label>Answer 3</label>
+                                                <label>Resposta 3</label>
                                                 <input onChange={(e) => setAnswer3(e.target.value)} defaultValue={question.answer3} />
-                                                <label>Answer 4</label>
+                                                <label>Resposta 4</label>
                                                 <input onChange={(e) => setAnswer4(e.target.value)} defaultValue={question.answer4} />
                                             </div>
                                         </div>
                                         <div className="rightAnswerContainer">
-                                            <label>Right Answer</label>
+                                            <label>Resposta Correta</label>
                                             <input onChange={(e) => setRight_answer(e.target.value)} defaultValue={question.right_answer} />
                                         </div>
                                     </div>
                             }
                             <div className="btnEditQuestionSection">
-                                <button onClick={() => handleDiscursiveEdit()} className="confirmQuestionEditBtn">Edit</button>
-                                <button onClick={() => navigate(`/activities/management/edit/${question.id_activity}`)} className="cancelQuestionEditBtn">Cancel</button>
+                                <button onClick={() => handleDiscursiveEdit()} className="confirmQuestionEditBtn">Editar</button>
+                                <button onClick={() => navigate(`/activities/management/edit/${question.id_activity}`)} className="cancelQuestionEditBtn">Cancelar</button>
                             </div>
                         </div>
                     </div>

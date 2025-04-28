@@ -16,9 +16,10 @@ import 'swiper/css/autoplay'
 function App(){
   return(
     <AuthProvider>
-      <StrictMode>
-        <RoutesComponent />
-      </StrictMode>
+      {/* <StrictMode>
+        
+      </StrictMode> */}
+      <RoutesComponent />
     </AuthProvider>
   )
 }
