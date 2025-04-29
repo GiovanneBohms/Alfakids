@@ -4,6 +4,7 @@ import correcaogerada from "../../assets/correcaogerada.png"
 import correcao from "../../assets/correcao.png"
 import joice from "../../assets/joice.png"
 import felipe from "../../assets/felipe.jpg"
+import anderson from "../../assets/anderson.jpeg"
 import assistente from "../../assets/assistente.png"
 import assistenteVazio from "../../assets/assistenteVazio.png"
 import planodeaula from "../../assets/planodeaula.png"
@@ -164,8 +165,8 @@ export function HomePage(){
             </div>
             <div id="creditDiv" className="awakeClass">
                 <Swiper
-                    spaceBetween={100}
-                    slidesPerView={1}
+                    spaceBetween={0}
+                    slidesPerView={2}
                     pagination={{clickable: true}}
                     className="slider"
                     modules={[Autoplay]}
@@ -185,7 +186,7 @@ export function HomePage(){
                     <SwiperSlide className="sliderItem">
                         <div className="sliderItemContentContainer">
                             <div className="creditImg">
-                                <img src={girassolLogo} alt="" />
+                                <img src={anderson} alt="" />
                             </div>
                             <div className="sliderTextContainer">
                                 <p>Anderson da Silva Nogueira Júnior: <br/> Desenvolvedor</p>
