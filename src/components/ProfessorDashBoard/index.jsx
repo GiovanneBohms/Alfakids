@@ -15,12 +15,12 @@ export function ProfessorDashBoard(){
         <div className="dashBoardSection">
             <section className="dashBoardContainer">
                 <div className="navigationContainer">
-                    <button className="navigationButton" onClick={() => navigate("/activities/management")}><LuNotebookPen className="navigationIcon" /></button>
-                    <button className="navigationButton" onClick={() => navigate("/classroom/management")}><SiGoogleclassroom className="navigationIcon" /></button>
-                    <button className="navigationButton" onClick={() => navigate("/search")}><IoIosSearch className="navigationIcon" /></button>
+                    <button title="Gerenciar atividades" className="navigationButton" onClick={() => navigate("/activities/management")}><LuNotebookPen className="navigationIcon" /></button>
+                    <button title="Gerenciar turmas" className="navigationButton" onClick={() => navigate("/classroom/management")}><SiGoogleclassroom className="navigationIcon" /></button>
+                    <button title="Pesquisar ficha do aluno" className="navigationButton" onClick={() => navigate("/search")}><IoIosSearch className="navigationIcon" /></button>
                 </div>
                 <div className="navigationContainer">
-                    <button className="navigationButton pinkOption" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
+                    <button title="Sair" className="navigationButton pinkOption" onClick={() => logout()}><MdLogout className="navigationIcon" /></button>
                 </div>
             </section>
         </div>
