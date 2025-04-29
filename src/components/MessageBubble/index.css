@@ -28,15 +28,29 @@
     font-size: 17px;
 }
 
+.messageBubbleContainer button{
+    transition: 0.2s;
+    font-size: 24px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.messageBubbleContainer button:hover{
+    color: var(--color-primary-hover);
+}
+
 .request{
     border-radius: 20px;
     background: rgb(214, 212, 212);
 }
 
 .response{
+    padding: 0;
+    margin: 0;
     max-width: 100%;
-    box-shadow: none;
-    /* background: rgb(214, 212, 212); */
-    
+    box-shadow: none;    
 }
 /* ----------------------------------- */

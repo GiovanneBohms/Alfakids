@@ -80,7 +80,6 @@ export function ChatbotPage(){
                 });
             }).then(() => {
                 setIsLoadingResponse(false);
-                speak(responseText);
             });
         }
     };
@@ -96,9 +95,9 @@ export function ChatbotPage(){
         voices = synth.getVoices();
         const utterThis = new SpeechSynthesisUtterance(text);
 
-        console.log(voices)
+        //console.log(voices)
         //Indíces - 0 para o brasileiro masculino, 1 para brasileira feminina e 16 para outra brasileira feminina
-        utterThis.voice = voices[24]
+        utterThis.voice = voices[16]
 
         synth.speak(utterThis);
     }
@@ -114,12 +113,6 @@ export function ChatbotPage(){
     useEffect(() => {
         fetchStudent()
     }, [])
-
-    // useEffect(() => {
-    //     if(done){
-    //         formatAIResponse("responseField")
-    //     }
-    // }, [done])
 
     return(
         <div className="studentPageBody">
@@ -139,7 +132,7 @@ export function ChatbotPage(){
                                             <MessageBubble msg={msg} type="request" />
                                             {
                                                 responses[index] !== undefined ?
-                                                    <MessageBubble msg={{ content: formatAIResponse(responses[index].content), role: responses[index].role }} type="response" />
+                                                    <MessageBubble msg={{ content: formatAIResponse(responses[index].content), role: responses[index].role }} speak={speak} type="response" />
                                                 :
                                                     <div className="responseBubble">
                                                         <LoadingIcon />
@@ -151,7 +144,7 @@ export function ChatbotPage(){
                                 ) 
                                 :
                                     <div className="noChatContainer">
-                                        {/* <img  src={logo} alt="logo" /> */}
+                                        <img src={logo} alt="logo" />
                                         <h1>Como posso te ajudar?</h1>
                                     </div>
                                 }

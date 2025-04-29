@@ -1,6 +1,7 @@
 import "./index.css"
+import { HiMiniSpeakerWave } from "react-icons/hi2";
 
-export function MessageBubble({msg, type}){
+export function MessageBubble({msg, type, speak}){
 
     //Date Format
     const formatDate = (timestamp) => {
@@ -15,7 +16,6 @@ export function MessageBubble({msg, type}){
             <div className="messageBubbleContainer requestContainer">
                 <div className="messageBubble request">
                     <p className="messageBubbleText">{msg.content}</p>
-                    {/* <span className="timestamp">{formatDate(msg.timestamp)}</span> */}
                 </div>
             </div>
         )
@@ -26,8 +26,8 @@ export function MessageBubble({msg, type}){
             <div className="messageBubbleContainer responseContainer">
                 <div className="messageBubble response">
                     <p id="responseField" className="messageBubbleText">{msg.content}</p>
-                    {/* <span className="timestamp">{formatDate(msg.timestamp)}</span> */}
                 </div>
+                <button onClick={() => speak(document.getElementById("responseField").innerText)}><HiMiniSpeakerWave /></button>
             </div>
         )
     }
